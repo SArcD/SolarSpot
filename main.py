@@ -297,12 +297,49 @@ def main():
                 # Mostrar la imagen con texto
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
+                def calcular_porcentaje_eclipse(image_with_text):
+                    # Convertir la imagen a escala de grises
+                    imagen_gris = cv2.cvtColor(np.array(image_with_text), cv2.COLOR_RGB2GRAY)
 
+                    # Aplicar un filtro Canny para detectar los bordes
+                    bordes = cv2.Canny(imagen_gris, 30, 100)
+
+                    # Encontrar contornos en la imagen de bordes
+                    contornos, _ = cv2.findContours(bordes.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+                    # Seleccionar el contorno más grande (el disco solar)
+                    contorno_disco_solar = max(contornos, key=cv2.contourArea)
+
+                    # Obtener el círculo mínimo que encierra el contorno del sol
+                    (x, y), radio_sol = cv2.minEnclosingCircle(contorno_disco_solar)
+
+                    # Calcular el área del círculo teórico con el mismo radio que el círculo mínimo que engloba el contorno del sol
+                    area_circulo_teórico = np.pi * (radio_sol ** 2)
+
+                    # Crear una máscara para el contorno del disco solar
+                    mascara_contorno_disco_solar = np.zeros_like(imagen_gris)
+                    cv2.drawContours(mascara_contorno_disco_solar, [contorno_disco_solar], -1, 255, -1)
+
+                    # Crear una máscara para el área entre el contorno del disco solar y el contorno semicircular
+                    mascara_entre_contornos = np.zeros_like(imagen_gris)
+                    (x, y), (w, h), _ = cv2.fitEllipse(contorno_disco_solar)
+                    cv2.ellipse(mascara_entre_contornos, (int(x), int(y)), (int(w / 2), int(h / 2)), 0, 180, 360, 255, -1)
+
+                    # Calcular el área del disco solar
+                    area_disco_solar = cv2.countNonZero(mascara_contorno_disco_solar)
+
+                    # Calcular el área entre los contornos
+                    area_entre_contornos = cv2.countNonZero(mascara_entre_contornos)
+
+                    # Calcular el porcentaje de la sombra de la luna
+                    porcentaje_eclipse = ((area_circulo_teórico - area_entre_contornos) / area_circulo_teórico) * 100
+
+                    return porcentaje_eclipse
 
             
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
-                #porcentaje_eclipse = calcular_porcentaje_eclipse(image_np)
-                #st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
+                porcentaje_eclipse = calcular_porcentaje_eclipse(image_np)
+                st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
 
 if __name__ == "__main__":
     main()
