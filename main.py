@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import cv2
-from google.colab.patches import cv2_imshow
 
 def main():
     st.title("Visualizador de Imagen del Sol")
@@ -51,3 +50,5 @@ def main():
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
         st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
+if __name__ == "__main__":
+    main()
