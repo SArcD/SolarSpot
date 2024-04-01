@@ -299,7 +299,7 @@ def main():
 
                 # Función para calcular el porcentaje de eclipse
                 def calcular_porcentaje_eclipse(imagen_np):
-                # Convertir la imagen a escala de grises
+                    # Convertir la imagen a escala de grises
                     imagen_gris = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2GRAY)
 
                     # Aplicar un umbral para resaltar las partes brillantes (el disco solar)
@@ -311,28 +311,20 @@ def main():
                     # Seleccionar el contorno más grande (el disco solar)
                     contorno_disco_solar = max(contornos, key=cv2.contourArea)
 
-                    # Crear una imagen en blanco del mismo tamaño que la original
-                    mascara_disco_solar = np.zeros_like(imagen_gris)
+                    # Calcular el área del contorno del sol
+                    area_disco_solar = cv2.contourArea(contorno_disco_solar)
 
-                    # Dibujar el contorno del disco solar en la máscara
-                    cv2.drawContours(mascara_disco_solar, [contorno_disco_solar], 0, 255, -1)
+                    # Obtener el círculo mínimo que encierra el contorno del sol
+                    (x, y), radio_sol = cv2.minEnclosingCircle(contorno_disco_solar)
 
-                    # Calcular el área del disco solar
-                    area_disco_solar = cv2.countNonZero(mascara_disco_solar)
-
-                    # Aplicar la máscara del disco solar a la imagen original
-                    disco_solar = cv2.bitwise_and(imagen_gris, imagen_gris, mask=mascara_disco_solar)
-
-                    # Aplicar un umbral para detectar la sombra de la luna (región más oscura)
-                    _, sombra_luna = cv2.threshold(disco_solar, 50, 255, cv2.THRESH_BINARY_INV)
-
-                    # Calcular el área de la sombra de la luna dentro del disco solar
-                    area_sombra_luna = cv2.countNonZero(sombra_luna)
+                    # Calcular el área del círculo teórico con el mismo radio que el círculo mínimo que engloba el contorno del sol
+                    area_circulo_teórico = np.pi * (radio_sol ** 2)
 
                     # Calcular el porcentaje de la sombra de la luna
-                    porcentaje_eclipse = (area_sombra_luna / area_disco_solar) * 100
+                    porcentaje_eclipse = (area_disco_solar / area_circulo_teórico) * 100
 
                     return porcentaje_eclipse
+
 
             
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
