@@ -105,6 +105,7 @@ def main():
             if distancia_centros <= 1.1 * radio_sol:
                 # Dibujar el contorno
                 cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
+                st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
                 # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
                 etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
