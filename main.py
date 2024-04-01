@@ -29,10 +29,15 @@ def main():
             font_color = (255, 255, 255)
             line_type = 1
 
-            cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type)
-            cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type)
-            cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type)
+            #cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type)
+            #cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type)
+            #cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type)
+            cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
+
+            
             # Convertir la imagen de nuevo a formato compatible con Streamlit
             image_with_text = Image.fromarray(image_np)
 
