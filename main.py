@@ -119,7 +119,6 @@ def main():
 
 
 
-    
     if uploaded_file is not None:
         # Convertir la imagen cargada a una matriz numpy
         image = Image.open(uploaded_file)
@@ -164,11 +163,11 @@ def main():
             "Ángulo (radianes)": []
         }
 
+        # Contador para llevar el seguimiento de la etiqueta renombrada
+        nueva_etiqueta = 1
+
         # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
         for i, contorno in enumerate(contornos_manchas_solares, start=1):
-            # Dibujar el contorno
-            cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
-
             # Calcular el centro del contorno
             M = cv2.moments(contorno)
             if M["m00"] != 0:
@@ -179,7 +178,15 @@ def main():
 
             # Calcular el área del contorno
             area = cv2.contourArea(contorno)
-            if area > 0:
+
+            # Calcular la distancia desde el centro del contorno del sol al centro del contorno actual
+            distancia_centros = math.sqrt((centro_sol[0] - cX)**2 + (centro_sol[1] - cY)**2)
+
+            # Si la distancia es menor o igual a 1.1 veces el radio del sol, procede
+            if distancia_centros <= 1.1 * radio_sol and area > 0:
+                # Dibujar el contorno
+                cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
+
                 # Calcular el tamaño del contorno en píxeles
                 tamano_contorno = math.sqrt(area / math.pi)
 
@@ -189,12 +196,18 @@ def main():
                 angulo_grados = math.degrees(angulo)
 
                 # Agregar los valores al DataFrame
-                data["Contorno"].append(i)
+                data["Contorno"].append(nueva_etiqueta)
                 data["Centro_X"].append(cX)
                 data["Centro_Y"].append(cY)
                 data["Tamaño (píxeles)"].append(tamano_contorno)
                 data["Distancia Radial"].append(distancia_radial)
                 data["Ángulo (radianes)"].append(angulo_grados)
+
+                # Incrementar la nueva etiqueta
+                nueva_etiqueta += 1
+     
+        # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
+        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
         # Convertir el diccionario de datos a DataFrame
         df = pd.DataFrame(data)
@@ -202,6 +215,7 @@ def main():
         # Mostrar el DataFrame
         st.write("Información de los contornos:")
         st.write(df)
+    
 
 
 
