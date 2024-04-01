@@ -79,6 +79,8 @@ def main():
 
         # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
         cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
+        # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
+        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
         # Diccionario para mapear las etiquetas originales a las etiquetas renombradas
         etiquetas_renombradas = {}
@@ -113,7 +115,7 @@ def main():
 
                 # Incrementar la nueva etiqueta
                 nueva_etiqueta += 1
-     
+
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
         st.image(imagen_con_circulo, caption="Imagen con contornos contabilizados", use_column_width=True)
 
@@ -206,9 +208,6 @@ def main():
                 # Incrementar la nueva etiqueta
                 nueva_etiqueta += 1
      
-        # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
-
         # Convertir el diccionario de datos a DataFrame
         df = pd.DataFrame(data)
 
