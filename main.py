@@ -317,6 +317,13 @@ def main():
                     # Obtener el círculo mínimo que encierra el contorno del sol
                     (x, y), radio_sol = cv2.minEnclosingCircle(contorno_disco_solar)
 
+                    # Convertir las coordenadas y el radio a enteros
+                    centro_sol = (int(x), int(y))
+                    radio_sol = int(radio_sol)
+
+                    # Dibujar el borde del disco solar con una línea verde
+                    cv2.circle(imagen_np, centro_sol, radio_sol, (0, 255, 0), 2)
+
                     # Calcular el área del círculo teórico con el mismo radio que el círculo mínimo que engloba el contorno del sol
                     area_circulo_teórico = np.pi * (radio_sol ** 2)
 
@@ -324,6 +331,7 @@ def main():
                     porcentaje_eclipse = (area_disco_solar / area_circulo_teórico) * 100
 
                     return porcentaje_eclipse
+
 
 
             
