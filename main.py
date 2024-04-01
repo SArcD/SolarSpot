@@ -57,25 +57,25 @@ def main():
         st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
 
-    # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
-    for i, contorno in enumerate(contornos_manchas_solares, start=1):
-        # Dibujar el contorno
-        cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
+        # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
+        for i, contorno in enumerate(contornos_manchas_solares, start=1):
+            # Dibujar el contorno
+            cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
 
-        # Calcular el centro del contorno
-        M = cv2.moments(contorno)
-        if M["m00"] != 0:
-            cX = int(M["m10"] / M["m00"])
-            cY = int(M["m01"] / M["m00"])
-        else:
-            cX, cY = 0, 0
+            # Calcular el centro del contorno
+            M = cv2.moments(contorno)
+            if M["m00"] != 0:
+                cX = int(M["m10"] / M["m00"])
+                cY = int(M["m01"] / M["m00"])
+            else:
+                cX, cY = 0, 0
 
-        # Etiquetar el contorno con un número sin superposiciones
-        etiqueta = str(i)
-        (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(etiqueta, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
-        cv2.putText(imagen_con_circulo, etiqueta, (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+            # Etiquetar el contorno con un número sin superposiciones
+            etiqueta = str(i)
+            (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(etiqueta, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
+            cv2.putText(imagen_con_circulo, etiqueta, (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
-    # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-    cv2_imshow(imagen_con_circulo)
+        # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
+        st.image(imagen_con_circulo)
 if __name__ == "__main__":
     main()
