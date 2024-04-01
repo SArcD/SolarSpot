@@ -299,7 +299,7 @@ def main():
 
                 # Función para calcular el porcentaje de eclipse
                 def calcular_porcentaje_eclipse(imagen_np):
-                    # Convertir la imagen a escala de grises
+                # Convertir la imagen a escala de grises
                     imagen_gris = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2GRAY)
 
                     # Aplicar un umbral para resaltar las partes brillantes (el disco solar)
