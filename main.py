@@ -4,6 +4,8 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import cv2
+import pandas as pd
+import math
 
 def main():
     st.title("Visualizador de Imagen del Sol")
