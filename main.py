@@ -196,53 +196,6 @@ def main():
         st.write("Información de los contornos:")
         st.write(df)
 
-    if uploaded_file is not None:
-        # Convertir la imagen cargada a una matriz numpy
-        image = Image.open(uploaded_file)
-        image_np = np.array(image)
-
-        # Convertir la imagen a escala de grises
-        imagen_gris = cv2.cvtColor(image_np, cv2.COLOR_BGR2GRAY)
-
-        # Aplicar un umbral adaptativo para convertir la imagen en binaria
-        _, binary = cv2.threshold(imagen_gris, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-
-        # Crear una máscara circular para limitar la búsqueda de contornos dentro del radio solar
-        mask = np.zeros_like(binary)
-        height, width = mask.shape[:2]
-        centro_sol = (width // 2, height // 2)
-        radio_sol = min(centro_sol)
-        cv2.circle(mask, centro_sol, radio_sol, 255, -1)  # Crear una máscara circular sólida
-
-        # Aplicar la máscara a la imagen binaria
-        binary_masked = cv2.bitwise_and(binary, mask)
-
-        # Encontrar contornos en la imagen binaria con máscara
-        contornos, _ = cv2.findContours(binary_masked, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-        # Crear una nueva imagen en blanco del mismo tamaño que la original
-        imagen_con_circulo = np.zeros_like(image_np)
-
-        # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
-        cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
-
-        # Dibujar líneas punteadas desde el centro del contorno del sol a los centros de los contornos de las manchas solares
-        for contorno in contornos:
-            # Calcular el centro del contorno
-            M = cv2.moments(contorno)
-            if M["m00"] != 0:
-                cX = int(M["m10"] / M["m00"])
-                cY = int(M["m01"] / M["m00"])
-            else:
-                cX, cY = 0, 0
-
-            # Dibujar la línea punteada si el centro del contorno está dentro del radio solar
-            if cv2.pointPolygonTest(contorno, centro_sol, False) != -1:
-                cv2.line(imagen_con_circulo, centro_sol, (cX, cY), (0, 255, 0), 1, cv2.LINE_AA)
-
-        # Mostrar la imagen con el círculo que contiene el contorno del sol y las líneas punteadas a los centros de los contornos de las manchas solares
-        st.image(imagen_con_circulo, caption="Imagen con contornos y líneas punteadas", use_column_width=True)
-
 
 
 if __name__ == "__main__":
