@@ -298,7 +298,7 @@ def main():
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
                 # Función para calcular el porcentaje de eclipse
-               def calcular_porcentaje_eclipse(imagen_np):
+                def calcular_porcentaje_eclipse(imagen_np):
                     # Convertir la imagen a escala de grises
                     imagen_gris = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2GRAY)
 
