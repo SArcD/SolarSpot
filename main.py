@@ -196,8 +196,42 @@ def main():
         st.write("Información de los contornos:")
         st.write(df)
 
+        # Obtener el círculo mínimo que encierra el contorno del sol
+        (x, y), radio_sol = cv2.minEnclosingCircle(contorno_sol)
+        centro_sol = (int(x), int(y))
+        radio_sol = int(radio_sol)
+
+        # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
+        binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 55, 53)
+
+        # Encontrar contornos en la imagen binaria de las manchas solares
+        contornos_manchas_solares, _ = cv2.findContours(binary_manchas_solares, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        # Crear una nueva imagen en blanco del mismo tamaño que la original
+        imagen_con_circulo = np.zeros_like(image_np)
+
+        # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
+        cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
+
+        # Dibujar líneas punteadas desde el centro del contorno del sol a los centros de los contornos de las manchas solares
+        for contorno in contornos_manchas_solares:
+            # Calcular el centro del contorno
+            M = cv2.moments(contorno)
+            if M["m00"] != 0:
+                cX = int(M["m10"] / M["m00"])
+                cY = int(M["m01"] / M["m00"])
+            else:
+                cX, cY = 0, 0
+
+            # Dibujar la línea punteada
+            cv2.line(imagen_con_circulo, centro_sol, (cX, cY), (0, 255, 0), 1, cv2.LINE_AA)
+
+        # Mostrar la imagen con el círculo que contiene el contorno del sol y las líneas punteadas a los centros de los contornos de las manchas solares
+        st.image(imagen_con_circulo, caption="Imagen con contornos y líneas punteadas", use_column_width=True)
+
+        
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
+#        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
 
 if __name__ == "__main__":
