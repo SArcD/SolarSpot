@@ -80,8 +80,14 @@ def main():
         # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
         cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
 
+        # Diccionario para mapear las etiquetas originales a las etiquetas renombradas
+        etiquetas_renombradas = {}
+
+        # Contador para llevar el seguimiento de la etiqueta renombrada
+        nueva_etiqueta = 1
+
         # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
-        for i, contorno in enumerate(contornos_manchas_solares, start=1):
+        for contorno in contornos_manchas_solares:
             # Calcular el centro del contorno
             M = cv2.moments(contorno)
             if M["m00"] != 0:
@@ -98,10 +104,15 @@ def main():
                 # Dibujar el contorno
                 cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
 
-                # Etiquetar el contorno con un número sin superposiciones
-                etiqueta = str(i)
-                (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(etiqueta, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
-                cv2.putText(imagen_con_circulo, etiqueta, (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
+                etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
+
+                # Etiquetar el contorno con la nueva etiqueta
+                (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
+                cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+
+                # Incrementar la nueva etiqueta
+                nueva_etiqueta += 1
      
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
         st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
