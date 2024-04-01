@@ -115,7 +115,7 @@ def main():
                 nueva_etiqueta += 1
      
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
+        st.image(imagen_con_circulo, caption="Imagen con contornos contabilizados", use_column_width=True)
 
 
 
