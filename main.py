@@ -147,6 +147,16 @@ def main():
         # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
         cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
 
+        # Crear un DataFrame para almacenar la información de los contornos
+        data = {
+            "Contorno": [],
+            "Centro_X": [],
+            "Centro_Y": [],
+            "Tamaño (píxeles)": [],
+            "Distancia Radial": [],
+            "Ángulo (radianes)": []
+        }
+
         # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
         for i, contorno in enumerate(contornos_manchas_solares, start=1):
             # Dibujar el contorno
@@ -160,34 +170,33 @@ def main():
             else:
                 cX, cY = 0, 0
 
-            # Calcular el tamaño del contorno en píxeles
+            # Calcular el área del contorno
             area = cv2.contourArea(contorno)
-            tamano_contorno = math.sqrt(area / math.pi)
+            if area > 0:
+                # Calcular el tamaño del contorno en píxeles
+                tamano_contorno = math.sqrt(area / math.pi)
 
-            # Calcular las coordenadas polares del centro del contorno
-            distancia_radial = math.sqrt((cX - centro_sol[0])**2 + (cY - centro_sol[1])**2)
-            angulo = math.atan2(cY - centro_sol[1], cX - centro_sol[0])
+                # Calcular las coordenadas polares del centro del contorno
+                distancia_radial = math.sqrt((cX - centro_sol[0])**2 + (cY - centro_sol[1])**2)
+                angulo = math.atan2(cY - centro_sol[1], cX - centro_sol[0])
 
-            # Crear un DataFrame para almacenar la información de los contornos
-            data = {
-                "Contorno": [i],
-                "Centro_X": [cX],
-                "Centro_Y": [cY],
-                "Tamaño (píxeles)": [tamano_contorno],
-                "Distancia Radial": [distancia_radial],
-                "Ángulo (radianes)": [angulo]
-            }
-            df = pd.DataFrame(data)
+                # Agregar los valores al DataFrame
+                data["Contorno"].append(i)
+                data["Centro_X"].append(cX)
+                data["Centro_Y"].append(cY)
+                data["Tamaño (píxeles)"].append(tamano_contorno)
+                data["Distancia Radial"].append(distancia_radial)
+                data["Ángulo (radianes)"].append(angulo)
 
-            # Mostrar el DataFrame
-            st.write(f"Información del contorno {i}:")
-            st.write(df)
+        # Convertir el diccionario de datos a DataFrame
+        df = pd.DataFrame(data)
+
+        # Mostrar el DataFrame
+        st.write("Información de los contornos:")
+        st.write(df)
 
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
         st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
-
-
-
 
 
 if __name__ == "__main__":
