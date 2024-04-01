@@ -10,6 +10,7 @@ def main():
     st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
 
     uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+    st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
 
     if uploaded_file is not None:
         # Mostrar la imagen cargada
@@ -34,10 +35,10 @@ def main():
             #cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type)
             #cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type)
             #cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type)
-            st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
             cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_np, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
 
             
@@ -45,7 +46,7 @@ def main():
             image_with_text = Image.fromarray(image_np)
             st.write("Esta es tu foto del Sol:")
             # Mostrar la imagen con texto
-            st.image(image_with_text, caption="Imagen con texto", use_column_width=True)
+            st.image(image_with_text, caption="Fotografía del Sol", use_column_width=True)
 
 
     
