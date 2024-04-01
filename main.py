@@ -35,7 +35,10 @@ def main():
 
             # Convertir la imagen de nuevo a formato compatible con Streamlit
             image_with_text = Image.fromarray(image_np)
-        
+
+            # Mostrar la imagen con texto
+            st.image(image_with_text, caption="Imagen con texto", use_column_width=True)
+
         
             st.image(image, caption="Imagen del Sol", use_column_width=True)
 
