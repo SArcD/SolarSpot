@@ -323,6 +323,7 @@ def main():
 
                     # Dibujar el borde del disco solar con una línea verde
                     cv2.circle(imagen_np, centro_sol, radio_sol, (0, 255, 0), 2)
+                    st.image(image_np, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
                     # Calcular el área del círculo teórico con el mismo radio que el círculo mínimo que engloba el contorno del sol
                     area_circulo_teórico = np.pi * (radio_sol ** 2)
