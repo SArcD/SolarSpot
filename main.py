@@ -248,6 +248,9 @@ def main():
         st.write(df)
 
 
+def visualize_eclipse():
+    st.subheader("Visualizador de Eclipse")
+    st.write("Aquí puedes visualizar imágenes y datos relacionados con eclipses.")
 
 
 
