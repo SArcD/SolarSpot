@@ -265,6 +265,7 @@ def main():
             # Mostrar la imagen cargada
             image = Image.open(uploaded_file)
             image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+            image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
     
             # Cajas de entrada para el autor, lugar y hora
@@ -292,6 +293,7 @@ def main():
                 # Convertir la imagen de nuevo a formato compatible con Streamlit
                 #image_with_text = Image.fromarray(image_bgr)
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
+                #image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
                 st.write("Esta es tu foto del Sol:")
                 # Mostrar la imagen con texto
@@ -340,7 +342,7 @@ def main():
 
                 
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
-                porcentaje_eclipse = calcular_porcentaje_eclipse(imagen_np)
+                porcentaje_eclipse = calcular_porcentaje_eclipse(imagen_bgr)
                 #porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)  # Pasar la imagen como argumento
                 st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
 
