@@ -311,7 +311,7 @@ def main():
                     # Seleccionar el contorno más grande (el disco solar)
                     contorno_disco_solar = max(contornos, key=cv2.contourArea)
 
-                    # Calcular el área del contorno del sol
+                    #  Calcular el área del contorno del sol
                     area_disco_solar = cv2.contourArea(contorno_disco_solar)
 
                     # Obtener el círculo mínimo que encierra el contorno del sol
@@ -332,6 +332,7 @@ def main():
                     porcentaje_eclipse = (area_disco_solar / area_circulo_teórico) * 100
 
                     return porcentaje_eclipse, imagen_con_contorno
+
             
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
                 porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)
