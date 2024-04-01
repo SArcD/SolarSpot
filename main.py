@@ -10,6 +10,12 @@ def main():
     uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
+    # Mostrar la imagen cargada
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Imagen del Sol", use_column_width=True)
+
+    
+    if uploaded_file is not None:
         # Convertir la imagen cargada a una matriz numpy
         image = Image.open(uploaded_file)
         image_np = np.array(image)
