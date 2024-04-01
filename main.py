@@ -20,6 +20,7 @@ def main():
         autor = st.text_input("Autor", "")
         lugar = st.text_input("Lugar", "")
         hora = st.text_input("Hora", "")
+        fecha = st.text_input("Fecha","")
 
         if st.button("Mostrar datos en imagen"):
             # Convertir la imagen cargada a una matriz numpy
