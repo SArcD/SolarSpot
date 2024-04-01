@@ -256,7 +256,42 @@ def main():
         st.title("Visualizador de Eclipse")
         st.write("Esta es la página del visualizador de eclipse. Aquí puedes agregar el código para visualizar eclipses.")
 
-        # Agrega tu código para visualizar eclipses aquí
+        st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
+
+        uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+        st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
+
+        if uploaded_file is not None:
+            # Mostrar la imagen cargada
+            image = Image.open(uploaded_file)
+        
+            # Cajas de entrada para el autor, lugar y hora
+            autor = st.text_input("Autor", "")
+            lugar = st.text_input("Lugar", "")
+            hora = st.text_input("Hora", "")
+            fecha = st.text_input("Fecha","")
+
+            if st.button("Mostrar datos en imagen"):
+                # Convertir la imagen cargada a una matriz numpy
+                image_np = np.array(image)
+
+                # Dibujar texto en la imagen
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                bottom_left_corner = (10, image_np.shape[0] - 10)
+                font_scale = 0.5
+                font_color = (255, 255, 255)
+                line_type = 1
+
+                cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
+                cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
+                cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
+                cv2.putText(image_np, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            
+                # Convertir la imagen de nuevo a formato compatible con Streamlit
+                image_with_text = Image.fromarray(image_np)
+                st.write("Esta es tu foto del Sol:")
+                # Mostrar la imagen con texto
+                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
 
 
