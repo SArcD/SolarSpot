@@ -297,12 +297,14 @@ def main():
                 # Mostrar la imagen con texto
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
-                def calcular_porcentaje_eclipse(imagen_path):
-                    # Cargar la imagen
-                    imagen = image
+                import cv2
+                import numpy as np
+                from PIL import Image
 
+                # Función para calcular el porcentaje de eclipse
+                def calcular_porcentaje_eclipse(imagen_np):
                     # Convertir la imagen a escala de grises
-                    imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+                    imagen_gris = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2GRAY)
 
                     # Aplicar un umbral para resaltar las partes brillantes (el disco solar)
                     _, imagen_umbral = cv2.threshold(imagen_gris, 200, 255, cv2.THRESH_BINARY)
@@ -335,9 +337,11 @@ def main():
                     porcentaje_eclipse = (area_sombra_luna / area_disco_solar) * 100
 
                     return porcentaje_eclipse
+
                 
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
-                porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)  # Pasar la imagen como argumento
+                porcentaje_eclipse = calcular_porcentaje_eclipse(imagen_np)
+                #porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)  # Pasar la imagen como argumento
                 st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
 
 if __name__ == "__main__":
