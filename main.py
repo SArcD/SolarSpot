@@ -179,6 +179,7 @@ def main():
                 # Calcular las coordenadas polares del centro del contorno
                 distancia_radial = math.sqrt((cX - centro_sol[0])**2 + (cY - centro_sol[1])**2)
                 angulo = math.atan2(cY - centro_sol[1], cX - centro_sol[0])
+                angulo_grados = math.degrees(angulo)
 
                 # Agregar los valores al DataFrame
                 data["Contorno"].append(i)
@@ -186,7 +187,7 @@ def main():
                 data["Centro_Y"].append(cY)
                 data["Tamaño (píxeles)"].append(tamano_contorno)
                 data["Distancia Radial"].append(distancia_radial)
-                data["Ángulo (radianes)"].append(angulo)
+                data["Ángulo (radianes)"].append(angulo_grados)
 
         # Convertir el diccionario de datos a DataFrame
         df = pd.DataFrame(data)
