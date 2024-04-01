@@ -33,22 +33,16 @@ def main():
             font_color = (255, 255, 255)
             line_type = 1
 
-            #cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type)
-            #cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type)
-            #cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type)
             cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_np, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_np, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_np, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
-
-
             
             # Convertir la imagen de nuevo a formato compatible con Streamlit
             image_with_text = Image.fromarray(image_np)
             st.write("Esta es tu foto del Sol:")
             # Mostrar la imagen con texto
             st.image(image_with_text, caption="Fotografía del Sol", use_column_width=True)
-
 
     
     if uploaded_file is not None:
@@ -92,12 +86,9 @@ def main():
         # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
         for contorno in contornos_manchas_solares:
             cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
-
-
-        
+     
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
         st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
-
 
         # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
         for i, contorno in enumerate(contornos_manchas_solares, start=1):
@@ -119,5 +110,83 @@ def main():
 
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
         st.image(imagen_con_circulo)
+
+    if uploaded_file is not None:
+        # Convertir la imagen cargada a una matriz numpy
+        image = Image.open(uploaded_file)
+        image_np = np.array(image)
+
+        # Convertir la imagen a escala de grises
+        imagen_gris = cv2.cvtColor(image_np, cv2.COLOR_BGR2GRAY)
+
+        # Aplicar un umbral adaptativo para convertir la imagen en binaria
+        _, binary = cv2.threshold(imagen_gris, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+
+        # Encontrar contornos en la imagen binaria
+        contornos, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        # Seleccionar el contorno más grande (el contorno del sol)
+        contorno_sol = max(contornos, key=cv2.contourArea)
+
+        # Obtener el círculo mínimo que encierra el contorno del sol
+        (x, y), radio_sol = cv2.minEnclosingCircle(contorno_sol)
+        centro_sol = (int(x), int(y))
+        radio_sol = int(radio_sol)
+
+        # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
+        binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 55, 53)
+
+        # Encontrar contornos en la imagen binaria de las manchas solares
+        contornos_manchas_solares, _ = cv2.findContours(binary_manchas_solares, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        # Crear una nueva imagen en blanco del mismo tamaño que la original
+        imagen_con_circulo = np.zeros_like(image_np)
+
+        # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
+        cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
+
+        # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
+        for i, contorno in enumerate(contornos_manchas_solares, start=1):
+            # Dibujar el contorno
+            cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
+
+            # Calcular el centro del contorno
+            M = cv2.moments(contorno)
+            if M["m00"] != 0:
+                cX = int(M["m10"] / M["m00"])
+                cY = int(M["m01"] / M["m00"])
+            else:
+                cX, cY = 0, 0
+
+            # Calcular el tamaño del contorno en píxeles
+            area = cv2.contourArea(contorno)
+            tamano_contorno = math.sqrt(area / math.pi)
+
+            # Calcular las coordenadas polares del centro del contorno
+            distancia_radial = math.sqrt((cX - centro_sol[0])**2 + (cY - centro_sol[1])**2)
+            angulo = math.atan2(cY - centro_sol[1], cX - centro_sol[0])
+
+            # Crear un DataFrame para almacenar la información de los contornos
+            data = {
+                "Contorno": [i],
+                "Centro_X": [cX],
+                "Centro_Y": [cY],
+                "Tamaño (píxeles)": [tamano_contorno],
+                "Distancia Radial": [distancia_radial],
+                "Ángulo (radianes)": [angulo]
+            }
+            df = pd.DataFrame(data)
+
+            # Mostrar el DataFrame
+            st.write(f"Información del contorno {i}:")
+            st.write(df)
+
+        # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
+        st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
+
+
+
+
+
 if __name__ == "__main__":
     main()
