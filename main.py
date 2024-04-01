@@ -335,7 +335,7 @@ def main():
 
             
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
-                porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)
+                porcentaje_eclipse = calcular_porcentaje_eclipse(image_np)
                 st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
 
 if __name__ == "__main__":
