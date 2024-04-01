@@ -264,10 +264,10 @@ def main():
         if uploaded_file is not None:
             # Mostrar la imagen cargada
             image = Image.open(uploaded_file)
-            image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+        
+            # Convertir la imagen RGB a formato BGR
             image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
-    
             # Cajas de entrada para el autor, lugar y hora
             autor = st.text_input("Autor", "")
             lugar = st.text_input("Lugar", "")
@@ -289,19 +289,13 @@ def main():
                 cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
-    
+
                 # Convertir la imagen de nuevo a formato compatible con Streamlit
-                #image_with_text = Image.fromarray(image_bgr)
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
-                #image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
                 st.write("Esta es tu foto del Sol:")
                 # Mostrar la imagen con texto
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
-
-                import cv2
-                import numpy as np
-                from PIL import Image
 
                 # Función para calcular el porcentaje de eclipse
                 def calcular_porcentaje_eclipse(imagen_np):
@@ -340,10 +334,9 @@ def main():
 
                     return porcentaje_eclipse
 
-                
+            
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
-                porcentaje_eclipse = calcular_porcentaje_eclipse(imagen_bgr)
-                #porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)  # Pasar la imagen como argumento
+                porcentaje_eclipse = calcular_porcentaje_eclipse(image_bgr)
                 st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
 
 if __name__ == "__main__":
