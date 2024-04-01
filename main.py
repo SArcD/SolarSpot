@@ -39,8 +39,6 @@ def main():
             # Mostrar la imagen con texto
             st.image(image_with_text, caption="Imagen con texto", use_column_width=True)
 
-        
-            st.image(image, caption="Imagen del Sol", use_column_width=True)
 
     
     if uploaded_file is not None:
