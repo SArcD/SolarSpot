@@ -80,6 +80,37 @@ def main():
         # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
         cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
         # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
+                # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
+        for contorno in contornos_manchas_solares:
+            # Calcular el centro del contorno
+            M = cv2.moments(contorno)
+            if M["m00"] != 0:
+                cX = int(M["m10"] / M["m00"])
+                cY = int(M["m01"] / M["m00"])
+            else:
+                cX, cY = 0, 0
+
+            # Calcular la distancia desde el centro del contorno del sol al centro del contorno actual
+            distancia_centros = math.sqrt((centro_sol[0] - cX)**2 + (centro_sol[1] - cY)**2)
+
+            # Si la distancia es menor o igual a 1.1 veces el radio del sol, dibuja el contorno
+            if distancia_centros <= 1.1 * radio_sol:
+                # Dibujar el contorno
+                cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
+                #st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
+
+                # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
+                #etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
+
+                # Etiquetar el contorno con la nueva etiqueta
+                #(etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
+                #cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+
+                # Incrementar la nueva etiqueta
+                #nueva_etiqueta += 1
+
+        
+        
         st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
         # Diccionario para mapear las etiquetas originales a las etiquetas renombradas
@@ -105,7 +136,7 @@ def main():
             if distancia_centros <= 1.1 * radio_sol:
                 # Dibujar el contorno
                 cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
-                st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
+                #st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
                 # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
                 etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
