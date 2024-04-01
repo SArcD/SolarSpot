@@ -297,46 +297,12 @@ def main():
                 # Mostrar la imagen con texto
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
-                # Función para calcular el porcentaje de eclipse
-                def calcular_porcentaje_eclipse(imagen_np):
-                    # Convertir la imagen a escala de grises
-                    imagen_gris = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2GRAY)
 
-                    # Aplicar un umbral para resaltar las partes brillantes (el disco solar)
-                    _, imagen_umbral = cv2.threshold(imagen_gris, 200, 255, cv2.THRESH_BINARY)
-
-                    # Encontrar contornos en la imagen umbralizada
-                    contornos, _ = cv2.findContours(imagen_umbral, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-                    # Seleccionar el contorno más grande (el disco solar)
-                    contorno_disco_solar = max(contornos, key=cv2.contourArea)
-
-                    #  Calcular el área del contorno del sol
-                    area_disco_solar = cv2.contourArea(contorno_disco_solar)
-
-                    # Obtener el círculo mínimo que encierra el contorno del sol
-                    (x, y), radio_sol = cv2.minEnclosingCircle(contorno_disco_solar)
-
-                    # Convertir las coordenadas y el radio a enteros
-                    centro_sol = (int(x), int(y))
-                    radio_sol = int(radio_sol)
-
-                    # Dibujar el borde del disco solar con una línea verde
-                    imagen_con_contorno = imagen_np.copy()  # Crear una copia de la imagen original
-                    cv2.circle(imagen_con_contorno, centro_sol, radio_sol, (0, 255, 0), 2)
-
-                    # Calcular el área del círculo teórico con el mismo radio que el círculo mínimo que engloba el contorno del sol
-                    area_circulo_teórico = np.pi * (radio_sol ** 2)
-
-                    # Calcular el porcentaje de la sombra de la luna
-                    porcentaje_eclipse = (area_disco_solar / area_circulo_teórico) * 100
-
-                    return porcentaje_eclipse, imagen_con_contorno
 
             
                 # Calcular el porcentaje del disco solar cubierto por la sombra de la luna
-                porcentaje_eclipse = calcular_porcentaje_eclipse(image_np)
-                st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
+                #porcentaje_eclipse = calcular_porcentaje_eclipse(image_np)
+                #st.write(f"Porcentaje del disco solar cubierto por la sombra de la luna: {porcentaje_eclipse:.2f}%")
 
 if __name__ == "__main__":
     main()
