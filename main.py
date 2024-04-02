@@ -324,6 +324,19 @@ def main():
                     # Seleccionar el contorno más grande (el disco solar)
                     contorno_disco_solar = max(contornos, key=cv2.contourArea)
 
+                    # Calcular el centro del contorno
+                    M = cv2.moments(contorno_disco_solar)
+                    centro_x = int(M["m10"] / M["m00"])
+                    centro_y = int(M["m01"] / M["m00"])
+
+                    return (centro_x, centro_y)
+
+# Ejemplo de uso:
+imagen = cv2.imread('imagen.jpg')
+posicion_disco_solar = detectar_disco_solar(imagen)
+print("Posición del centro del disco solar:", posicion_disco_solar)
+
+                    
                     return contorno_disco_solar
 
 
