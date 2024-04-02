@@ -12,8 +12,13 @@ import cv2
 def main():
     # Crear una barra lateral para la navegación entre páginas
     page = st.sidebar.radio("Seleccionar página", ("Visualizador de Imagen del Sol", "Visualizador de Eclipse"))
-
+    
     if page == "Visualizador de Imagen del Sol":
+        import streamlit as st
+        import cv2
+        import numpy as np
+        from PIL import Image
+
         st.title("Visualizador de Imagen del Sol")
         st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
 
