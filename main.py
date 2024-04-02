@@ -168,7 +168,12 @@ def main():
                     nueva_etiqueta += 1
 
             # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-            
+
+            cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(imagen_con_circulo, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(imagen_con_circulo, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(imagen_con_circulo, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
+             
             st.image(imagen_con_circulo, caption="Imagen con contornos contabilizados", use_column_width=True)
 
 
@@ -210,11 +215,11 @@ def main():
             # Crear un DataFrame para almacenar la información de los contornos
             data = {
                 "Contorno": [],
-                "Centro_X": [],
-                "Centro_Y": [],
-                "Tamaño (píxeles)": [],
-                "Distancia Radial": [],
-                "Ángulo (radianes)": []
+                "Centro_X (pix respecto al centro)": [],
+                "Centro_Y (pix respecto al centro)": [],
+                "Tamaño (píxeles^2)": [],
+                "Distancia Radial (pix)": [],
+                "Ángulo (grados)": []
             }
 
             # Contador para llevar el seguimiento de la etiqueta renombrada
