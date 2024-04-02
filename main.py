@@ -402,10 +402,11 @@ def main():
                 # Subir la imagen
                 #imagen_subida = st.file_uploader("Sube una imagen")
 
-                if imagen_subida is not None:
+                #if imagen_subida is not None:
                   # Convertir la imagen a formato OpenCV
-                  imagen = np.array(bytearray(imagen_subida.read()), dtype=np.uint8)
-                  imagen = cv2.imdecode(imagen, cv2.IMREAD_COLOR)
+                #imagen = np.array(bytearray(imagen_subida.read()), dtype=np.uint8)
+                imagen = image
+                imagen = cv2.imdecode(imagen, cv2.IMREAD_COLOR)
 
                 # Calcular el área de la sección amarilla
                 area_amarilla = calcular_area_amarilla(imagen)
