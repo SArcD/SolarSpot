@@ -332,7 +332,7 @@ def main():
                 # Detectar el disco solar en la imagen
                 contorno_disco_solar = detectar_disco_solar(image_bgr)
                 # Dibujar el contorno del disco solar en la imagen
-                #cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
+                cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
                 # Convertir la imagen de nuevo a formato compatible con Streamlit
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
                 #st.write("Esta es tu foto del Sol:")
