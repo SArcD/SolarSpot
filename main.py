@@ -323,7 +323,7 @@ def main():
                 image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
 
-                if st.button("Mostrar datos en imagen"):
+                #if st.button("Mostrar datos en imagen"):
                     # Detectar el disco solar en la imagen
                     contorno_disco_solar = detectar_disco_solar(image_bgr)
     
