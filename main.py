@@ -336,7 +336,7 @@ def main():
                 # Detectar el disco solar en la imagen
                 contorno_disco_solar = detectar_disco_solar(image_bgr)
                 # Dibujar el contorno del disco solar en la imagen
-                cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
+                #cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
                 # Convertir la imagen de nuevo a formato compatible con Streamlit
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
                 st.write("Esta es tu foto del Sol:")
@@ -359,20 +359,16 @@ def main():
 
                   # Convertir la imagen a escala de grises
                   gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-
                   # Aplicar un umbral binario para separar la zona amarilla del fondo
                   umbral = cv2.threshold(gris, 127, 255, cv2.THRESH_BINARY)[1]
-
                   # Encontrar los contornos de la zona amarilla
                   contornos, _ = cv2.findContours(umbral, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
                   # Calcular el área del contorno más grande
                   area = 0
                   for contorno in contornos:
                     area_aux = cv2.contourArea(contorno)
                     if area_aux > area:
                       area = area_aux
-
                   return area
 
                 def calcular_area_circulo(area_amarilla):
@@ -381,31 +377,24 @@ def main():
 
                   Parámetros:
                     area_amarilla: El área de la sección amarilla en píxeles.
-
                   Retorno:
                     El área del círculo en píxeles.
                   """
-
                   # Calcular el radio del círculo
                   radio = np.sqrt(area_amarilla / np.pi)
-
                   # Calcular el área del círculo
                   area_circulo = np.pi * radio**2
-
                   return area_circulo
 
                 def calcular_porcentaje_area(area_amarilla, area_circulo):
                   """
                   Calcula el porcentaje del área de la sección amarilla con respecto al área de un círculo completo.
-
                   Parámetros:
                     area_amarilla: El área de la sección amarilla en píxeles.
                     area_circulo: El área del círculo en píxeles.
-
                   Retorno:
                     El porcentaje del área de la sección amarilla con respecto al área de un círculo completo.
                   """
-
                   porcentaje_area = (area_amarilla / area_circulo) * 100
 
                   return porcentaje_area
@@ -418,20 +407,20 @@ def main():
                   imagen = np.array(bytearray(imagen_subida.read()), dtype=np.uint8)
                   imagen = cv2.imdecode(imagen, cv2.IMREAD_COLOR)
 
-                  # Calcular el área de la sección amarilla
-                  area_amarilla = calcular_area_amarilla(imagen)
+                # Calcular el área de la sección amarilla
+                area_amarilla = calcular_area_amarilla(imagen)
 
-                  # Calcular el área de un círculo con el mismo radio que la sección amarilla
-                  area_circulo = calcular_area_circulo(area_amarilla)
+                # Calcular el área de un círculo con el mismo radio que la sección amarilla
+                area_circulo = calcular_area_circulo(area_amarilla)
 
-                  # Calcular el porcentaje del área de la sección amarilla con respecto al área de un círculo completo
-                  porcentaje_area = calcular_porcentaje_area(area_amarilla, area_circulo)
+                # Calcular el porcentaje del área de la sección amarilla con respecto al área de un círculo completo
+                porcentaje_area = calcular_porcentaje_area(area_amarilla, area_circulo)
 
-                  # Mostrar la imagen y el área de la sección amarilla
-                  st.image(imagen, channels="BGR")
-                  st.write(f"El área de la sección amarilla es de {area_amarilla} píxeles")
-                  st.write(f"El área de un círculo con el mismo radio es de {area_circulo} píxeles")
-                  st.write(f"La sección amarilla representa el {porcentaje_area}% del área de un círculo completo")
+                # Mostrar la imagen y el área de la sección amarilla
+                st.image(imagen, channels="BGR")
+                st.write(f"El área de la sección amarilla es de {area_amarilla} píxeles")
+                st.write(f"El área de un círculo con el mismo radio es de {area_circulo} píxeles")
+                st.write(f"La sección amarilla representa el {porcentaje_area}% del área de un círculo completo")
 
 
 
