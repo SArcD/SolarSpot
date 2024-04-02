@@ -256,7 +256,7 @@ def main():
 
     elif page == "Visualizador de Eclipse":
         import cv2
-
+        import numpy as np
         st.title("Visualizador de Eclipse")
         st.write("Esta es la página del visualizador de eclipse. Aquí puedes agregar el código para visualizar eclipses.")
 
