@@ -215,8 +215,8 @@ def main():
             # Crear un DataFrame para almacenar la información de los contornos
             data = {
                 "Contorno": [],
-                "Centro_X (pix)": [],
-                "Centro_Y (pix)": [],
+                "Centro_X (pixeles)": [],
+                "Centro_Y (pixeles)": [],
                 "Tamaño (pix^2)": [],
                 "Distancia Radial (pix)": [],
                 "Ángulo (grados)": []
@@ -256,11 +256,11 @@ def main():
 
                     # Agregar los valores al DataFrame
                     data["Contorno"].append(nueva_etiqueta)
-                    data["Centro_X"].append(cX)
-                    data["Centro_Y"].append(cY)
-                    data["Tamaño (píxeles)"].append(tamano_contorno)
-                    data["Distancia Radial"].append(distancia_radial)
-                    data["Ángulo (radianes)"].append(angulo_grados)
+                    data["Centro_X (pixeles)"].append(cX)
+                    data["Centro_Y (pixeles)"].append(cY)
+                    data["Tamaño (pix^2)"].append(tamano_contorno)
+                    data["Distancia Radial (pix)"].append(distancia_radial)
+                    data["Ángulo (grados)"].append(angulo_grados)
 
                     # Incrementar la nueva etiqueta
                     nueva_etiqueta += 1
