@@ -339,9 +339,9 @@ def main():
                 #cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
                 # Convertir la imagen de nuevo a formato compatible con Streamlit
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
-                st.write("Esta es tu foto del Sol:")
+                #st.write("Esta es tu foto del Sol:")
                 # Mostrar la imagen con texto y contorno del disco solar
-                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse con el contorno resaltado", use_column_width=True)
                 
 
 
