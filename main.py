@@ -215,9 +215,9 @@ def main():
             # Crear un DataFrame para almacenar la información de los contornos
             data = {
                 "Contorno": [],
-                "Centro_X (pix respecto al centro)": [],
-                "Centro_Y (pix respecto al centro)": [],
-                "Tamaño (píxeles^2)": [],
+                "Centro_X (pix)": [],
+                "Centro_Y (pix)": [],
+                "Tamaño (pix^2)": [],
                 "Distancia Radial (pix)": [],
                 "Ángulo (grados)": []
             }
