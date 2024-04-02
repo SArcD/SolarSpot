@@ -411,7 +411,7 @@ def main():
                   return porcentaje_area
 
                 # Subir la imagen
-                imagen_subida = st.file_uploader("Sube una imagen")
+                #imagen_subida = st.file_uploader("Sube una imagen")
 
                 if imagen_subida is not None:
                   # Convertir la imagen a formato OpenCV
