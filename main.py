@@ -6,6 +6,8 @@ import numpy as np
 import cv2
 import pandas as pd
 import math
+import cv2
+
 
 def main():
     # Crear una barra lateral para la navegación entre páginas
@@ -253,6 +255,8 @@ def main():
 
 
     elif page == "Visualizador de Eclipse":
+        import cv2
+
         st.title("Visualizador de Eclipse")
         st.write("Esta es la página del visualizador de eclipse. Aquí puedes agregar el código para visualizar eclipses.")
 
