@@ -358,20 +358,18 @@ def main():
                 #st.image("Posición del centro del disco solar:", posicion_disco_solar)
                 #st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
-                    if uploaded_file is not None:
-                        # Cargar la imagen
-                        image = Image.open(uploaded_file)
-                        # Convertir la imagen RGB a formato BGR
-                        image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-                        # Detectar el disco solar en la imagen
-                        centro_disco_solar = detectar_disco_solar(image_bgr)
-                        # Dibujar el contorno del disco solar en la imagen
-                        cv2.circle(image_bgr, centro_disco_solar, 5, (0, 255, 0), -1)
-                        # Convertir la imagen de nuevo a formato compatible con Streamlit
-                        image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
-                        st.write("Esta es tu foto del Sol:")
-                        # Mostrar la imagen con texto y contorno del disco solar
-                        st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+
+                # Convertir la imagen RGB a formato BGR
+                image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+                # Detectar el disco solar en la imagen
+                centro_disco_solar = detectar_disco_solar(image_bgr)
+                # Dibujar el contorno del disco solar en la imagen
+                cv2.circle(image_bgr, centro_disco_solar, 5, (0, 255, 0), -1)
+                # Convertir la imagen de nuevo a formato compatible con Streamlit
+                image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
+                st.write("Esta es tu foto del Sol:")
+                # Mostrar la imagen con texto y contorno del disco solar
+                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
 
 
