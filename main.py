@@ -319,16 +319,16 @@ def main():
                 # Cargar la imagen desde el archivo cargado
                 image = Image.open(uploaded_file)
 
-                # Convertir la imagen RGB a formato BGR
+                #    Convertir la imagen RGB a formato BGR
                 image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
 
-                if st.button("Mostra datos en imagen"):
+                #if st.button("Mostra datos en imagen"):
                     # Detectar el disco solar en la imagen
-                    contorno_disco_solar = detectar_disco_solar(image_bgr)
+                contorno_disco_solar = detectar_disco_solar(image_bgr)
     
                     # Dibujar el contorno del disco solar en la imagen
-                    cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
+                cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
     
                     # Dibujar texto en la imagen
                     #font = cv2.FONT_HERSHEY_SIMPLEX
@@ -343,11 +343,11 @@ def main():
                     #cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
                     # Convertir la imagen de nuevo a formato compatible con Streamlit
-                    image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
+                image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
-                    st.write("Esta es tu foto del Sol:")
+                st.write("Esta es tu foto del Sol:")
                     # Mostrar la imagen con texto y contorno del disco solar
-                    st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
                 
 
 if __name__ == "__main__":
