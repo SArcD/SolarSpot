@@ -298,12 +298,28 @@ def main():
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
                 # Función para detectar el disco solar en una imagen
+                #def detectar_disco_solar(imagen):
+                    # Convertir la imagen a escala de grises
+                    #imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+
+                    # Aplicar umbral adaptativo
+                    #thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 55, 53)
+
+                    # Encontrar contornos en la imagen umbralizada
+                    #contornos, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+                    # Seleccionar el contorno más grande (el disco solar)
+                    #contorno_disco_solar = max(contornos, key=cv2.contourArea)
+
+                    #return contorno_disco_solar
+
+
                 def detectar_disco_solar(imagen):
                     # Convertir la imagen a escala de grises
                     imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
 
-                    # Aplicar umbral adaptativo
-                    thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 55, 53)
+                    # Aplicar umbral adaptativo con parámetros ajustados
+                    thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10)
 
                     # Encontrar contornos en la imagen umbralizada
                     contornos, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
