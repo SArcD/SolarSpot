@@ -301,16 +301,16 @@ def main():
                 def detectar_disco_solar(imagen):
                     # Convertir la imagen a escala de grises
                     imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-    
+
                     # Aplicar umbral adaptativo
-                    _, thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 55, 53)
-    
+                    thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 55, 53)
+
                     # Encontrar contornos en la imagen umbralizada
                     contornos, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    
+
                     # Seleccionar el contorno más grande (el disco solar)
                     contorno_disco_solar = max(contornos, key=cv2.contourArea)
-    
+
                     return contorno_disco_solar
 
 
@@ -321,25 +321,12 @@ def main():
                 image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
 
-                #if st.button("Mostra datos en imagen"):
-                    # Detectar el disco solar en la imagen
+                # Detectar el disco solar en la imagen
                 contorno_disco_solar = detectar_disco_solar(image_bgr)
-                #contorno_disco_solar = detectar_disco_solar(image_bgr)
 
                     # Dibujar el contorno del disco solar en la imagen
                 cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
     
-                    # Dibujar texto en la imagen
-                    #font = cv2.FONT_HERSHEY_SIMPLEX
-                    #bottom_left_corner = (10, image_bgr.shape[0] - 10)
-                    #font_scale = 0.5
-                    #font_color = (255, 255, 255)
-                    #line_type = 1
-
-                    #cv2.putText(image_bgr, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
-                    #cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
-                    #cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
-                    #cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
                     # Convertir la imagen de nuevo a formato compatible con Streamlit
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
