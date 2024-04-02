@@ -295,11 +295,11 @@ def main():
                 cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
                 # Convertir la imagen de nuevo a formato compatible con Streamlit
-                image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
+                imagen_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
                 st.write("Esta es tu foto del Sol:")
                 # Mostrar la imagen con texto
-                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+                st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
 
                 def detectar_disco_solar(imagen):
@@ -323,10 +323,6 @@ def main():
                     centro_y = int(y)
                     
                     return contorno_disco_solar
-
-###
-
-##
 
                 
                 # Cargar la imagen desde el archivo cargado
