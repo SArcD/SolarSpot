@@ -309,72 +309,46 @@ def main():
                     #return contorno_disco_solar
 
 
-#                def detectar_disco_solar(imagen):
-#                    # Convertir la imagen a escala de grises
-#                    imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-#
-#                    # Aplicar umbral adaptativo con parámetros ajustados
-#                    thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10)
-#
-#                    # Encontrar contornos en la imagen umbralizada
-#                    contornos, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-#                    # Seleccionar el contorno más grande (el disco solar)
-#                    contorno_disco_solar = max(contornos, key=cv2.contourArea)
-
-#                    return contorno_disco_solar
-
                 def detectar_disco_solar(imagen):
+                    
                     # Convertir la imagen a escala de grises
                     imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+
                     # Aplicar umbral adaptativo con parámetros ajustados
                     thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10)
+
                     # Encontrar contornos en la imagen umbralizada
+                
                     contornos, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
                     # Seleccionar el contorno más grande (el disco solar)
                     contorno_disco_solar = max(contornos, key=cv2.contourArea)
 
-                    # Obtener el círculo mínimo que encierra el contorno del borde de la sección semicircular
-                    (x, y), radio = cv2.minEnclosingCircle(contorno_disco_solar)
-                    centro = (int(x), int(y))
+                    return contorno_disco_solar
 
-                    # Dibujar el círculo mínimo
-                    cv2.circle(imagen, centro, int(radio), (0, 255, 0), 2)
 
-                    # Calcular el centro del círculo mínimo
-                    radio = int(radio)
-                    centro_circulo = (centro[0], centro[1] - radio)
-
-                    # Dibujar una X en el centro del círculo mínimo
-                    cv2.line(imagen, (centro_circulo[0] - radio, centro_circulo[1]), (centro_circulo[0] + radio, centro_circulo[1]), (0, 255, 0), 2)
-                    cv2.line(imagen, (centro_circulo[0], centro_circulo[1] - radio), (centro_circulo[0], centro_circulo[1] + radio), (0, 255, 0), 2)
-                    return imagen
                 
-                imagen = cv2.imread("imagen_solar.jpg")  # Reemplaza "imagen_solar.jpg" con la ruta de tu imagen
-                resultado = detectar_disco_solar(imagen)
-                cv2.imshow("Resultado", resultado)
-                cv2.waitKey(0)
-                cv2.destroyAllWindows()
+
             
-                ## Cargar la imagen desde el archivo cargado
-                #image = Image.open(uploaded_file)
+                # Cargar la imagen desde el archivo cargado
+                image = Image.open(uploaded_file)
 
                 #    Convertir la imagen RGB a formato BGR
-                #image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+                image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
 
                 # Detectar el disco solar en la imagen
-                #contorno_disco_solar = detectar_disco_solar(image_bgr)
+                contorno_disco_solar = detectar_disco_solar(image_bgr)
 
-                    # Dibujar el contorno del disco solar en la imagen
-                #cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
+                # Dibujar el contorno del disco solar en la imagen
+                cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
     
 
-                    # Convertir la imagen de nuevo a formato compatible con Streamlit
+                # Convertir la imagen de nuevo a formato compatible con Streamlit
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
-                #st.write("Esta es tu foto del Sol:")
-                    # Mostrar la imagen con texto y contorno del disco solar
+                st.write("Esta es tu foto del Sol:")
+                # Mostrar la imagen con texto y contorno del disco solar
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
                 
 
