@@ -349,26 +349,31 @@ def main():
                     cv2.line(imagen, (centro_circulo[0] - radio, centro_circulo[1]), (centro_circulo[0] + radio, centro_circulo[1]), (0, 255, 0), 2)
                     cv2.line(imagen, (centro_circulo[0], centro_circulo[1] - radio), (centro_circulo[0], centro_circulo[1] + radio), (0, 255, 0), 2)
                     return imagen
-
+                
+                imagen = cv2.imread("imagen_solar.jpg")  # Reemplaza "imagen_solar.jpg" con la ruta de tu imagen
+                resultado = detectar_disco_solar(imagen)
+                cv2.imshow("Resultado", resultado)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
             
-                # Cargar la imagen desde el archivo cargado
-                image = Image.open(uploaded_file)
+                ## Cargar la imagen desde el archivo cargado
+                #image = Image.open(uploaded_file)
 
                 #    Convertir la imagen RGB a formato BGR
-                image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+                #image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
 
                 # Detectar el disco solar en la imagen
-                contorno_disco_solar = detectar_disco_solar(image_bgr)
+                #contorno_disco_solar = detectar_disco_solar(image_bgr)
 
                     # Dibujar el contorno del disco solar en la imagen
-                cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
+                #cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
     
 
                     # Convertir la imagen de nuevo a formato compatible con Streamlit
                 image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
-                st.write("Esta es tu foto del Sol:")
+                #st.write("Esta es tu foto del Sol:")
                     # Mostrar la imagen con texto y contorno del disco solar
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
                 
