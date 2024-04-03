@@ -22,7 +22,7 @@ def main():
         import cv2
         import numpy as np
         from PIL import Image
-
+        
         st.title("Visualizador de Imagen del Sol")
         st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
 
@@ -358,7 +358,76 @@ def main():
                 # Mostrar la imagen con texto y contorno del disco solar
                 st.image(image_with_text, caption="Fotografía del Sol durante el eclipse con el contorno resaltado", use_column_width=True)
                 
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from matplotlib.patches import Circle
+        from PIL import Image
+        import shapely.geometry as sg
+        import streamlit as st
 
+        def update(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2, x_limit, y_limit):
+            # Crear una nueva figura
+            fig, ax = plt.subplots()
+
+            # Establecer el fondo del gráfico a negro
+            ax.set_facecolor('black')
+
+            # Cargar la imagen del eclipse parcial del sol (imagen de ejemplo)
+            #img = Image.open('eclipse_solar.jpg')  # Ruta de la imagen del eclipse solar
+            img = Image.open(uploaded_file)
+            ax.imshow(img, extent=[-x_limit, x_limit, -y_limit, y_limit])  # Ajustar límites según los deslizadores
+
+            # Dibujar los círculos con las posiciones y radios proporcionados
+            circle1 = Circle((pos_x1, pos_y1), radio1, color='blue', fill=False)
+            circle2 = Circle((pos_x2, pos_y2), radio2, color='orange', fill=False)
+            ax.add_patch(circle1)
+            ax.add_patch(circle2)
+
+            # Calcular el área del círculo naranja
+            area_orange_circle = np.pi * radio2**2
+
+            # Calcular el área de la intersección de los dos círculos
+            circle1_polygon = sg.Point(pos_x1, pos_y1).buffer(radio1)
+            circle2_polygon = sg.Point(pos_x2, pos_y2).buffer(radio2)
+            intersection_area = circle1_polygon.intersection(circle2_polygon).area
+
+            # Calcular el área dentro del círculo naranja que no está dentro de la intersección con el círculo azul
+            area_not_in_intersection = area_orange_circle - intersection_area
+
+            # Calcular el porcentaje del área dentro del círculo naranja que no está dentro de la intersección
+            percentage_area_not_in_intersection = (area_not_in_intersection / area_orange_circle) * 100
+
+            # Configurar el gráfico
+            ax.axis('equal')
+            ax.set_xlim(-x_limit, x_limit)
+            ax.set_ylim(-y_limit, y_limit)
+            ax.set_xlabel('X')
+            ax.set_ylabel('Y')
+            ax.set_title('Ajuste la posición y radio de los círculos para que coincidan con su fotografía del eclipse solar')
+            ax.grid(True)
+
+            # Mostrar la figura en Streamlit
+            st.pyplot(fig)
+
+            # Mostrar los resultados
+            st.write(f"Área total del disco solar (en píxeles cuadrados): {area_orange_circle}")
+            st.write(f"Área oculta (en píxeles cuadrados): {intersection_area}")
+            st.write(f"Área visible del disco solar (en píxeles cuadrados): {area_not_in_intersection}")
+            st.write(f"Porcentaje del área visible del disco solar: {percentage_area_not_in_intersection}%")
+
+        # Crear los controles deslizantes en Streamlit
+        pos_x1 = st.slider('PosX1:', -20.0, 20.0, 0.0, 0.1)
+        pos_y1 = st.slider('PosY1:', -20.0, 20.0, 0.0, 0.1)
+        radio1 = st.slider('Radio1:', 0.0, 20.0, 10.0, 0.1)    
+        pos_x2 = st.slider('PosX2:', -20.0, 20.0, 5.0, 0.1)
+        pos_y2 = st.slider('PosY2:', -20.0, 20.0, 5.0, 0.1)
+        radio2 = st.slider('Radio2:', 0.0, 20.0, 7.0, 0.1)
+        x_limit = st.slider('Límite X:', 1.0, 50.0, 30.0, 1.0)
+        y_limit = st.slider('Límite Y:', 1.0, 50.0, 20.0, 1.0)
+
+        # Llamar a la función update con los valores de los deslizadores
+        update(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2, x_limit, y_limit)
+        
 
 
 if __name__ == "__main__":
