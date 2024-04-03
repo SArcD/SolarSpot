@@ -328,42 +328,7 @@ def main():
                 st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
 
-                def detectar_disco_solar(imagen):
-                    
-                    # Convertir la imagen a escala de grises
-                    imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
 
-                    # Aplicar umbral adaptativo con parámetros ajustados
-                    thresh = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10)
-
-                    # Encontrar contornos en la imagen umbralizada
-                
-                    contornos, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-                    # Seleccionar el contorno más grande (el disco solar)
-                    contorno_disco_solar = max(contornos, key=cv2.contourArea)
-
-                    # Encontrar el círculo que encierra el contorno
-                    (x, y), radio = cv2.minEnclosingCircle(contorno_disco_solar)
-                    centro_x = int(x)
-                    centro_y = int(y)
-                    
-                    return contorno_disco_solar
-
-                
-                # Cargar la imagen desde el archivo cargado
-                image = Image.open(uploaded_file)
-                #    Convertir la imagen RGB a formato BGR
-                image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-                # Detectar el disco solar en la imagen
-                contorno_disco_solar = detectar_disco_solar(image_bgr)
-                # Dibujar el contorno del disco solar en la imagen
-                cv2.drawContours(image_bgr, [contorno_disco_solar], -1, (0, 255, 0), 2)
-                # Convertir la imagen de nuevo a formato compatible con Streamlit
-                image_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
-                #st.write("Esta es tu foto del Sol:")
-                # Mostrar la imagen con texto y contorno del disco solar
-                st.image(image_with_text, caption="Fotografía del Sol durante el eclipse con el contorno resaltado", use_column_width=True)
                 
         import numpy as np
         import matplotlib.pyplot as plt
