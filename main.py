@@ -276,6 +276,13 @@ def main():
     elif page == "Visualizador de Eclipse":
         import cv2
         import numpy as np
+#import numpy as np
+        import matplotlib.pyplot as plt
+        from matplotlib.patches import Circle
+        from PIL import Image
+        import shapely.geometry as sg
+        #import streamlit as st
+        
         st.title("Visualizador de Eclipse")
         st.write("Esta es la página del visualizador de eclipse. Aquí puedes agregar el código para visualizar eclipses.")
 
