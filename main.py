@@ -433,7 +433,7 @@ def main():
 
             # Dibujar el texto con la información sobre la imagen
             font = cv2.FONT_HERSHEY_SIMPLEX
-            bottom_left_corner = (10, image_np.shape[0] - 10)
+            bottom_left_corner = (10, image_bgr.shape[0] - 10)
             font_scale = 0.5
             font_color = (255, 255, 255)
             line_type = 1
