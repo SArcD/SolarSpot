@@ -428,10 +428,10 @@ def main():
 
             # Dibujar el texto con el área fuera de la intersección
             #percentage_text = f"Porcentaje de área visible: {percentage_area_not_in_intersection}%"
-            autor = st.text_input("Autor", "")
-            lugar = st.text_input("Lugar", "")
-            hora = st.text_input("Hora", "")
-            fecha = st.text_input("Fecha","")
+            #autor = st.text_input("Autor", "")
+            #lugar = st.text_input("Lugar", "")
+            #hora = st.text_input("Hora", "")
+            #fecha = st.text_input("Fecha","")
             cv2.putText(image_bgr, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
