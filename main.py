@@ -489,16 +489,22 @@ def main():
             # Convertir los datos de la respuesta a una matriz numpy que OpenCV pueda entender
             image_bytes = BytesIO(response.content)
             image_np = np.asarray(bytearray(image_bytes.read()), dtype="uint8")
+    
+            # Decodificar la imagen con los canales de color RGB
             image = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
+    
+            # Convertir el orden de los canales de color de BGR a RGB
+            image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
             # Verificar si la imagen se cargó correctamente
-            if image is not None:
+            if image_rgb is not None:
                 # Mostrar la imagen en Streamlit
-                st.image(image, caption='Imagen', use_column_width=True)
+                st.image(image_rgb, caption='Imagen', use_column_width=True)
             else:
                 st.write("No se pudo cargar la imagen desde la URL proporcionada.")
         else:
             st.write("Error al obtener la imagen desde la URL.")
+
 
                 
 
