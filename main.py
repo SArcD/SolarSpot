@@ -496,7 +496,8 @@ def main():
             percentage_area_not_in_intersection = (area_not_in_intersection / area_orange_circle) * 100
 
             return percentage_area_not_in_intersection
-
+        percentage_area_not_in_intersection = calculate_percentage_area_not_in_intersection(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2)
+        percentage_area_not_in_intersection_formatted = "{:.2f}".format(percentage_area_not_in_intersection)
         
         # Función para disminuir el brillo de una imagen manteniendo el formato RGB
         def decrease_brightness(image, adjustment):
