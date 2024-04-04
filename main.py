@@ -462,7 +462,7 @@ def main():
             cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
-            #cv2.putText(image_bgr, f"porcentaje visible: {percentage_area_not_in_intersection}", (bottom_left_corner[0], bottom_left_corner[1] - 80), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_bgr, f"porcentaje visible: {percentage_area_not_in_intersection}", (bottom_left_corner[0], bottom_left_corner[1] - 80), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
             # Convertir la imagen de nuevo a formato compatible con Streamlit
             imagen_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
