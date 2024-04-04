@@ -482,13 +482,22 @@ def main():
         # Función para disminuir el brillo de una imagen
         def decrease_brightness(image, adjustment):
             # Convertir la imagen a escala de grises
+            #gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+            # Aplicar el ajuste de brillo
+            #adjusted_image = np.clip(gray_image.astype(np.float32) - adjustment, 0, 255).astype(np.uint8)
+            # Convertir la imagen ajustada a color RGB
+            #adjusted_image_rgb = cv2.cvtColor(adjusted_image, cv2.COLOR_GRAY2RGB)
+            #return adjusted_image_rgb
+
+        #def decrease_brightness(image, adjustment):
+            # Convertir la imagen a escala de grises
             gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
             # Aplicar el ajuste de brillo
-            adjusted_image = np.clip(gray_image.astype(np.float32) - adjustment, 0, 255).astype(np.uint8)
+            adjusted_gray_image = np.clip(gray_image.astype(np.float32) - adjustment, 0, 255).astype(np.uint8)
             # Convertir la imagen ajustada a color RGB
-            adjusted_image_rgb = cv2.cvtColor(adjusted_image, cv2.COLOR_GRAY2RGB)
+            adjusted_image_rgb = cv2.cvtColor(adjusted_gray_image, cv2.COLOR_GRAY2RGB)
             return adjusted_image_rgb
-
+        
         # URL de la imagen en tu repositorio de GitHub
         url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
 
