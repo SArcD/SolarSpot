@@ -591,8 +591,9 @@ def main():
                 percentage_area_not_in_intersection_formatted = 100.00  # Ejemplo de valor con dos decimales
         
                 # Escalar el ajuste de brillo al rango [-100, 100]
-                brightness_adjustment = int((percentage_area_not_in_intersection_formatted - 50.0) * 2.0)
-        
+                #brightness_adjustment = int((percentage_area_not_in_intersection_formatted - 50.0) * 2.0)
+                brightness_adjustment = int((50.0 - percentage_area_not_in_intersection_formatted) * 2.0)
+
                 # Aplicar el ajuste de brillo a la imagen
                 brightened_image = decrease_brightness(image_rgb, brightness_adjustment)
         
