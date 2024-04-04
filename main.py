@@ -472,30 +472,34 @@ def main():
             # Mostrar la imagen con texto
             st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
-            import cv2
-            import numpy as np
-            import requests
-            from io import BytesIO
+        import cv2
+        import streamlit as st
+        import numpy as np
+        import requests
+        from io import BytesIO
 
-            # URL de la imagen en tu repositorio de GitHub
-            #url = 'https://github.com/tu_usuario/tu_repositorio/raw/main/carpeta/paisaje.jpg'
-            #url = "https://github.com/SArcD/SolarSpot/blob/main/paisaje.jpg"
-            url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
+        # URL de la imagen en tu repositorio de GitHub
+        url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
 
-            # Obtener la imagen desde la URL
-            response = requests.get(url)
+        # Obtener la imagen desde la URL
+        response = requests.get(url)
+
+        # Verificar si la respuesta es válida
+        if response.status_code == 200:
+            # Convertir los datos de la respuesta a una matriz numpy que OpenCV pueda entender
             image_bytes = BytesIO(response.content)
-            image = cv2.imdecode(np.frombuffer(image_bytes.read(), np.uint8), cv2.IMREAD_COLOR)
+            image_np = np.asarray(bytearray(image_bytes.read()), dtype="uint8")
+            image = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
 
             # Verificar si la imagen se cargó correctamente
             if image is not None:
-                # Aquí puedes realizar cualquier operación con la imagen cargada
-                # Por ejemplo, mostrarla con OpenCV
-                cv2.imshow('Imagen', image)
-                cv2.waitKey(0)
-                cv2.destroyAllWindows()
+                # Mostrar la imagen en Streamlit
+                st.image(image, caption='Imagen', use_column_width=True)
             else:
-                print("No se pudo cargar la imagen desde la URL proporcionada.")
+                st.write("No se pudo cargar la imagen desde la URL proporcionada.")
+        else:
+            st.write("Error al obtener la imagen desde la URL.")
+
                 
 
 
