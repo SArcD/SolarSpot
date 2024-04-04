@@ -499,7 +499,11 @@ def main():
 
             # Obtener la imagen original
             image = cv2.imread("https://github.com/SArcD/SolarSpot/blob/main/paisaje.jpg")
+            # Convertir el valor decimal a flotante
+            brightness_adjustment = float(percentage_area_not_in_intersection_formatted) - 50.0  # Restar 50 para centrar el ajuste alrededor de cero
 
+            # Convertir el ajuste de brillo a entero si es necesario
+            brightness_adjustment = int(brightness_adjustment)
             # Calcular el valor para ajustar el brillo (suponiendo que percentage_area_not_in_intersection_formatted es un valor entre 0 y 100)
             brightness_adjustment = int(percentage_area_not_in_intersection_formatted) - 50  # Restar 50 para centrar el ajuste alrededor de cero
 
