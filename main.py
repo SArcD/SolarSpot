@@ -546,12 +546,12 @@ def main():
         
                 # Mostrar la imagen original en la primera subtrama
                 axes[0].imshow(image_rgb)
-                axes[0].set_title('Imagen Original')
+                axes[0].set_title('Condiciones de luz (día despejado)')
                 axes[0].axis('off')
         
                 # Mostrar la imagen con el brillo disminuido en la segunda subtrama
                 axes[1].imshow(brightened_image)
-                axes[1].set_title('Imagen con Brillo Disminuido')
+                axes[1].set_title('Condiciones de luz durante el eclipse')
                 axes[1].axis('off')
         
                 # Ajustar el diseño y mostrar la figura en Streamlit
