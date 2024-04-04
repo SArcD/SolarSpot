@@ -479,7 +479,9 @@ def main():
 
             # URL de la imagen en tu repositorio de GitHub
             #url = 'https://github.com/tu_usuario/tu_repositorio/raw/main/carpeta/paisaje.jpg'
-            url = "https://github.com/SArcD/SolarSpot/blob/main/paisaje.jpg"
+            #url = "https://github.com/SArcD/SolarSpot/blob/main/paisaje.jpg"
+            url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
+
             # Obtener la imagen desde la URL
             response = requests.get(url)
             image_bytes = BytesIO(response.content)
