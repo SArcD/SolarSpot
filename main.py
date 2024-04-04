@@ -427,13 +427,13 @@ def main():
             img_cv2 = np.array(img_with_text)
 
             # Dibujar el texto con el área fuera de la intersección
-            percentage_text = f"Porcentaje de área visible: {percentage_area_not_in_intersection}%"
+            #percentage_text = f"Porcentaje de área visible: {percentage_area_not_in_intersection}%"
     
             cv2.putText(image_bgr, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
             cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
-            cv2.putText(img_cv2, percentage_text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+            cv2.putText(image_bgr, f"porcentaje visible {percentage_area_not_in_intersection}", (bottom_left_corner[0], bottom_left_corner[1] - 80), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
             # Convertir la imagen de nuevo a formato compatible con Streamlit
             imagen_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
