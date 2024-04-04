@@ -276,7 +276,7 @@ def main():
     elif page == "Visualizador de Eclipse":
         import cv2
         import numpy as np
-#import numpy as np
+        #import numpy as np
         import matplotlib.pyplot as plt
         from matplotlib.patches import Circle
         from PIL import Image
@@ -411,35 +411,36 @@ def main():
         # Llamar a la función update con los valores de los deslizadores
         update(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2, x_limit, y_limit)
 
-            # Cargar la imagen del eclipse parcial del sol
-    
-        image = Image.open(uploaded_file)
+        # Cargar la imagen del eclipse parcial del sol
+        if uploaded_file is not None:
+
+            image = Image.open(uploaded_file)
         
-        # Convertir la imagen RGB a formato BGR
-        image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-        #img = Image.open('/content/08da841d82fb3878a12f900afa33c5c4.jpg')  # Cambia la ruta según la ubicación de tu imagen
+            # Convertir la imagen RGB a formato BGR
+            image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+            #img = Image.open('/content/08da841d82fb3878a12f900afa33c5c4.jpg')  # Cambia la ruta según la ubicación de tu imagen
 
-        # Crear una copia de la imagen para dibujar
-        img_with_text = img.copy()
+            # Crear una copia de la imagen para dibujar
+            img_with_text = img.copy()
 
-        # Convertir la imagen a formato OpenCV
-        img_cv2 = np.array(img_with_text)
+            # Convertir la imagen a formato OpenCV
+            img_cv2 = np.array(img_with_text)
 
-        # Dibujar el texto con el área fuera de la intersección
-        percentage_text = f"Porcentaje de área visible: {percentage_area_not_in_intersection}%"
+            # Dibujar el texto con el área fuera de la intersección
+            percentage_text = f"Porcentaje de área visible: {percentage_area_not_in_intersection}%"
     
-        cv2.putText(image_bgr, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
-        cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
-        cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
-        cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
-        cv2.putText(img_cv2, percentage_text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+            cv2.putText(image_bgr, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_bgr, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 20), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_bgr, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 40), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(image_bgr, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
+            cv2.putText(img_cv2, percentage_text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
-        # Convertir la imagen de nuevo a formato compatible con Streamlit
-        imagen_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
+            # Convertir la imagen de nuevo a formato compatible con Streamlit
+            imagen_with_text = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
 
-        st.write("Esta es tu foto del Sol:")
-        # Mostrar la imagen con texto
-        st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+            st.write("Esta es tu foto del Sol:")
+            # Mostrar la imagen con texto
+            st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
     
     
     
