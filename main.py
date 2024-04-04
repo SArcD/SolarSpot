@@ -413,7 +413,13 @@ def main():
 
         # Cargar la imagen del eclipse parcial del sol
         if uploaded_file is not None:
-
+            import cv2
+            import numpy as np
+            #import numpy as np
+            import matplotlib.pyplot as plt
+            from matplotlib.patches import Circle
+            from PIL import Image
+            import shapely.geometry as sg
             image = Image.open(uploaded_file)
 
             # Convertir la imagen RGB a formato BGR
