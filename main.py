@@ -471,6 +471,47 @@ def main():
             st.write("Esta es tu foto del Sol:")
             # Mostrar la imagen con texto
             st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+
+            import cv2
+            import numpy as np
+            import requests
+            from io import BytesIO
+
+            # URL de la imagen en tu repositorio de GitHub
+            #url = 'https://github.com/tu_usuario/tu_repositorio/raw/main/carpeta/paisaje.jpg'
+            url = "https://github.com/SArcD/SolarSpot/blob/main/paisaje.jpg"
+            # Obtener la imagen desde la URL
+            response = requests.get(url)
+            image_bytes = BytesIO(response.content)
+            image = cv2.imdecode(np.frombuffer(image_bytes.read(), np.uint8), cv2.IMREAD_COLOR)
+
+            # Verificar si la imagen se cargó correctamente
+            if image is not None:
+                # Aquí puedes realizar cualquier operación con la imagen cargada
+                # Por ejemplo, mostrarla con OpenCV
+                cv2.imshow('Imagen', image)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
+            else:
+                print("No se pudo cargar la imagen desde la URL proporcionada.")
+
+            import cv2
+
+            # Obtener la imagen original
+            image = cv2.imread("https://github.com/SArcD/SolarSpot/blob/main/paisaje.jpg")
+
+            # Calcular el valor para ajustar el brillo (suponiendo que percentage_area_not_in_intersection_formatted es un valor entre 0 y 100)
+            brightness_adjustment = int(percentage_area_not_in_intersection_formatted) - 50  # Restar 50 para centrar el ajuste alrededor de cero
+
+            # Aplicar el ajuste de brillo a la imagen
+            brightened_image = cv2.convertScaleAbs(image, beta=brightness_adjustment)  # Utiliza convertScaleAbs para evitar el desbordamiento de píxeles
+
+            # Mostrar la imagen con el brillo ajustado
+            cv2.imshow("Imagen con brillo ajustado", brightened_image)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+
     
     
 
