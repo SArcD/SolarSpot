@@ -412,6 +412,26 @@ def main():
         update(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2, x_limit, y_limit)
 
         # Cargar la imagen del eclipse parcial del sol
+        def calculate_percentage_area_not_in_intersection(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2):
+        # Calcular el área del círculo naranja
+        area_orange_circle = np.pi * radio2**2
+
+        # Calcular el área de la intersección de los dos círculos
+        circle1_polygon = sg.Point(pos_x1, pos_y1).buffer(radio1)
+        circle2_polygon = sg.Point(pos_x2, pos_y2).buffer(radio2)
+        intersection_area = circle1_polygon.intersection(circle2_polygon).area
+
+        # Calcular el área dentro del círculo naranja que no está dentro de la intersección con el círculo azul
+        area_not_in_intersection = area_orange_circle - intersection_area
+
+        # Calcular el porcentaje del área dentro del círculo naranja que no está dentro de la intersección
+        percentage_area_not_in_intersection = (area_not_in_intersection / area_orange_circle) * 100
+
+        return percentage_area_not_in_intersection
+        # Llamar a la función update con los valores de los deslizadores para obtener percentage_area_not_in_intersection
+        percentage_area_not_in_intersection = calculate_percentage_area_not_in_intersection(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2)
+
+        
         if uploaded_file is not None:
             import cv2
             import numpy as np
