@@ -430,6 +430,7 @@ def main():
             return percentage_area_not_in_intersection
         # Llamar a la función update con los valores de los deslizadores para obtener percentage_area_not_in_intersection
         percentage_area_not_in_intersection = calculate_percentage_area_not_in_intersection(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2)
+        percentage_area_not_in_intersection_formatted = "{:.2f}".format(percentage_area_not_in_intersection)
 
         
         if uploaded_file is not None:
