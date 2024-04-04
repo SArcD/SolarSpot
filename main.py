@@ -472,15 +472,15 @@ def main():
             # Mostrar la imagen con texto
             st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
 
-        import cv2
-        import streamlit as st
-        import numpy as np
-        import requests
-        from io import BytesIO
-        import matplotlib.pyplot as plt
+#        import cv2
+#        import streamlit as st
+#        import numpy as np
+#        import requests
+#        from io import BytesIO
+#        import matplotlib.pyplot as plt
 
         # Función para disminuir el brillo de una imagen
-        def decrease_brightness(image, adjustment):
+#        def decrease_brightness(image, adjustment):
             # Convertir la imagen a escala de grises
             #gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
             # Aplicar el ajuste de brillo
@@ -491,13 +491,82 @@ def main():
 
         #def decrease_brightness(image, adjustment):
             # Convertir la imagen a escala de grises
+#            gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+#            # Aplicar el ajuste de brillo
+#            adjusted_gray_image = np.clip(gray_image.astype(np.float32) - adjustment, 0, 255).astype(np.uint8)
+#            # Convertir la imagen ajustada a color RGB
+#            adjusted_image_rgb = cv2.cvtColor(adjusted_gray_image, cv2.COLOR_GRAY2RGB)
+#            return adjusted_image_rgb
+        
+#        # URL de la imagen en tu repositorio de GitHub
+#        url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
+
+#        # Obtener la imagen desde la URL
+#        response = requests.get(url)
+
+#        # Verificar si la respuesta es válida
+#        if response.status_code == 200:
+            # Convertir los datos de la respuesta a una matriz numpy que OpenCV pueda entender
+#            image_bytes = BytesIO(response.content)
+#            image_np = np.asarray(bytearray(image_bytes.read()), dtype="uint8")
+    
+#            # Decodificar la imagen con los canales de color RGB
+#            image = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
+    
+#            # Convertir el orden de los canales de color de BGR a RGB
+#            image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+#            # Verificar si la imagen se cargó correctamente
+#            if image_rgb is not None:
+                # Calcular el ajuste de brillo en función de percentage_area_not_in_intersection_formatted
+#                percentage_area_not_in_intersection_formatted = 47.97  # Ejemplo de valor con dos decimales
+        
+                # Escalar el ajuste de brillo al rango [-100, 100]
+#                brightness_adjustment = int((percentage_area_not_in_intersection_formatted - 50.0) * 2.0)
+        
+                # Aplicar el ajuste de brillo a la imagen
+#                brightened_image = decrease_brightness(image_rgb, brightness_adjustment)
+        
+                # Crear una figura con dos subtramas
+#                fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+        
+                # Mostrar la imagen original en la primera subtrama
+#                axes[0].imshow(image_rgb)
+#                axes[0].set_title('Imagen Original')
+#                axes[0].axis('off')
+        
+                # Mostrar la imagen con el brillo disminuido en la segunda subtrama
+#                axes[1].imshow(brightened_image)
+#                axes[1].set_title('Imagen con Brillo Disminuido')
+#                axes[1].axis('off')
+        
+                # Ajustar el diseño y mostrar la figura en Streamlit
+#                st.pyplot(fig)
+#            else:
+#                st.write("No se pudo cargar la imagen desde la URL proporcionada.")
+#        else:
+#            st.write("Error al obtener la imagen desde la URL.")
+
+
+        import cv2
+        import streamlit as st
+        import numpy as np
+        import requests
+        from io import BytesIO
+        import matplotlib.pyplot as plt
+
+        # Función para disminuir el brillo de una imagen manteniendo el formato RGB
+        def decrease_brightness(image, adjustment):
+            # Convertir la imagen a escala de grises
             gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
             # Aplicar el ajuste de brillo
             adjusted_gray_image = np.clip(gray_image.astype(np.float32) - adjustment, 0, 255).astype(np.uint8)
-            # Convertir la imagen ajustada a color RGB
-            adjusted_image_rgb = cv2.cvtColor(adjusted_gray_image, cv2.COLOR_GRAY2RGB)
+            # Convertir la imagen ajustada de nuevo a RGB manteniendo el canal de luminancia (Y) original
+            yuv_image = cv2.cvtColor(image, cv2.COLOR_RGB2YUV)
+            yuv_image[:, :, 0] = adjusted_gray_image
+            adjusted_image_rgb = cv2.cvtColor(yuv_image, cv2.COLOR_YUV2RGB)
             return adjusted_image_rgb
-        
+
         # URL de la imagen en tu repositorio de GitHub
         url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
 
@@ -546,8 +615,6 @@ def main():
                 st.write("No se pudo cargar la imagen desde la URL proporcionada.")
         else:
             st.write("Error al obtener la imagen desde la URL.")
-
-
 
                 
 
