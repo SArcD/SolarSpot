@@ -412,7 +412,12 @@ def main():
         update(pos_x1, pos_y1, radio1, pos_x2, pos_y2, radio2, x_limit, y_limit)
 
             # Cargar la imagen del eclipse parcial del sol
-    img = Image.open('/content/08da841d82fb3878a12f900afa33c5c4.jpg')  # Cambia la ruta según la ubicación de tu imagen
+    
+    image = Image.open(uploaded_file)
+        
+    # Convertir la imagen RGB a formato BGR
+    image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    #img = Image.open('/content/08da841d82fb3878a12f900afa33c5c4.jpg')  # Cambia la ruta según la ubicación de tu imagen
 
     # Crear una copia de la imagen para dibujar
     img_with_text = img.copy()
