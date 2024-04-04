@@ -588,7 +588,7 @@ def main():
             # Verificar si la imagen se cargó correctamente
             if image_rgb is not None:
                 # Calcular el ajuste de brillo en función de percentage_area_not_in_intersection_formatted
-                percentage_area_not_in_intersection_formatted = 100.00  # Ejemplo de valor con dos decimales
+                percentage_area_not_in_intersection_formatted = 10.00  # Ejemplo de valor con dos decimales
         
                 # Escalar el ajuste de brillo al rango [-100, 100]
                 #brightness_adjustment = int((percentage_area_not_in_intersection_formatted - 50.0) * 2.0)
