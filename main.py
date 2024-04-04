@@ -421,7 +421,7 @@ def main():
             #img = Image.open('/content/08da841d82fb3878a12f900afa33c5c4.jpg')  # Cambia la ruta según la ubicación de tu imagen
 
             # Crear una copia de la imagen para dibujar
-            img_with_text = img_bgr.copy()
+            img_with_text = image_bgr.copy()
 
             # Convertir la imagen a formato OpenCV
             img_cv2 = np.array(img_with_text)
