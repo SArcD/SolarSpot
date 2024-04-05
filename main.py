@@ -639,8 +639,8 @@ def main():
             "Ensenada, Baja California, México": [31.8661, -116.5964]
         }
 
-            # Crear un mapa centrado en México
-            mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+        # Crear un mapa centrado en México
+        mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
 
         # Función para calcular la distancia entre dos puntos
         def calculate_distance(point1, point2):
