@@ -599,6 +599,13 @@ def main():
         st.write(df)
 
         import folium
+        from github import Github
+
+        # Autenticación en GitHub (reemplaza 'your_access_token' con tu token de acceso)
+        g = Github("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")
+
+        # Obtén el repositorio
+        repo = g.get_repo("SArcD/SolarSpot")
 
         # Crear un mapa centrado en México
         mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
@@ -614,6 +621,17 @@ def main():
 
         # Guardar el mapa como archivo HTML
         mexico_map.save("mexico_map.html")
+
+        # Obtén el contenido del archivo HTML
+        with open("mexico_map.html", "r") as file:
+            content = file.read()
+
+        # Sube el archivo HTML al repositorio de GitHub
+        repo.create_file("mexico_map.html", "Commit message", content)
+
+        # Muestra la URL del archivo en GitHub Pages
+        st.write("URL del mapa interactivo:", f"https://SArcD.github.io/SolarSpot/mexico_map.html")
+
 
 
 
