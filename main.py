@@ -640,27 +640,26 @@ def main():
             "Ensenada, Baja California, México": [31.8661, -116.5964]
         }
 
-        # Crear un mapa centrado en México
-        mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+        # Obtener nombres de ciudades
+        city_names = list(cities.keys())
 
-        # Función para calcular la distancia entre dos puntos
-        def calculate_distance(point1, point2):
-            return geodesic(point1, point2).kilometers
+        # Crear elementos de selección para elegir las ciudades
+        city1 = st.selectbox("Selecciona la primera ciudad:", city_names)
+        city2 = st.selectbox("Selecciona la segunda ciudad:", city_names)
 
-        # Función para manejar los clics en el mapa
-        def handle_click(event):
-            latlng = [event.latlng[0], event.latlng[1]]
-            st.sidebar.write("Latitud, Longitud:", latlng)
-            for city, coords in cities.items():
-                distance = calculate_distance(latlng, coords)
-                st.sidebar.write("Distancia a", city, ":", distance, "kilómetros")
+        # Función para calcular la distancia entre dos ciudades
+        def calculate_distance(city1, city2):
+            coord1 = cities[city1]
+            coord2 = cities[city2]
+            distance = geodesic(coord1, coord2).kilometers
+            return distance
 
-        # Manejar clics en el mapa
-        mexico_map.add_child(folium.ClickForMarker(popup=None))
-        mexico_map.add_child(folium.ClickForMarker(popup=handle_click))
+        # Calcular la distancia entre las ciudades seleccionadas
+        distance = calculate_distance(city1, city2)
 
-        # Mostrar el mapa en Streamlit
-        folium_static(mexico_map)
+        # Mostrar la distancia en la interfaz
+        st.write(f"La distancia entre {city1} y {city2} es de {distance:.2f} kilómetros.")
+
 
 
 
