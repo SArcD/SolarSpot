@@ -567,10 +567,6 @@ def main():
 
 
         import streamlit as st
-        from datetime import datetime
-        import pytz
-
-        import streamlit as st
         import pandas as pd
         from datetime import datetime
         import pytz
@@ -591,11 +587,15 @@ def main():
         # Obtener la fecha y hora actual para cada ciudad
         current_times = {city: datetime.now(pytz.timezone(timezone)) for city, timezone in cities.items()}
 
+        # Convertir los valores a objetos datetime
+        for city, time in current_times.items():
+            current_times[city] = time.replace(microsecond=0)
+
         # Crear un DataFrame con los horarios de las ciudades
         df = pd.DataFrame(current_times.items(), columns=["Ciudad", "Fecha/Hora local"])
 
         # Extraer la fecha y la hora en columnas separadas
-        df["Fecha"] = df["Fecha/Hora local"].dt.date
+        df["Fecha"] = df["Fecha/Hora local"].dt.date    
         df["Hora"] = df["Fecha/Hora local"].dt.time
         df.drop(columns=["Fecha/Hora local"], inplace=True)
 
