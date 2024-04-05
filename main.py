@@ -595,7 +595,10 @@ def main():
 
         # Obtener la hora actual para cada ciudad
         
-        current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
+        #current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
+
+        # Obtener la hora actual para cada ciudad
+        current_times = {city: datetime.now(pytz.timezone(timezone)) for city, timezone in cities.items()}
 
         # Crear una tabla con los horarios de las ciudades y encabezados en las columnas
         #table_data = [(city, time) for city, time in current_times.items()]
