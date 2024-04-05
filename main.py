@@ -647,18 +647,17 @@ def main():
             return geodesic(point1, point2).kilometers
 
         # Función para manejar los clics en el mapa
-        def handle_click(latlng):
+        def handle_click(event):
+            latlng = [event.latlng[0], event.latlng[1]]
             st.sidebar.write("Latitud, Longitud:", latlng)
             selected_city = st.sidebar.selectbox("Selecciona una ciudad:", list(cities.keys()), index=0)
             city_coords = cities[selected_city]
             distance = calculate_distance(latlng, city_coords)
             st.sidebar.write("Distancia a", selected_city, ":", distance, "kilómetros")
 
-        # Manejar clics en el mapa    
-        folium.Marker([19.4326, -99.1332], popup='Ciudad de México').add_to(mexico_map)
-        folium.ClickForMarker(popup="Haz clic para seleccionar un punto").add_to(mexico_map)
-        mexico_map.add_child(folium.LatLngPopup())
-        mexico_map.add_child(folium.ClickForMarker(popup=None, callback=handle_click))
+        # Manejar clics en el mapa
+        mexico_map.add_child(folium.ClickForMarker(popup=None))
+        mexico_map.add_child(folium.ClickForMarker(popup=handle_click))
 
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
