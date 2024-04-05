@@ -622,6 +622,7 @@ def main():
 #        # Mostrar el mapa en Streamlit
 #        folium_static(mexico_map)
 
+
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
@@ -655,12 +656,13 @@ def main():
             distance = calculate_distance(latlng, city_coords)
             st.sidebar.write("Distancia a", selected_city, ":", distance, "kilómetros")
 
-        # Manejar clics en el mapa
+        # Manejar clics en el mapa    
         mexico_map.add_child(folium.ClickForMarker(popup=None))
         mexico_map.add_child(folium.ClickForMarker(popup=handle_click))
 
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
+
 
 
 
