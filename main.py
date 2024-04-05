@@ -598,40 +598,20 @@ def main():
         st.write("### Horarios de las ciudades")
         st.write(df)
 
-        import folium
-        from github import Github
-
-        # Autenticación en GitHub (reemplaza 'your_access_token' con tu token de acceso)
-        g = Github("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")
-
-        # Obtén el repositorio
-        repo = g.get_repo("SArcD/SolarSpot")
+        import streamlit as st
+        from streamlit_leaflet import st_map
 
         # Crear un mapa centrado en México
-        mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+        mexico_map = st_map(lon=-102.5528, lat=23.6345, zoom=5)
 
         # Agregar un marcador en la Ciudad de México
-        folium.Marker([19.4326, -99.1332], popup='Ciudad de México').add_to(mexico_map)
+        mexico_map.marker([19.4326, -99.1332], popup='Ciudad de México')
 
         # Agregar un marcador en Guadalajara
-        folium.Marker([20.6597, -103.3496], popup='Guadalajara').add_to(mexico_map)
+        mexico_map.marker([20.6597, -103.3496], popup='Guadalajara')
 
         # Agregar un marcador en Monterrey
-        folium.Marker([25.6866, -100.3161], popup='Monterrey').add_to(mexico_map)
-
-        # Guardar el mapa como archivo HTML
-        mexico_map.save("mexico_map.html")
-
-        # Obtén el contenido del archivo HTML
-        with open("mexico_map.html", "r") as file:
-            content = file.read()
-
-        # Sube el archivo HTML al repositorio de GitHub
-        repo.create_file("mexico_map.html", "Commit message", content)
-
-        # Muestra la URL del archivo en GitHub Pages
-        st.write("URL del mapa interactivo:", f"https://SArcD.github.io/SolarSpot/mexico_map.html")
-
+        mexico_map.marker([25.6866, -100.3161], popup='Monterrey')
 
 
 
