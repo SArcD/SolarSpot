@@ -603,8 +603,11 @@ def main():
         #st.write("### Horarios de las ciudades")
         #st.table(table_data)
 
-        # Crear un DataFrame con los horarios de las ciudades
-        df = pd.DataFrame(current_times.items(), columns=["Ciudad", "Hora local"])
+        # Extraer la fecha y la hora en columnas separadas
+        df = pd.DataFrame(current_times.items(), columns=["Ciudad", "Fecha/Hora local"])
+        df["Fecha"] = df["Fecha/Hora local"].dt.date
+        df["Hora"] = df["Fecha/Hora local"].dt.time
+        df.drop(columns=["Fecha/Hora local"], inplace=True)
 
         st.write("### Horarios de las ciudades")
         st.write(df)
