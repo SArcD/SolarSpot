@@ -614,6 +614,23 @@ def main():
         # Agregar un marcador en Monterrey
         folium.Marker([25.6866, -100.3161], popup='Monterrey').add_to(mexico_map)
 
+        # Agregar un marcador en Colima, Colima, México
+        folium.Marker([19.2493, -103.7271], popup='Colima, Colima, México').add_to(mexico_map)
+
+        # Agregar un marcador en Zacatecas, Zacatecas, México
+        folium.Marker([22.7709, -102.5832], popup='Zacatecas, Zacatecas, México').add_to(mexico_map)
+
+        # Agregar un marcador en Morelia, Michoacán, México
+        folium.Marker([19.4326, -101.897], popup='Morelia, Michoacán, México').add_to(mexico_map)
+
+        # Agregar un marcador en Querétaro, Querétaro, México
+        folium.Marker([20.5881, -100.3881], popup='Querétaro, Querétaro, México').add_to(mexico_map)
+
+        # Agregar un marcador en Ensenada, Baja California, México
+        folium.Marker([31.8661, -116.5964], popup='Ensenada, Baja California, México').add_to(mexico_map)
+
+
+        
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
 
