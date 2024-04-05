@@ -598,24 +598,23 @@ def main():
         st.write("### Horarios de las ciudades")
         st.write(df)
 
-        import streamlit as st
         import folium
 
-        # Crear un mapa centrado en México    
+        # Crear un mapa centrado en México
         mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
 
         # Agregar un marcador en la Ciudad de México
         folium.Marker([19.4326, -99.1332], popup='Ciudad de México').add_to(mexico_map)
 
-        #  Agregar un marcador en Guadalajara
+        # Agregar un marcador en Guadalajara
         folium.Marker([20.6597, -103.3496], popup='Guadalajara').add_to(mexico_map)
 
         # Agregar un marcador en Monterrey
         folium.Marker([25.6866, -100.3161], popup='Monterrey').add_to(mexico_map)
 
-        # Mostrar el mapa en Streamlit
-        st.write("### Mapa de México")
-        st.write(mexico_map._repr_html_(), unsafe_allow_html=True)
+        # Guardar el mapa como archivo HTML
+        mexico_map.save("mexico_map.html")
+
 
 
 
