@@ -591,15 +591,16 @@ def main():
             return hand,
 
         # Configuración de la animación de reloj
-        fig, ax = plt.subplots()
-        plt.axis('off')
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.axis('off')
         hands = ax.plot([0, 0], [0, 1], 'k-')
         time_text = {city: ax.text(0, 0, city, fontsize=12, ha='center', va='center') for city in cities}
 
         ani = animation.FuncAnimation(fig, update_clock, fargs=(hands, time_text), interval=1000)
 
         # Mostrar la animación y los horarios de las ciudades
-        st.pyplot(plt)
+        st.pyplot(fig)
+
 
 
 
