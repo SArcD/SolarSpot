@@ -563,22 +563,7 @@ def main():
 
     elif page == "Reloj":
 
-        import streamlit as st
-        from datetime import datetime
-        import pytz
 
-        # Lista de ciudades con su correspondiente zona horaria
-        cities = {
-            "New York": "America/New_York",
-            "London": "Europe/London",
-            "Tokyo": "Asia/Tokyo",
-            "Sydney": "Australia/Sydney"
-            }
-
-        # Obtener la hora actual para cada ciudad y mostrarla
-        for city, timezone in cities.items():
-            current_time = datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S')
-            st.write(f"{city}: {current_time}")
 
 
         import streamlit as st
