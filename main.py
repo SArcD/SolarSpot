@@ -581,6 +581,43 @@ def main():
             st.write(f"{city}: {current_time}")
 
 
+        import streamlit as st
+        import matplotlib.pyplot as plt
+        import matplotlib.animation as animation
+        from datetime import datetime
+        import pytz
+        import numpy as np
+
+        # Lista de ciudades con su correspondiente zona horaria
+        cities = {
+            "New York": "America/New_York",
+            "London": "Europe/London",
+            "Tokyo": "Asia/Tokyo",
+            "Sydney": "Australia/Sydney"
+        }
+
+        # Obtener las horas actuales para cada ciudad
+        current_times = {city: datetime.now(pytz.timezone(timezone)) for city, timezone in cities.items()}
+
+        # Función para actualizar la hora en la animación
+        def update_clock(num, hand, time_text):
+            for city, current_time in current_times.items():
+                time_text[city].set_text(current_time.strftime('%Y-%m-%d %H:%M:%S'))
+            return hand,
+
+        # Configuración de la animación de reloj
+        fig, ax = plt.subplots()
+        plt.axis('off')
+        hands = ax.plot([0, 0], [0, 1], 'k-')
+        time_text = {city: ax.text(0, 0, city, fontsize=12, ha='center', va='center') for city in cities}
+
+        ani = animation.FuncAnimation(fig, update_clock, fargs=(hands, time_text), interval=1000)
+
+        # Mostrar la animación y los horarios de las ciudades
+        st.pyplot(plt)
+
+
+
 
 
     
