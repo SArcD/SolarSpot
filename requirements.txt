@@ -3,3 +3,5 @@ matplotlib
 shapely
 folium
 PyGithub
+streamlit-leaflet
+streamlit-folium
