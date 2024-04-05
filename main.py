@@ -357,6 +357,7 @@ def main():
 
             # Calcular el área del círculo naranja
             area_orange_circle = np.pi * radio2**2
+            area_blue_circle = np.pi*radio1**2
 
             # Calcular el área de la intersección de los dos círculos
             circle1_polygon = sg.Point(pos_x1, pos_y1).buffer(radio1)
@@ -383,6 +384,7 @@ def main():
 
             # Mostrar los resultados
             st.write(f"Área total del disco solar (en píxeles cuadrados): {area_orange_circle}")
+            st.write(f"Área total del contorno lunar (en píxeles cuadrados): {area_blue_circle}")
             st.write(f"Área oculta (en píxeles cuadrados): {intersection_area}")
             st.write(f"Área visible del disco solar (en píxeles cuadrados): {area_not_in_intersection}")
             st.write(f"Porcentaje del área visible del disco solar: {percentage_area_not_in_intersection}%")
