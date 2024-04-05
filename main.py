@@ -561,7 +561,7 @@ def main():
         else:
             st.write("Error al obtener la imagen desde la URL.")
 
-    if page == "Reloj":
+    elif page == "Reloj":
             
 
 
