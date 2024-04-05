@@ -593,8 +593,11 @@ def main():
         headers = ["Ciudad", "Hora local"]
         table_data = [(city, time) for city, time in current_times.items()]
 
+
+
         st.write("### Horarios de las ciudades")
-        st.table([headers] + table_data)
+        # Eliminamos los encabezados 0 y 1
+        st.table(table_data, headers=headers)
 
 
 
