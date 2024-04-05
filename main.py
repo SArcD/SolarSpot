@@ -567,12 +567,10 @@ def main():
 
 
         import streamlit as st
-        import matplotlib.pyplot as plt
-        import matplotlib.animation as animation
-        from datetime import datetime
+        from datetime import datetime    
         import pytz
 
-        # Lista de ciudades con su correspondiente zona horaria
+        # Lista de ciudades con su correspondiente zona horaria    
         cities = {
             "New York": "America/New_York",
             "London": "Europe/London",
@@ -580,36 +578,13 @@ def main():
             "Sydney": "Australia/Sydney"
         }
 
-        # Configuración de la figura y el eje
-        fig, ax = plt.subplots()
-        ax.set_xlim(-1, 1)
-        ax.set_ylim(-1, 1)
-        ax.axis('off')
-        texts = []
+        # Obtener la hora actual para cada ciudad
+        current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
 
-        # Inicialización de los textos de la hora para cada ciudad
-        for city in cities.keys():
-            text = ax.text(0, 0, "", ha='center', va='center', fontsize=12)
-            texts.append(text)
+        # Crear una tabla con los horarios de las ciudades
+        st.write("### Horarios de las ciudades")
+        st.table([(city, time) for city, time in current_times.items()])
 
-        # Función para inicializar la animación
-        def init():
-            for text in texts:
-                text.set_text("")
-            return texts
-
-        # Función para actualizar la hora en la animación
-        def animate(i):
-            current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
-            for idx, (city, time) in enumerate(current_times.items()):
-                texts[idx].set_text(f"{city}: {time}")
-            return texts
-
-        # Creación de la animación
-        ani = animation.FuncAnimation(fig, animate, init_func=init, frames=200, interval=1000, blit=True)
-
-        # Mostrar la animación en Streamlit
-        st.pyplot(fig)
 
 
 
