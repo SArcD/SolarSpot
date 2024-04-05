@@ -570,6 +570,11 @@ def main():
         from datetime import datetime
         import pytz
 
+        import streamlit as st
+        import pandas as pd
+        from datetime import datetime
+        import pytz
+
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
@@ -583,37 +588,20 @@ def main():
             "Ensenada (Baja California)": "America/Tijuana"
         }
 
-        # Obtener la hora actual para cada ciudad
-        #current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
-
-        # Crear una tabla con los horarios de las ciudades y encabezados en las columnas
-        #table_data = [("Ciudad", "Hora local")] + [(city, time) for city, time in current_times.items()]
-
-        #st.write("### Horarios de las ciudades")
-        #st.table(table_data)
-
-
-        # Obtener la hora actual para cada ciudad
-        
-        #current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
-
-        # Obtener la hora actual para cada ciudad
+        # Obtener la fecha y hora actual para cada ciudad
         current_times = {city: datetime.now(pytz.timezone(timezone)) for city, timezone in cities.items()}
 
-        # Crear una tabla con los horarios de las ciudades y encabezados en las columnas
-        #table_data = [(city, time) for city, time in current_times.items()]
-
-        #st.write("### Horarios de las ciudades")
-        #st.table(table_data)
+        # Crear un DataFrame con los horarios de las ciudades
+        df = pd.DataFrame(current_times.items(), columns=["Ciudad", "Fecha/Hora local"])
 
         # Extraer la fecha y la hora en columnas separadas
-        df = pd.DataFrame(current_times.items(), columns=["Ciudad", "Fecha/Hora local"])
         df["Fecha"] = df["Fecha/Hora local"].dt.date
         df["Hora"] = df["Fecha/Hora local"].dt.time
         df.drop(columns=["Fecha/Hora local"], inplace=True)
 
         st.write("### Horarios de las ciudades")
         st.write(df)
+
 
 
 
