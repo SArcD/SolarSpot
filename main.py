@@ -15,7 +15,7 @@ def main():
     import numpy as np
     from PIL import Image
     # Crear una barra lateral para la navegación entre páginas
-    page = st.sidebar.radio("Seleccionar página", ("Visualizador de Imagen del Sol", "Visualizador de Eclipse"))
+    page = st.sidebar.radio("Seleccionar página", ("Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj"))
     
     if page == "Visualizador de Imagen del Sol":
         import streamlit as st
@@ -561,7 +561,8 @@ def main():
         else:
             st.write("Error al obtener la imagen desde la URL.")
 
-                
+    if page == "Reloj":
+            
 
 
 
