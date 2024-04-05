@@ -598,43 +598,70 @@ def main():
         st.write("### Horarios de las ciudades")
         st.write(df)
 
+#        import streamlit as st
+#        from streamlit_folium import folium_static
+#        import folium
+#        # Crear un mapa centrado en México
+#        mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+#        # Agregar un marcador en la Ciudad de México
+#        folium.Marker([19.4326, -99.1332], popup='Ciudad de México').add_to(mexico_map)
+#        # Agregar un marcador en Guadalajara
+#        folium.Marker([20.6597, -103.3496], popup='Guadalajara').add_to(mexico_map)
+#        # Agregar un marcador en Monterrey
+#        folium.Marker([25.6866, -100.3161], popup='Monterrey').add_to(mexico_map)
+#        # Agregar un marcador en Colima, Colima, México
+#        folium.Marker([19.2493, -103.7271], popup='Colima, Colima, México').add_to(mexico_map)
+#        # Agregar un marcador en Zacatecas, Zacatecas, México
+#        folium.Marker([22.7709, -102.5832], popup='Zacatecas, Zacatecas, México').add_to(mexico_map)
+#        # Agregar un marcador en Morelia, Michoacán, México
+#        folium.Marker([19.4326, -101.897], popup='Morelia, Michoacán, México').add_to(mexico_map)
+#        # Agregar un marcador en Querétaro, Querétaro, México
+#        folium.Marker([20.5881, -100.3881], popup='Querétaro, Querétaro, México').add_to(mexico_map)
+#        # Agregar un marcador en Ensenada, Baja California, México
+#        folium.Marker([31.8661, -116.5964], popup='Ensenada, Baja California, México').add_to(mexico_map)
+#        # Mostrar el mapa en Streamlit
+#        folium_static(mexico_map)
+
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
+        from geopy.distance import geodesic
 
-        # Crear un mapa centrado en México
-        mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+        # Diccionario con las coordenadas de las ciudades
+        cities = {
+            "Ciudad de México": [19.4326, -99.1332],
+            "Guadalajara": [20.6597, -103.3496],
+            "Monterrey": [25.6866, -100.3161],
+            "Colima, Colima, México": [19.2493, -103.7271],
+            "Zacatecas, Zacatecas, México": [22.7709, -102.5832],
+            "Morelia, Michoacán, México": [19.4326, -101.897],
+            "Querétaro, Querétaro, México": [20.5881, -100.3881],
+            "Ensenada, Baja California, México": [31.8661, -116.5964]
+        }
 
-        # Agregar un marcador en la Ciudad de México
+            # Crear un mapa centrado en México
+            mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+
+        # Función para calcular la distancia entre dos puntos
+        def calculate_distance(point1, point2):
+            return geodesic(point1, point2).kilometers
+
+        # Función para manejar los clics en el mapa
+        def handle_click(latlng):
+            st.sidebar.write("Latitud, Longitud:", latlng)
+            selected_city = st.sidebar.selectbox("Selecciona una ciudad:", list(cities.keys()), index=0)
+            city_coords = cities[selected_city]
+            distance = calculate_distance(latlng, city_coords)
+            st.sidebar.write("Distancia a", selected_city, ":", distance, "kilómetros")
+
+        # Manejar clics en el mapa    
         folium.Marker([19.4326, -99.1332], popup='Ciudad de México').add_to(mexico_map)
+        folium.ClickForMarker(popup="Haz clic para seleccionar un punto").add_to(mexico_map)
+        mexico_map.add_child(folium.LatLngPopup())
+        mexico_map.add_child(folium.ClickForMarker(popup=None, callback=handle_click))
 
-        # Agregar un marcador en Guadalajara
-        folium.Marker([20.6597, -103.3496], popup='Guadalajara').add_to(mexico_map)
-
-        # Agregar un marcador en Monterrey
-        folium.Marker([25.6866, -100.3161], popup='Monterrey').add_to(mexico_map)
-
-        # Agregar un marcador en Colima, Colima, México
-        folium.Marker([19.2493, -103.7271], popup='Colima, Colima, México').add_to(mexico_map)
-
-        # Agregar un marcador en Zacatecas, Zacatecas, México
-        folium.Marker([22.7709, -102.5832], popup='Zacatecas, Zacatecas, México').add_to(mexico_map)
-
-        # Agregar un marcador en Morelia, Michoacán, México
-        folium.Marker([19.4326, -101.897], popup='Morelia, Michoacán, México').add_to(mexico_map)
-
-        # Agregar un marcador en Querétaro, Querétaro, México
-        folium.Marker([20.5881, -100.3881], popup='Querétaro, Querétaro, México').add_to(mexico_map)
-
-        # Agregar un marcador en Ensenada, Baja California, México
-        folium.Marker([31.8661, -116.5964], popup='Ensenada, Baja California, México').add_to(mexico_map)
-
-
-        
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
-
-
 
 
 
