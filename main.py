@@ -656,11 +656,12 @@ def main():
                 st.sidebar.write("Distancia a", city, ":", distance, "kilómetros")
 
         # Manejar clics en el mapa
-        mexico_map.add_child(folium.ClickForTooltip(popup=None))
-        mexico_map.add_child(folium.ClickForTooltip(popup=handle_click))
+        mexico_map.add_child(folium.ClickForMarker(popup=None))
+        mexico_map.add_child(folium.ClickForMarker(popup=handle_click))
 
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
+
 
 
 
