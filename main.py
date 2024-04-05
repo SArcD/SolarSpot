@@ -567,15 +567,20 @@ def main():
 
 
         import streamlit as st
-        from datetime import datetime    
+        from datetime import datetime
         import pytz
 
-        # Lista de ciudades con su correspondiente zona horaria    
+        # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
             "London": "Europe/London",
             "Tokyo": "Asia/Tokyo",
-            "Sydney": "Australia/Sydney"
+            "Sydney": "Australia/Sydney",
+            "Ciudad de México": "America/Mexico_City",
+            "Colima (Colima, México)": "America/Mexico_City",
+            "Morelia (Michoacán, México)": "America/Mexico_City",
+            "Zacatecas (Zacatecas, México)": "America/Mexico_City",
+            "Ensenada (Baja California)": "America/Tijuana"
         }
 
         # Obtener la hora actual para cada ciudad
@@ -584,6 +589,7 @@ def main():
         # Crear una tabla con los horarios de las ciudades
         st.write("### Horarios de las ciudades")
         st.table([(city, time) for city, time in current_times.items()])
+
 
 
 
