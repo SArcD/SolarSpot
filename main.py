@@ -599,21 +599,23 @@ def main():
         st.write(df)
 
         import streamlit as st
-        from streamlit_leaflet import st_map
+        from streamlit_folium import folium_static
+        import folium
 
         # Crear un mapa centrado en México
-        mexico_map = st_map(lon=-102.5528, lat=23.6345, zoom=5)
+        mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
 
         # Agregar un marcador en la Ciudad de México
-        mexico_map.marker([19.4326, -99.1332], popup='Ciudad de México')
+        folium.Marker([19.4326, -99.1332], popup='Ciudad de México').add_to(mexico_map)
 
         # Agregar un marcador en Guadalajara
-        mexico_map.marker([20.6597, -103.3496], popup='Guadalajara')
+        folium.Marker([20.6597, -103.3496], popup='Guadalajara').add_to(mexico_map)
 
         # Agregar un marcador en Monterrey
-        mexico_map.marker([25.6866, -100.3161], popup='Monterrey')
+        folium.Marker([25.6866, -100.3161], popup='Monterrey').add_to(mexico_map)
 
-
+        # Mostrar el mapa en Streamlit
+        folium_static(mexico_map)
 
 
 
