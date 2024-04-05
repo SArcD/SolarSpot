@@ -587,8 +587,14 @@ def main():
         current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
 
         # Crear una tabla con los horarios de las ciudades
+        #st.write("### Horarios de las ciudades")
+        #st.table([(city, time) for city, time in current_times.items()])
+        # Crear una tabla con los horarios de las ciudades y encabezados en las columnas
+        headers = ["Ciudad", "Hora local"]
+        table_data = [(city, time) for city, time in current_times.items()]
+
         st.write("### Horarios de las ciudades")
-        st.table([(city, time) for city, time in current_times.items()])
+        st.table([headers] + table_data)
 
 
 
