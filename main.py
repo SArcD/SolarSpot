@@ -571,7 +571,6 @@ def main():
         import matplotlib.animation as animation
         from datetime import datetime
         import pytz
-        import numpy as np
 
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
@@ -581,25 +580,37 @@ def main():
             "Sydney": "Australia/Sydney"
         }
 
-        # Obtener las horas actuales para cada ciudad
-        current_times = {city: datetime.now(pytz.timezone(timezone)) for city, timezone in cities.items()}
+        # Configuración de la figura y el eje
+        fig, ax = plt.subplots()
+        ax.set_xlim(-1, 1)
+        ax.set_ylim(-1, 1)
+        ax.axis('off')
+        texts = []
+
+        # Inicialización de los textos de la hora para cada ciudad
+        for city in cities.keys():
+            text = ax.text(0, 0, "", ha='center', va='center', fontsize=12)
+            texts.append(text)
+
+        # Función para inicializar la animación
+        def init():
+            for text in texts:
+                text.set_text("")
+            return texts
 
         # Función para actualizar la hora en la animación
-        def update_clock(num, hand, time_text):
-            for city, current_time in current_times.items():
-                time_text[city].set_text(current_time.strftime('%Y-%m-%d %H:%M:%S'))
-            return hand,
+        def animate(i):
+            current_times = {city: datetime.now(pytz.timezone(timezone)).strftime('%Y-%m-%d %H:%M:%S') for city, timezone in cities.items()}
+            for idx, (city, time) in enumerate(current_times.items()):
+                texts[idx].set_text(f"{city}: {time}")
+            return texts
 
-        # Configuración de la animación de reloj
-        fig, ax = plt.subplots(figsize=(8, 6))
-        ax.axis('off')
-        hands = ax.plot([0, 0], [0, 1], 'k-')
-        time_text = {city: ax.text(0, 0, city, fontsize=12, ha='center', va='center') for city in cities}
+        # Creación de la animación
+        ani = animation.FuncAnimation(fig, animate, init_func=init, frames=200, interval=1000, blit=True)
 
-        ani = animation.FuncAnimation(fig, update_clock, fargs=(hands, time_text), interval=1000)
-
-        # Mostrar la animación y los horarios de las ciudades
+        # Mostrar la animación en Streamlit
         st.pyplot(fig)
+
 
 
 
