@@ -615,10 +615,7 @@ def main():
         # Guardar el mapa como archivo HTML
         mexico_map.save("mexico_map.html")
 
-        import streamlit as st
 
-        # Mostrar el mapa HTML en Streamlit
-        st.markdown('<iframe src="mexico_map.html" width="1000" height="600"></iframe>', unsafe_allow_html=True)
 
 
 
