@@ -651,14 +651,13 @@ def main():
         def handle_click(event):
             latlng = [event.latlng[0], event.latlng[1]]
             st.sidebar.write("Latitud, Longitud:", latlng)
-            selected_city = st.sidebar.selectbox("Selecciona una ciudad:", list(cities.keys()), index=0)
-            city_coords = cities[selected_city]
-            distance = calculate_distance(latlng, city_coords)
-            st.sidebar.write("Distancia a", selected_city, ":", distance, "kilómetros")
+            for city, coords in cities.items():
+                distance = calculate_distance(latlng, coords)
+                st.sidebar.write("Distancia a", city, ":", distance, "kilómetros")
 
-        # Manejar clics en el mapa    
-        mexico_map.add_child(folium.ClickForMarker(popup=None))
-        mexico_map.add_child(folium.ClickForMarker(popup=handle_click))
+        # Manejar clics en el mapa
+        mexico_map.add_child(folium.ClickForTooltip(popup=None))
+        mexico_map.add_child(folium.ClickForTooltip(popup=handle_click))
 
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
