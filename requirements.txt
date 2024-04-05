@@ -5,3 +5,4 @@ folium
 PyGithub
 streamlit-leaflet
 streamlit-folium
+geopy
