@@ -676,11 +676,11 @@ def main():
 
         # URLs de las imágenes en el repositorio de GitHub
         images_with_names = [
-            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/29032024_gs.jpg",
-            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/28032024_gs.jpg",
-            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/27032024_gs.jpg",
-            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/26032024_gs.jpg",
-            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/25032024_gs.jpg"
+            ("https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/29032024_gs.jpg", "29032024_gs.jpg"),
+            ("https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/28032024_gs.jpg", "28032024_gs.jpg"),
+            ("https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/27032024_gs.jpg", "27032024_gs.jpg"),
+            ("https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/26032024_gs.jpg", "26032024_gs.jpg"),
+            ("https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/25032024_gs.jpg", "25032024_gs.jpg")
         ]
 
         # Número de columnas en la matriz
