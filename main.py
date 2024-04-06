@@ -64,7 +64,8 @@ def main():
                 centro_sol = (int(x), int(y))
                 radio_sol = int(radio_sol)
                 # Encontrar el punto en el borde derecho del contorno del sol
-                #rightmost_point = tuple(contorno_sol[contorno_sol[:, :, 0].argmax()][0])
+
+                # Encontrar el punto en el borde derecho del contorno del sol
                 rightmost_point = tuple(contorno_sol[contorno_sol[:, :, 0].argmax()][0])
 
                 # Calcular el punto en la línea horizontal
