@@ -145,7 +145,8 @@ def main():
                 font_color = (255, 255, 255)
                 line_type = 1
 
-       
+                cv2.line(imagen_con_circulo, centro_sol, (image_np.shape[1], centro_sol[1]), (255, 255, 255), 1)
+
                 cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 30), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
@@ -156,6 +157,7 @@ def main():
                 cv2.putText(imagen_contornos, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 30), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_contornos, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_contornos, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 90), font, font_scale, font_color, line_type, cv2.LINE_AA)
+                cv2.putText(imagen_contornos, f"Radio del Sol: {radio_sol} pixeles", (bottom_left_corner[0], bottom_left_corner[1] - 120), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
                 # Dibujar texto en la imagen original
                 cv2.putText(image_np, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
