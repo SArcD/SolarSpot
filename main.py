@@ -85,7 +85,8 @@ def main():
             # Agregar deslizadores para controlar los parámetros de borde
             with st.sidebar:
                 st.title("Parámetros de borde")
-                ksize = st.slider("Tamaño del bloque", 3, 21, 11)
+                #ksize = st.slider("Tamaño del bloque", 3, 21, 11)
+                ksize = st.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
                 c = st.slider("C", -10, 10, 2)
 
             # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
