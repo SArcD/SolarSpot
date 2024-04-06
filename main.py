@@ -250,7 +250,7 @@ def main():
                 distancia_centros = math.sqrt((centro_sol[0] - cX)**2 + (centro_sol[1] - cY)**2)
 
                 # Si la distancia es menor o igual a 1.1 veces el radio del sol, procede
-                if distancia_centros <= 1.1 * radio_sol and area > 0:
+                if distancia_centros <= 1.01 * radio_sol and area > 0:
                     # Dibujar el contorno
                     cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
 
