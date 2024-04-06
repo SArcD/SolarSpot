@@ -71,7 +71,6 @@ def main():
                 # Calcular el punto en la línea horizontal
                 horizontal_point = (rightmost_point[0], centro_sol[1])
 
-
                 # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
                 binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, ksize, c)
 
@@ -117,7 +116,7 @@ def main():
                     distancia_centros = math.sqrt((centro_sol[0] - cX)**2 + (centro_sol[1] - cY)**2)
 
                     # Si la distancia es menor o igual a 1.1 veces el radio del sol, procede
-                    if distancia_centros <= 1.01 * radio_sol and area > 0:
+                    if distancia_centros <= 1.1 * radio_sol and area > 0:
                         # Dibujar el contorno
                         cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
 
@@ -170,7 +169,10 @@ def main():
                 cv2.putText(imagen_contornos, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_contornos, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 90), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_contornos, f"Radio del Sol: {radio_sol} pixeles", (bottom_left_corner[0], bottom_left_corner[1] - 120), font, font_scale, font_color, line_type, cv2.LINE_AA)
-                cv2.line(imagen_contornos, centro_sol, rightmost_point, (255, 255, 255), 1)
+                cv2.line(imagen_contornos, centro_sol, rightmost_point, (255, 255, 255), 2)
+                # Dibujar el texto del radio del sol sobre la línea horizontal
+                radio_text = f"Radio del Sol: {radio_sol} pixeles"
+                cv2.putText(imagen_contornos, radio_text, (horizontal_point[0], horizontal_point[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
                 
                 # Dibujar texto en la imagen original
