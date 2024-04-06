@@ -263,7 +263,7 @@ def main():
                     angulo_grados = math.degrees(angulo)
 
                     # Agregar los valores al DataFrame
-                    data["Contorno"].append(i)
+                    data["Contorno"].append(nueva_etiqueta)
                     data["Centro_X (pixeles)"].append(cX)
                     data["Centro_Y (pixeles)"].append(cY)
                     data["Tamaño (pix^2)"].append(tamano_contorno)
