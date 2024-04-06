@@ -673,26 +673,19 @@ def main():
 
     if page == "Galeria":
         import streamlit as st
-        import os
 
-        # Ruta de la carpeta que contiene las imágenes
-        folder_path = "https://raw.githubusercontent.com/SArcD/SolarSpot/tree/7713e5032a73af20a00f993a988ed93c794f2161/fotos"
+        # URLs de las imágenes en el repositorio de GitHub
+        image_urls = [
+            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/29032024_gs.jpg",
+            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/28032024_gs.jpg",
+            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/27032024_gs.jpg",
+            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/26032024_gs.jpg",
+            "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/25032024_gs.jpg"
+        ]
 
-        # Obtener la lista de nombres de archivo de la carpeta
-        image_files = os.listdir(folder_path)
-
-        # Filtrar solo los archivos de imagen
-        image_files = [f for f in image_files if f.endswith((".jpg", ".jpeg", ".png", ".gif"))]
-
-        # Tamaño de la cuadrícula
-        num_images_per_row = 5
-
-        # Iterar sobre las imágenes y mostrarlas en la cuadrícula
-        for i in range(0, len(image_files), num_images_per_row):
-            row_images = image_files[i:i+num_images_per_row]
-            for image_file in row_images:
-                image_path = os.path.join(folder_path, image_file)
-                st.image(image_path, width=200)
+        # Mostrar las imágenes en Streamlit
+        for image_url in image_urls:
+            st.image(image_url, caption='Imagen', width=200)
 
 
 
