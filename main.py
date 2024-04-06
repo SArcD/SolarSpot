@@ -63,6 +63,9 @@ def main():
                 (x, y), radio_sol = cv2.minEnclosingCircle(contorno_sol)
                 centro_sol = (int(x), int(y))
                 radio_sol = int(radio_sol)
+                # Encontrar el punto en el borde derecho del contorno del sol
+                rightmost_point = tuple(contorno_sol[contorno_sol[:, :, 0].argmax()][0])
+
 
                 # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
                 binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, ksize, c)
