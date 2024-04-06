@@ -675,7 +675,7 @@ def main():
         import streamlit as st
 
         # URLs de las imágenes en el repositorio de GitHub
-        image_urls = [
+        images_with_names = [
             "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/29032024_gs.jpg",
             "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/28032024_gs.jpg",
             "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/27032024_gs.jpg",
