@@ -92,6 +92,24 @@ def main():
                 cv2.circle(imagen_contornos, centro_sol, radio_sol, (0, 0, 255), 2)
                 # Dibujar los contornos en la imagen en blanco
                 cv2.drawContours(imagen_contornos, contornos_manchas_solares, -1, (0, 0, 255), 2)
+                
+
+
+                import math
+
+                # Definir el espacio entre los círculos concéntricos y las líneas radiales
+                espacio = 0.2
+
+                # Dibujar círculos concéntricos blancos
+                for i in range(1, int(radio_sol), int(espacio * radio_sol)):
+                    cv2.circle(imagen_contornos, centro_sol, i, (255, 255, 255), 1, cv2.LINE_AA)
+
+                # Dibujar líneas radiales
+                for angulo in range(0, 360, 15):
+                    x = int(centro_sol[0] + radio_sol * math.cos(math.radians(angulo)))
+                    y = int(centro_sol[1] + radio_sol * math.sin(math.radians(angulo)))
+                    cv2.line(imagen_contornos, centro_sol, (x, y), (255, 255, 255), 1, cv2.LINE_AA)
+
 
 
                 
