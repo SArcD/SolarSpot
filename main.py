@@ -149,7 +149,7 @@ def main():
                 line_type = 1
 
                 #cv2.line(imagen_con_circulo, centro_sol, (image_np.shape[1], centro_sol[1]), (255, 255, 255), 1)
-                cv2.line(imagen_con_circulo, centro_sol, rightmost_point, (255, 255, 255), 1)
+                cv2.line(imagen_contornos, centro_sol, rightmost_point, (255, 255, 255), 1)
 
 
                 cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
