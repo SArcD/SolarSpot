@@ -88,6 +88,8 @@ def main():
                 # Crear una imagen en blanco del mismo tamaño que la original
                 imagen_contornos = np.zeros_like(image_np)
 
+                # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
+                cv2.circle(imagen_contornos, centro_sol, radio_sol, (0, 0, 255), 2)
                 # Dibujar los contornos en la imagen en blanco
                 cv2.drawContours(imagen_contornos, contornos_manchas_solares, -1, (255, 255, 255), 2)
 
