@@ -648,7 +648,10 @@ def main():
             "Zacatecas, Zacatecas, México": [22.7709, -102.5832],
             "Morelia, Michoacán, México": [19.4326, -101.897],
             "Querétaro, Querétaro, México": [20.5881, -100.3881],
-            "Ensenada, Baja California, México": [31.8661, -116.5964]
+            "Ensenada, Baja California, México": [31.8661, -116.5964],
+            "Santiago de Chile, Chile": [-33.4372, -70.6506],
+            "Quito, Ecuador": [-0.1905, -78.4835],
+            "Ontario, Canadá": [43.65107, -79.347015]
         }
 
         # Obtener nombres de ciudades
