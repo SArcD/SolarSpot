@@ -692,8 +692,8 @@ def main():
         # Crea una cuadrícula de imágenes con sus nombres
         for i in range(num_rows):
             row_images_with_names = images_with_names[i * num_columns: (i + 1) * num_columns]
-            row_urls, row_names = zip(*row_images_with_names)
-            st.image(row_urls, caption=row_names, width=200)
+            for image_url, image_name in row_images_with_names:
+                st.image(image_url, caption=image_name, width=200)
 
 
 
