@@ -263,7 +263,7 @@ def main():
                     angulo_grados = math.degrees(angulo)
 
                     # Agregar los valores al DataFrame
-                    data["Contorno"].append(nueva_etiqueta)
+                    data["Contorno"].append(i)
                     data["Centro_X (pixeles)"].append(cX)
                     data["Centro_Y (pixeles)"].append(cY)
                     data["Tamaño (pix^2)"].append(tamano_contorno)
@@ -334,9 +334,6 @@ def main():
                 st.write("Esta es tu foto del Sol:")
                 # Mostrar la imagen con texto
                 st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
-
-
-
                 
         import numpy as np
         import matplotlib.pyplot as plt
