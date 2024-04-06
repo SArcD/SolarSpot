@@ -683,10 +683,16 @@ def main():
             "https://raw.githubusercontent.com/SArcD/SolarSpot/7713e5032a73af20a00f993a988ed93c794f2161/fotos/25032024_gs.jpg"
         ]
 
-        # Mostrar las imágenes en Streamlit
-        for image_url in image_urls:
-            st.image(image_url, caption='Imagen', width=200)
+        # Número de columnas en la matriz
+        num_columns = 3
 
+        # Calcula el número de filas basado en el número de imágenes y columnas
+        num_rows = -(-len(image_urls) // num_columns)
+
+        # Crea una cuadrícula de imágenes
+        for i in range(num_rows):
+            row_images = image_urls[i * num_columns: (i + 1) * num_columns]
+            st.image(row_images, caption=['Imagen']*len(row_images), width=200)
 
 
 
