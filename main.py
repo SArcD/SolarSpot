@@ -76,6 +76,9 @@ def main():
                 # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
                 cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
 
+                # Crear una copia de la imagen con los contornos dibujados
+                imagen_contornos = imagen_con_circulo.copy()
+
                 # Crear un DataFrame para almacenar la información de los contornos
                 data = {
                     "Contorno": [],
@@ -109,6 +112,9 @@ def main():
                     if distancia_centros <= 1.01 * radio_sol and area > 0:
                         # Dibujar el contorno
                         cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
+
+                        # Dibujar el contorno etiquetado
+                        cv2.putText(imagen_contornos, str(nueva_etiqueta), (cX, cY), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
                         # Calcular el tamaño del contorno en píxeles
                         tamano_contorno = math.sqrt(area / math.pi)
@@ -144,13 +150,14 @@ def main():
                 cv2.putText(imagen_con_circulo, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 90), font, font_scale, font_color, line_type, cv2.LINE_AA)
 
-                # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-                st.image(imagen_con_circulo, caption="Imagen con contornos contabilizados", use_column_width=True)
+                # Mostrar las tres imágenes
+                st.image(image, caption="Imagen subida", use_column_width=True)
+                st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
+                st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_column_width=True)
 
                 # Mostrar el DataFrame
                 st.write("Información de los contornos:")
                 st.write(df)
-
 
 
     #########
