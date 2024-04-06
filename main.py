@@ -160,7 +160,10 @@ def main():
                 cv2.putText(imagen_con_circulo, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 90), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.line(imagen_con_circulo, centro_sol, horizontal_point, (255, 255, 255), 1)
+                radio_text = f"Radio del Sol: {radio_sol} pixeles"
+                cv2.putText(imagen_con_circulo, radio_text, (horizontal_point[0], horizontal_point[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
+                
                 # Dibujar texto en la imagen con contornos etiquetados
                 
 
@@ -169,7 +172,7 @@ def main():
                 cv2.putText(imagen_contornos, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_contornos, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 90), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_contornos, f"Radio del Sol: {radio_sol} pixeles", (bottom_left_corner[0], bottom_left_corner[1] - 120), font, font_scale, font_color, line_type, cv2.LINE_AA)
-                cv2.line(imagen_contornos, centro_sol, rightmost_point, (255, 255, 255), 2)
+                cv2.line(imagen_contornos, centro_sol, horizontal_point, (255, 255, 255), 2)
                 # Dibujar el texto del radio del sol sobre la línea horizontal
                 radio_text = f"Radio del Sol: {radio_sol} pixeles"
                 cv2.putText(imagen_contornos, radio_text, (horizontal_point[0], horizontal_point[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
@@ -306,16 +309,6 @@ def main():
             st.write(f"Área oculta (en píxeles cuadrados): {intersection_area}")
             st.write(f"Área visible del disco solar (en píxeles cuadrados): {area_not_in_intersection}")
             st.write(f"Porcentaje del área visible del disco solar: {percentage_area_not_in_intersection}%")
-
-        # Crear los controles deslizantes en Streamlit
-        #pos_x1 = st.slider('PosX1:', -20.0, 20.0, 0.0, 0.1)
-        #pos_y1 = st.slider('PosY1:', -20.0, 20.0, 0.0, 0.1)
-        #radio1 = st.slider('Radio1:', 0.0, 20.0, 10.0, 0.1)    
-        #pos_x2 = st.slider('PosX2:', -20.0, 20.0, 5.0, 0.1)
-        #pos_y2 = st.slider('PosY2:', -20.0, 20.0, 5.0, 0.1)
-        #radio2 = st.slider('Radio2:', 0.0, 20.0, 7.0, 0.1)
-        #x_limit = st.slider('Límite X:', 1.0, 50.0, 30.0, 1.0)
-        #y_limit = st.slider('Límite Y:', 1.0, 50.0, 20.0, 1.0)
 
         with st.sidebar:
             pos_x1 = st.slider('PosX1', -20.0, 20.0, 0.0, 0.1)
