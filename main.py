@@ -99,6 +99,7 @@ def main():
             cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
             # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
             # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
+            nueva_etiqueta = 1
             for contorno in contornos_manchas_solares:
                 # Calcular el centro del contorno
                 M = cv2.moments(contorno)
