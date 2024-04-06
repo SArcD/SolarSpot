@@ -118,14 +118,14 @@ def main():
                     #st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
                 # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
-                etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
+                #etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
 
                 # Etiquetar el contorno con la nueva etiqueta
-                (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
-                cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                #(etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
+                #cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
                 # Incrementar la nueva etiqueta
-                nueva_etiqueta += 1
+                #nueva_etiqueta += 1
 
         
             cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
