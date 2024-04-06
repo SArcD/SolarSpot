@@ -28,7 +28,8 @@ def main():
 
         uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
         st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
-
+        ksize = st.sidebar.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
+        c = st.sidebar.slider("C", -10, 10, 2)
         if uploaded_file is not None:
             # Mostrar la imagen cargada
             image = Image.open(uploaded_file)
@@ -66,7 +67,7 @@ def main():
             image = Image.open(uploaded_file)
             image_np = np.array(image)
             # Obtener la esquina inferior izquierda para colocar los textos
-            bottom_left_corner = (10, image_np.shape[0] - 10)
+            #bottom_left_corner = (10, image_np.shape[0] - 10)
 
             # Convertir la imagen a escala de grises
             imagen_gris = cv2.cvtColor(image_np, cv2.COLOR_BGR2GRAY)
@@ -85,11 +86,11 @@ def main():
             centro_sol = (int(x), int(y))
             radio_sol = int(radio_sol)
             # Agregar deslizadores para controlar los parámetros de borde
-            with st.sidebar:
-                st.title("Parámetros de borde")
-                #ksize = st.slider("Tamaño del bloque", 3, 21, 11)
-                ksize = st.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
-                c = st.slider("C", -10, 10, 2)
+            #with st.sidebar:
+            #    st.title("Parámetros de borde")
+            #    #ksize = st.slider("Tamaño del bloque", 3, 21, 11)
+            #    ksize = st.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
+            #    c = st.slider("C", -10, 10, 2)
 
             # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
             binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, ksize, c)
