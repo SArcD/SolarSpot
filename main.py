@@ -84,8 +84,15 @@ def main():
                 cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
 
                 # Crear una copia de la imagen con los contornos dibujados
-                imagen_contornos = imagen_con_circulo.copy()
+                #imagen_contornos = imagen_con_circulo.copy()
+                # Crear una imagen en blanco del mismo tamaño que la original
+                imagen_contornos = np.zeros_like(image_np)
 
+                # Dibujar los contornos en la imagen en blanco
+                cv2.drawContours(imagen_contornos, contornos_manchas_solares, -1, (255, 255, 255), 2)
+
+
+                
                 # Crear un DataFrame para almacenar la información de los contornos
                 data = {
                     "Contorno": [],
