@@ -29,7 +29,7 @@ def main():
         uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
         st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
         ksize = st.sidebar.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
-        c = st.sidebar.slider("C", -10, 10, 2)
+        c = st.sidebar.slider("C", -10, 71, 2)
         if uploaded_file is not None:
             # Mostrar la imagen cargada
             image = Image.open(uploaded_file)
