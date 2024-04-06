@@ -603,6 +603,7 @@ def main():
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
+        
         # Crear un mapa centrado en México
         mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
         # Agregar un marcador en la Ciudad de México
@@ -621,6 +622,14 @@ def main():
         folium.Marker([20.5881, -100.3881], popup='Querétaro, Querétaro, México').add_to(mexico_map)
         # Agregar un marcador en Ensenada, Baja California, México
         folium.Marker([31.8661, -116.5964], popup='Ensenada, Baja California, México').add_to(mexico_map)
+        # Agregar un marcador en Toronto, Ontario, Canadá
+        folium.Marker([43.65107, -79.347015], popup='Toronto, Ontario, Canadá').add_to(mexico_map)
+        # Agregar un marcador en Quito, Ecuador
+        folium.Marker([-0.1905, -78.4835], popup='Quito, Ecuador').add_to(mexico_map)
+        # Agregar un marcador en Santiago de Chile, Chile
+        folium.Marker([-33.4372, -70.6506], popup='Santiago de Chile, Chile').add_to(mexico_map)
+
+
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
 
