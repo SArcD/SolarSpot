@@ -89,7 +89,7 @@ def main():
                 c = st.slider("C", -10, 10, 2)
 
             # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
-            binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, kzise, c)
+            binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, ksize, c)
 
             # Encontrar contornos en la imagen binaria de las manchas solares
             contornos_manchas_solares, _ = cv2.findContours(binary_manchas_solares, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
