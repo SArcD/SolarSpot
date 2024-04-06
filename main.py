@@ -65,6 +65,8 @@ def main():
             # Convertir la imagen cargada a una matriz numpy
             image = Image.open(uploaded_file)
             image_np = np.array(image)
+            # Obtener la esquina inferior izquierda para colocar los textos
+            bottom_left_corner = (10, image_np.shape[0] - 10)
 
             # Convertir la imagen a escala de grises
             imagen_gris = cv2.cvtColor(image_np, cv2.COLOR_BGR2GRAY)
