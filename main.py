@@ -159,7 +159,7 @@ def main():
                 cv2.putText(imagen_con_circulo, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 30), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Hora: {hora}", (bottom_left_corner[0], bottom_left_corner[1] - 60), font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Fecha: {fecha}", (bottom_left_corner[0], bottom_left_corner[1] - 90), font, font_scale, font_color, line_type, cv2.LINE_AA)
-                cv2.line(image_con_circulo, centro_sol, horizontal_point, (255, 255, 255), 1)
+                cv2.line(imagen_con_circulo, centro_sol, horizontal_point, (255, 255, 255), 1)
 
                 # Dibujar texto en la imagen con contornos etiquetados
                 
