@@ -85,12 +85,6 @@ def main():
             (x, y), radio_sol = cv2.minEnclosingCircle(contorno_sol)
             centro_sol = (int(x), int(y))
             radio_sol = int(radio_sol)
-            # Agregar deslizadores para controlar los parámetros de borde
-            #with st.sidebar:
-            #    st.title("Parámetros de borde")
-            #    #ksize = st.slider("Tamaño del bloque", 3, 21, 11)
-            #    ksize = st.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
-            #    c = st.slider("C", -10, 10, 2)
 
             # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
             binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, ksize, c)
@@ -104,7 +98,7 @@ def main():
             # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
             cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
             # Mostrar la imagen con el círculo que contiene el contorno del sol y los contornos de las manchas solares dentro del disco solar
-                # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
+            # Dibujar los contornos de las manchas solares dentro del disco solar en la nueva imagen
             for contorno in contornos_manchas_solares:
                 # Calcular el centro del contorno
                 M = cv2.moments(contorno)
@@ -124,14 +118,14 @@ def main():
                     #st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
                 # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
-                #etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
+                etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
 
                 # Etiquetar el contorno con la nueva etiqueta
-                #(etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
-                #cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
+                cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
                 # Incrementar la nueva etiqueta
-                #nueva_etiqueta += 1
+                nueva_etiqueta += 1
 
         
             cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
