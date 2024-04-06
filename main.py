@@ -112,20 +112,20 @@ def main():
                 distancia_centros = math.sqrt((centro_sol[0] - cX)**2 + (centro_sol[1] - cY)**2)
 
                 # Si la distancia es menor o igual a 1.1 veces el radio del sol, dibuja el contorno
-                if distancia_centros <= 1.1 * radio_sol:
+                if distancia_centros <= 1.01 * radio_sol:
                     # Dibujar el contorno
                     cv2.drawContours(imagen_con_circulo, [contorno], 0, (0, 0, 255), 2)
                     #st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
 
                 # Mapear la etiqueta original a la nueva etiqueta y actualizar el diccionario
-                #etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
+                etiquetas_renombradas[len(etiquetas_renombradas) + 1] = nueva_etiqueta
 
                 # Etiquetar el contorno con la nueva etiqueta
-                #(etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
-                #cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                (etiqueta_ancho, etiqueta_alto), _ = cv2.getTextSize(str(nueva_etiqueta), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
+                cv2.putText(imagen_con_circulo, str(nueva_etiqueta), (cX - etiqueta_ancho // 2, cY + etiqueta_alto // 2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
                 # Incrementar la nueva etiqueta
-                #nueva_etiqueta += 1
+                nueva_etiqueta += 1
 
         
             cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
