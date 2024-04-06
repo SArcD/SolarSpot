@@ -78,13 +78,20 @@ def main():
                 contornos_manchas_solares, _ = cv2.findContours(binary_manchas_solares, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
                 # Crear una nueva imagen en blanco del mismo tamaño que la original
-                imagen_con_circulo = image_np.copy()
+                #imagen_con_circulo = image_np.copy()
+
+                # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
+                #cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
+
+                # Crear una nueva imagen en blanco del mismo tamaño que la original
+                imagen_con_circulo = np.zeros_like(image_np)
 
                 # Dibujar el círculo que contiene el contorno del sol en la nueva imagen
                 cv2.circle(imagen_con_circulo, centro_sol, radio_sol, (0, 0, 255), 2)
 
-                # Crear una copia de la imagen con los contornos dibujados
-                #imagen_contornos = imagen_con_circulo.copy()
+                # Dibujar los contornos en la imagen en blanco
+                cv2.drawContours(imagen_con_circulo, contornos_manchas_solares, -1, (0, 0, 255), 2)
+                
                 # Crear una imagen en blanco del mismo tamaño que la original
                 imagen_contornos = np.zeros_like(image_np)
 
