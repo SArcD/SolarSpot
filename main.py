@@ -671,12 +671,12 @@ def main():
         # Mostrar la distancia en la interfaz
         st.write(f"La distancia entre {city1} y {city2} es de {distance:.2f} kilómetros.")
 
-    if page == "https://github.com/SArcD/SolarSpot/tree/7713e5032a73af20a00f993a988ed93c794f2161/fotos":
+    if page == "Galeria":
         import streamlit as st
         import os
 
         # Ruta de la carpeta que contiene las imágenes
-        folder_path = "carpeta_de_imagenes"
+        folder_path = "https://raw.githubusercontent.com/SArcD/SolarSpot/tree/7713e5032a73af20a00f993a988ed93c794f2161/fotos"
 
         # Obtener la lista de nombres de archivo de la carpeta
         image_files = os.listdir(folder_path)
