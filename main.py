@@ -188,6 +188,7 @@ def main():
 
 
         if uploaded_file is not None:
+            import pandas as pd
             # Convertir la imagen cargada a una matriz numpy
             image = Image.open(uploaded_file)
             image_np = np.array(image)
