@@ -15,7 +15,7 @@ def main():
     import numpy as np
     from PIL import Image
     # Crear una barra lateral para la navegación entre páginas
-    page = st.sidebar.radio("Seleccionar página", ("Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj"))
+    page = st.sidebar.radio("Seleccionar página", ("Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
     
     if page == "Visualizador de Imagen del Sol":
         import streamlit as st
@@ -565,9 +565,6 @@ def main():
 
     elif page == "Reloj":
 
-
-
-
         import streamlit as st        
         import pandas as pd
         from datetime import datetime
@@ -674,6 +671,28 @@ def main():
         # Mostrar la distancia en la interfaz
         st.write(f"La distancia entre {city1} y {city2} es de {distance:.2f} kilómetros.")
 
+    if page == "Galeria":
+        import streamlit as st
+        import os
+
+        # Ruta de la carpeta que contiene las imágenes
+        folder_path = "carpeta_de_imagenes"
+
+        # Obtener la lista de nombres de archivo de la carpeta
+        image_files = os.listdir(folder_path)
+
+        # Filtrar solo los archivos de imagen
+        image_files = [f for f in image_files if f.endswith((".jpg", ".jpeg", ".png", ".gif"))]
+
+        # Tamaño de la cuadrícula
+        num_images_per_row = 5
+
+        # Iterar sobre las imágenes y mostrarlas en la cuadrícula
+        for i in range(0, len(image_files), num_images_per_row):
+            row_images = image_files[i:i+num_images_per_row]
+            for image_file in row_images:
+                image_path = os.path.join(folder_path, image_file)
+                st.image(image_path, width=200)
 
 
 
