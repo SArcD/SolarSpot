@@ -64,7 +64,11 @@ def main():
                 centro_sol = (int(x), int(y))
                 radio_sol = int(radio_sol)
                 # Encontrar el punto en el borde derecho del contorno del sol
+                #rightmost_point = tuple(contorno_sol[contorno_sol[:, :, 0].argmax()][0])
                 rightmost_point = tuple(contorno_sol[contorno_sol[:, :, 0].argmax()][0])
+
+                # Calcular el punto en la línea horizontal
+                horizontal_point = (rightmost_point[0], centro_sol[1])
 
 
                 # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
@@ -150,7 +154,8 @@ def main():
 
                 #cv2.line(imagen_con_circulo, centro_sol, (image_np.shape[1], centro_sol[1]), (255, 255, 255), 1)
                 cv2.line(imagen_contornos, centro_sol, rightmost_point, (255, 255, 255), 1)
-
+                cv2.line(image_np, centro_sol, horizontal_point, (255, 255, 255), 1)
+    
 
                 cv2.putText(imagen_con_circulo, f"Autor: {autor}", bottom_left_corner, font, font_scale, font_color, line_type, cv2.LINE_AA)
                 cv2.putText(imagen_con_circulo, f"Lugar: {lugar}", (bottom_left_corner[0], bottom_left_corner[1] - 30), font, font_scale, font_color, line_type, cv2.LINE_AA)
