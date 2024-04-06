@@ -671,7 +671,7 @@ def main():
         # Mostrar la distancia en la interfaz
         st.write(f"La distancia entre {city1} y {city2} es de {distance:.2f} kilómetros.")
 
-    if page == "Galeria":
+    if page == "fotos":
         import streamlit as st
         import os
 
