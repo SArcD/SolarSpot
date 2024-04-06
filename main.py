@@ -165,7 +165,7 @@ def main():
 
 
                 # Mostrar las tres imágenes
-                st.image(image_no, caption="Imagen subida", use_column_width=True)
+                st.image(image_np, caption="Imagen subida", use_column_width=True)
                 st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
                 st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_column_width=True)
 
