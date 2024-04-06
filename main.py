@@ -83,7 +83,10 @@ def main():
             centro_sol = (int(x), int(y))
             radio_sol = int(radio_sol)
             # Agregar deslizadores para controlar los parámetros de borde
-
+            with st.sidebar:
+                st.title("Parámetros de borde")
+                ksize = st.slider("Tamaño del bloque", 3, 21, 11)
+                c = st.slider("C", -10, 10, 2)
 
             # Aplicar umbralización adaptativa para detectar las manchas solares dentro del disco solar
             binary_manchas_solares = cv2.adaptiveThreshold(imagen_gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, ksize, c)
