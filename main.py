@@ -567,6 +567,26 @@ def main():
         # Agregar un marcador en Santiago de Chile, Chile
         folium.Marker([-33.4372, -70.6506], popup='Santiago de Chile, Chile').add_to(mexico_map)
 
+        # Coordenadas del eclipse
+        eclipse_coordinates = [
+            (7.8267, -158.5319),
+            (16.6000, -152.9083),
+            (5.5100, -149.7933),
+            (4.3417, -145.4933),
+            (3.3533, -142.4600),
+            (2.4514, -139.0300),
+            (1.2183, -137.5700),
+            (-0.7444, -135.5667),
+            (-0.7414, -133.3519),
+            (1.4761, -131.7808),
+            (2.1939, -129.3914)
+            # Continuar con las coordenadas restantes...
+        ]
+
+        # Añadir una línea que represente el camino del eclipse    
+        folium.PolyLine(locations=eclipse_coordinates, color='red').add_to(mexico_map)
+
+
 
         # Mostrar el mapa en Streamlit
         folium_static(mexico_map)
