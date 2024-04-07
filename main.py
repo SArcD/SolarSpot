@@ -729,8 +729,8 @@ def main():
         ]
         
         
-        folium.PolyLine(locations=coordinates, color='blue').add_to(mexico_map)
-        folium.PolyLine(locations=coordinates_sur, color='cyan').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates, color='cyan').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates_sur, color='blue').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_norte, color='cyan').add_to(mexico_map)
 
         # Agregar la línea poligonal al mapa
