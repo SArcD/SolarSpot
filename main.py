@@ -833,7 +833,7 @@ def main():
 
             expanded_coordinates = [coordinates[0]]
             for coord in coordinates:
-                new_coord = calculate_new_coordinates(coord, 0, 1.25*distance_increase)
+                new_coord = calculate_new_coordinates(coord, 0, 1.15*distance_increase)
                 expanded_coordinates.append(new_coord)
 
             return expanded_coordinates
