@@ -801,8 +801,8 @@ def main():
 
         # Mostrar el mapa
         #mexico_map
-        folium.PolyLine(locations=partiality_80_norte, color='cyan').add_to(mexico_map)
-        folium.PolyLine(locations=partiality_80_sur, color='cyan').add_to(mexico_map)
+        folium.PolyLine(locations=partiality_80_norte, color='purple').add_to(mexico_map)
+        folium.PolyLine(locations=partiality_80_sur, color='purple').add_to(mexico_map)
 
 
         # Mostrar el mapa en Streamlit
