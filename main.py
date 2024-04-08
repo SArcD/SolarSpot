@@ -755,6 +755,22 @@ def main():
 
             return expanded_coordinates
 
+        def expand_coordinates_sur(coordinates, distance_increase):
+            # Calcula la distancia actual entre los bordes norte y sur
+            current_distance = calculate_distance(coordinates[0], coordinates[-1])
+
+            # Calcula el factor de escala necesario para aumentar la distancia en 200 km
+            scale_factor = (current_distance - distance_increase) / current_distance
+
+            # Expande las coordenadas aplicando el factor de escala
+            expanded_coordinates = [(lat, lon) for lat, lon in coordinates]
+            for i in range(len(expanded_coordinates)):
+                lat, lon = expanded_coordinates[i]
+                lat = lat * scale_factor
+                expanded_coordinates[i] = (lat, lon)
+
+            return expanded_coordinates_sur
+
         # Definir la distancia adicional que deseas agregar a la anchura
         distance_increase = 200  # en kilómetros
 
@@ -764,7 +780,7 @@ def main():
         #print(expanded_coordinates)
 
         # Expande las coordenadas del borde sur
-        expanded_coordinates_sur = expand_coordinates(coordinates_sur, distance_increase)        
+        expanded_coordinates_sur = expand_coordinates_sur(coordinates_sur, distance_increase)        
         #print("\nCoordenadas expandidas del borde sur:")
         #print(expanded_coordinates_sur)
 
