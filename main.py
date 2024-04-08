@@ -819,6 +819,7 @@ def main():
         # Mostrar el mapa
         #folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
         #folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
+
         from geopy.distance import geodesic
 
         def calculate_new_coordinates(coord, bearing, distance):
@@ -827,37 +828,46 @@ def main():
             new_coord = geodesic(kilometers=distance).destination(coord, bearing)
             return new_coord.latitude, new_coord.longitude
 
-        def expand_coordinates(coordinates, distance_increase):
-            # Expande las coordenadas hacia el norte y hacia el sur
+        def expand_coordinates_north(coordinates, distance_increase):
+            # Expande las coordenadas hacia el norte
 
-            # Calcula las coordenadas hacia el norte
-            north_expanded = [coordinates[0]]
+            expanded_coordinates = [coordinates[0]]
             for coord in coordinates:
                 new_coord = calculate_new_coordinates(coord, 0, distance_increase)
-                north_expanded.append(new_coord)
+                expanded_coordinates.append(new_coord)
 
-            # Calcula las coordenadas hacia el sur
-            south_expanded = [coordinates[-1]]
+            return expanded_coordinates
+
+        def expand_coordinates_south(coordinates, distance_increase):
+            # Expande las coordenadas hacia el sur
+
+            expanded_coordinates = [coordinates[-1]]
             for coord in reversed(coordinates):
                 new_coord = calculate_new_coordinates(coord, 180, distance_increase)
-                south_expanded.append(new_coord)
+                expanded_coordinates.append(new_coord)
 
-            # Retorna la lista combinada de coordenadas expandidas
-            return north_expanded + south_expanded[1:]
+            return expanded_coordinates[1:]
 
         # Definir la distancia adicional que deseas agregar a la anchura
         distance_increase = 200  # en kilómetros
 
         # Expande las coordenadas del borde norte
-        expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
+        expanded_coordinates_norte = expand_coordinates_north(coordinates_norte, distance_increase)
 
-        # Expande las coordenadas del borde sur
-        expanded_coordinates_sur = expand_coordinates(coordinates_sur, distance_increase) 
+        # Expande las coordenadas del borde sur    
+        expanded_coordinates_sur = expand_coordinates_south(coordinates_sur, distance_increase) 
+
+        # Mostrar el mapa#
+        #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
+        folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
+#mexico_map.save('mexico_map.html')
+
 
 # Mostrar el mapa
 #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
         #folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
-        folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
+        #folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
 #mexico_map.save('mexico_map.html')
 
 
