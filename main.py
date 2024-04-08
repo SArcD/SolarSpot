@@ -767,15 +767,14 @@ def main():
                 lat2, lon2 = coordinates[i + 1]
 
                 # Calcular la distancia entre los puntos
-                # Aquí puedes usar la fórmula de la distancia entre dos puntos en la superficie de la Tierra
-                # O utilizar alguna biblioteca de Python como geopy para calcular la distancia
+                # Usar la fórmula de la distancia entre dos puntos en la superficie de la Tierra
                 distance = calculate_distance(lat1, lon1, lat2, lon2)
 
                 # Dividir la distancia por 10
                 distance_partial = distance / 10
 
                 # Multiplicar por 4 para obtener la distancia correspondiente al 80% de la parcialidad
-                distance_partial_80 = distance_partial * 4
+                distance_partial_80 = distance_partial * 8
 
                 # Calcular las coordenadas de los puntos intermedios
                 lat_partial_80 = lat1 + (lat2 - lat1) * distance_partial_80 / distance
@@ -792,7 +791,7 @@ def main():
 #    # Resto de las coordenadas...
 #]
 
-        partiality_80_norte = calculate_partiality_80(coordinates_norte)
+        partiality_80_norte = calculate_partiality_80(coordinates)
         #print(partiality_80_norte)
         partiality_80_sur = calculate_partiality_80(coordinates_sur)
 
