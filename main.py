@@ -770,7 +770,7 @@ def main():
 
 
         # Mostrar el mapa
-        folium.PolyLine(locations=expanded_coordinates, color='purple').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates, color='green').add_to(mexico_map)
         folium.PolyLine(locations=expanded_coordinates_sur, color='purple').add_to(mexico_map)
 
 
