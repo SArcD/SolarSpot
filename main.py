@@ -849,7 +849,7 @@ def main():
             return expanded_coordinates[1:]
 
         # Definir la distancia adicional que deseas agregar a la anchura
-        distance_increase = 400  # en kilómetros
+        distance_increase = 600  # en kilómetros
 
         # Expande las coordenadas del borde norte
         expanded_coordinates_norte = expand_coordinates_north(coordinates_sur, distance_increase)
