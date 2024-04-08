@@ -784,10 +784,42 @@ def main():
         #print("\nCoordenadas expandidas del borde sur:")
         #print(expanded_coordinates_sur)
 
+        import folium
+        from geographiclib.geodesic import Geodesic
+
+        def expand_coordinates_mercator(coordinates, distance_increase):
+            # Usamos la proyección de Mercator para expandir las coordenadas
+            expanded_coordinates = []
+            for lat, lon in coordinates:
+                # Calculamos el cambio en la latitud usando la fórmula de Mercator
+                delta_lat = distance_increase / (Geodesic.WGS84.a * 1000) * (180 / 3.141592653589793)
+
+                # Agregamos el cambio a la latitud
+                new_lat = lat + delta_lat
+
+                expanded_coordinates.append((new_lat, lon))
+
+            return expanded_coordinates
+
+        # Definir la distancia adicional que deseas agregar a la anchura
+        distance_increase = 1200  # en kilómetros
+
+        # Expande las coordenadas del borde norte usando la proyección de Mercator
+        expanded_coordinates_norte_mercator = expand_coordinates_mercator(coordinates_norte, distance_increase)
+
+        # Expande las coordenadas del borde sur usando la proyección de Mercator
+        expanded_coordinates_sur_mercator = expand_coordinates_mercator(coordinates_sur, distance_increase)
 
         # Mostrar el mapa
-        folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
-        folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
+        #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
+        folium.PolyLine(locations=expanded_coordinates_norte_mercator, color='orange').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_sur_mercator, color='orange').add_to(mexico_map)
+        #mexico_map.save('mexico_map.html')
+
+        
+        # Mostrar el mapa
+        #folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
+        #folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
 
 
         # Mostrar el mapa en Streamlit
