@@ -849,7 +849,9 @@ def main():
             return expanded_coordinates[1:]
 
         # Definir la distancia adicional que deseas agregar a la anchura
-        distance_increase = 900  # en kilómetros
+        #distance_increase = 900  # en kilómetros
+        # Definir la distancia adicional que deseas agregar a la anchura
+        distance_increase = st.sidebar.slider("Aumento de distancia (km)", min_value=0, max_value=1000, value=200, step=100)
 
         # Expande las coordenadas del borde norte
         expanded_coordinates_norte = expand_coordinates_north(coordinates_sur, distance_increase)
@@ -861,14 +863,6 @@ def main():
         #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
         folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
         folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
-#mexico_map.save('mexico_map.html')
-
-
-# Mostrar el mapa
-#mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
-        #folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
-        #folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
-#mexico_map.save('mexico_map.html')
 
 
         # Mostrar el mapa en Streamlit
