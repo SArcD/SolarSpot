@@ -733,93 +733,132 @@ def main():
         folium.PolyLine(locations=coordinates_norte, color='black').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_centro, color='red').add_to(mexico_map)
 
-        from geopy.distance import geodesic
+ #       from geopy.distance import geodesic
 
-        def calculate_distance(coord1, coord2):
+ #       def calculate_distance(coord1, coord2):
             # Calcula la distancia geodésica entre dos coordenadas en kilómetros
-            return geodesic(coord1, coord2).kilometers
+ #           return geodesic(coord1, coord2).kilometers
 
-        def expand_coordinates(coordinates, distance_increase):
+ #       def expand_coordinates(coordinates, distance_increase):
             # Calcula la distancia actual entre los bordes norte y sur
-            current_distance = calculate_distance(coordinates[0], coordinates[-1])
+ #           current_distance = calculate_distance(coordinates[0], coordinates[-1])
 
             # Calcula el factor de escala necesario para aumentar la distancia en 200 km
-            scale_factor = (current_distance + distance_increase) / current_distance
+ #           scale_factor = (current_distance + distance_increase) / current_distance
 
             # Expande las coordenadas aplicando el factor de escala
-            expanded_coordinates = [(lat, lon) for lat, lon in coordinates]
-            for i in range(len(expanded_coordinates)):
-                lat, lon = expanded_coordinates[i]
-                lat = lat * scale_factor
-                expanded_coordinates[i] = (lat, lon)
+ #           expanded_coordinates = [(lat, lon) for lat, lon in coordinates]
+ #           for i in range(len(expanded_coordinates)):
+ #               lat, lon = expanded_coordinates[i]
+ #               lat = lat * scale_factor
+ #               expanded_coordinates[i] = (lat, lon)
 
-            return expanded_coordinates
+ #           return expanded_coordinates
 
-        def expand_coordinates_s(coordinates, distance_increase):
+ #       def expand_coordinates_s(coordinates, distance_increase):
             # Calcula la distancia actual entre los bordes norte y sur
-            current_distance = calculate_distance(coordinates[0], coordinates[-1])
+ #           current_distance = calculate_distance(coordinates[0], coordinates[-1])
 
             # Calcula el factor de escala necesario para aumentar la distancia en 200 km
-            scale_factor = (current_distance - distance_increase) / current_distance
+ #           scale_factor = (current_distance - distance_increase) / current_distance
 
             # Expande las coordenadas aplicando el factor de escala
-            expanded_coordinates_s = [(lat, lon) for lat, lon in coordinates]
-            for i in range(len(expanded_coordinates_s)):
-                lat, lon = expanded_coordinates_s[i]
-                lat = lat * scale_factor
-                expanded_coordinates_s[i] = (lat, lon)
+ #           expanded_coordinates_s = [(lat, lon) for lat, lon in coordinates]
+ #           for i in range(len(expanded_coordinates_s)):
+ #               lat, lon = expanded_coordinates_s[i]
+ #               lat = lat * scale_factor
+ #               expanded_coordinates_s[i] = (lat, lon)
 
-            return expanded_coordinates_s
+ #           return expanded_coordinates_s
 
         # Definir la distancia adicional que deseas agregar a la anchura
-        distance_increase = 1200  # en kilómetros
+ #       distance_increase = 1200  # en kilómetros
 
         # Expande las coordenadas del borde norte
-        expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
+ #       expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
         #print("Coordenadas expandidas del borde norte:")
         #print(expanded_coordinates)
 
         # Expande las coordenadas del borde sur
-        expanded_coordinates_sur = expand_coordinates_s(coordinates_sur, distance_increase)        
+ #       expanded_coordinates_sur = expand_coordinates_s(coordinates_sur, distance_increase)        
         #print("\nCoordenadas expandidas del borde sur:")
         #print(expanded_coordinates_sur)
 
-        import folium
-        from geographiclib.geodesic import Geodesic
+ #       import folium
+ #       from geographiclib.geodesic import Geodesic
 
-        def expand_coordinates_mercator(coordinates, distance_increase):
+ #       def expand_coordinates_mercator(coordinates, distance_increase):
             # Usamos la proyección de Mercator para expandir las coordenadas
-            expanded_coordinates = []
-            for lat, lon in coordinates:
+ #           expanded_coordinates = []
+ #           for lat, lon in coordinates:
                 # Calculamos el cambio en la latitud usando la fórmula de Mercator
-                delta_lat = distance_increase / (Geodesic.WGS84.a * 1000) * (180 / 3.141592653589793)
+#                delta_lat = distance_increase / (Geodesic.WGS84.a * 1000) * (180 / 3.141592653589793)
 
                 # Agregamos el cambio a la latitud
-                new_lat = lat + delta_lat
+#                new_lat = lat + delta_lat
 
-                expanded_coordinates.append((new_lat, lon))
+#                expanded_coordinates.append((new_lat, lon))
 
-            return expanded_coordinates
+#            return expanded_coordinates
 
         # Definir la distancia adicional que deseas agregar a la anchura
-        distance_increase = 1200  # en kilómetros
+#        distance_increase = 1200  # en kilómetros
 
         # Expande las coordenadas del borde norte usando la proyección de Mercator
-        expanded_coordinates_norte_mercator = expand_coordinates_mercator(coordinates_norte, distance_increase)
+#        expanded_coordinates_norte_mercator = expand_coordinates_mercator(coordinates_norte, distance_increase)
 
         # Expande las coordenadas del borde sur usando la proyección de Mercator
-        expanded_coordinates_sur_mercator = expand_coordinates_mercator(coordinates_sur, distance_increase)
+#        expanded_coordinates_sur_mercator = expand_coordinates_mercator(coordinates_sur, distance_increase)
 
         # Mostrar el mapa
         #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
-        folium.PolyLine(locations=expanded_coordinates_norte_mercator, color='orange').add_to(mexico_map)
-        folium.PolyLine(locations=expanded_coordinates_sur_mercator, color='orange').add_to(mexico_map)
-        #mexico_map.save('mexico_map.html')
+#        folium.PolyLine(locations=expanded_coordinates_norte_mercator, color='orange').add_to(mexico_map)
+#        folium.PolyLine(locations=expanded_coordinates_sur_mercator, color='orange').add_to(mexico_map)
 
         
         # Mostrar el mapa
         #folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
         #folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
+        from geopy.distance import geodesic
+
+        def calculate_new_coordinates(coord, bearing, distance):
+            # Calcula las nuevas coordenadas dados el rumbo (bearing) y la distancia
+            # El bearing se mide en grados, donde 0 es hacia el norte, 90 es hacia el este, etc.
+            new_coord = geodesic(kilometers=distance).destination(coord, bearing)
+            return new_coord.latitude, new_coord.longitude
+
+        def expand_coordinates(coordinates, distance_increase):
+            # Expande las coordenadas hacia el norte y hacia el sur
+
+            # Calcula las coordenadas hacia el norte
+            north_expanded = [coordinates[0]]
+            for coord in coordinates:
+                new_coord = calculate_new_coordinates(coord, 0, distance_increase)
+                north_expanded.append(new_coord)
+
+            # Calcula las coordenadas hacia el sur
+            south_expanded = [coordinates[-1]]
+            for coord in reversed(coordinates):
+                new_coord = calculate_new_coordinates(coord, 180, distance_increase)
+                south_expanded.append(new_coord)
+
+            # Retorna la lista combinada de coordenadas expandidas
+        return north_expanded + south_expanded[1:]
+
+        # Definir la distancia adicional que deseas agregar a la anchura
+        distance_increase = 200  # en kilómetros
+
+        # Expande las coordenadas del borde norte
+        expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
+
+        # Expande las coordenadas del borde sur
+        expanded_coordinates_sur = expand_coordinates(coordinates_sur, distance_increase) 
+
+# Mostrar el mapa
+#mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
+        folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
+#mexico_map.save('mexico_map.html')
 
 
         # Mostrar el mapa en Streamlit
