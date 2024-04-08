@@ -730,7 +730,7 @@ def main():
         
         
         folium.PolyLine(locations=coordinates, color='cyan').add_to(mexico_map)
-        folium.PolyLine(locations=coordinates_sur, color='cyan').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates_sur, color='black').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_norte, color='red').add_to(mexico_map)
 
         from geopy.distance import geodesic
