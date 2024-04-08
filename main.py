@@ -729,7 +729,7 @@ def main():
         ]
         
         
-        folium.PolyLine(locations=coordinates_sur, color='cyan').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates_sur, color='black').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_norte, color='black').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_centro, color='red').add_to(mexico_map)
 
@@ -786,8 +786,8 @@ def main():
 
 
         # Mostrar el mapa
-        folium.PolyLine(locations=expanded_coordinates_norte, color='green').add_to(mexico_map)
-        folium.PolyLine(locations=expanded_coordinates_sur, color='purple').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
 
 
         # Mostrar el mapa en Streamlit
