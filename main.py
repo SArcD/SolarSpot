@@ -760,13 +760,13 @@ def main():
 
         # Expande las coordenadas del borde norte
         expanded_coordinates = expand_coordinates(coordinates_norte, distance_increase)
-        print("Coordenadas expandidas del borde norte:")
-        print(expanded_coordinates_norte)
+        #print("Coordenadas expandidas del borde norte:")
+        #print(expanded_coordinates)
 
         # Expande las coordenadas del borde sur
         expanded_coordinates_sur = expand_coordinates(coordinates_sur, distance_increase)        
-        print("\nCoordenadas expandidas del borde sur:")
-        print(expanded_coordinates_sur)
+        #print("\nCoordenadas expandidas del borde sur:")
+        #print(expanded_coordinates_sur)
 
 
         # Mostrar el mapa
