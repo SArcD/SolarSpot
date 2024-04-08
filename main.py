@@ -572,7 +572,7 @@ def main():
 #usa_map = folium.Map(location=[37.0902, -95.7129], zoom_start=4)
 
         # Coordenadas proporcionadas
-        coordinates = [
+        coordinates_norte = [
             (6 + (11.7 / 60), -(146 + (38.0 / 60))), (5 + (8.4 / 60), -(143 + (0.6 / 60))),
             (4 + (12.3 / 60), -(140 + (15.6 / 60))), (3 + (20.2 / 60), -(137 + (59.5 / 60))),
             (2 + (30.8 / 60), -(136 + (2.5 / 60))), (1 + (43.4 / 60), -(134 + (19.0 / 60))),
@@ -759,7 +759,7 @@ def main():
         distance_increase = 200  # en kilómetros
 
         # Expande las coordenadas del borde norte
-        expanded_coordinates = expand_coordinates(coordinates, distance_increase)
+        expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
         #print("Coordenadas expandidas del borde norte:")
         #print(expanded_coordinates)
 
@@ -770,7 +770,7 @@ def main():
 
 
         # Mostrar el mapa
-        folium.PolyLine(locations=expanded_coordinates, color='green').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_norte, color='green').add_to(mexico_map)
         folium.PolyLine(locations=expanded_coordinates_sur, color='purple').add_to(mexico_map)
 
 
