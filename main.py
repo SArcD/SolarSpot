@@ -851,7 +851,7 @@ def main():
         # Definir la distancia adicional que deseas agregar a la anchura
         #distance_increase = 900  # en kilómetros
         # Definir la distancia adicional que deseas agregar a la anchura
-        distance_increase = st.sidebar.slider("Aumento de distancia (km)", min_value=0, max_value=1000, value=200, step=100)
+        distance_increase = st.sidebar.slider("Aumento de distancia (km)", min_value=0, max_value=3000, value=200, step=100)
 
         # Expande las coordenadas del borde norte
         expanded_coordinates_norte = expand_coordinates_north(coordinates_sur, distance_increase)
