@@ -759,7 +759,7 @@ def main():
         distance_increase = 200  # en kilómetros
 
         # Expande las coordenadas del borde norte
-        expanded_coordinates = expand_coordinates(coordinates_norte, distance_increase)
+        expanded_coordinates = expand_coordinates(coordinates, distance_increase)
         #print("Coordenadas expandidas del borde norte:")
         #print(expanded_coordinates)
 
