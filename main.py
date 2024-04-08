@@ -760,7 +760,7 @@ def main():
             current_distance = calculate_distance(coordinates[0], coordinates[-1])
 
             # Calcula el factor de escala necesario para aumentar la distancia en 200 km
-            scale_factor = (current_distance - distance_increase) / current_distance
+            scale_factor = (current_distance + distance_increase) / current_distance
 
             # Expande las coordenadas aplicando el factor de escala
             expanded_coordinates_s = [(lat, lon) for lat, lon in coordinates]
@@ -772,7 +772,7 @@ def main():
             return expanded_coordinates_s
 
         # Definir la distancia adicional que deseas agregar a la anchura
-        distance_increase = 500  # en kilómetros
+        distance_increase = 200  # en kilómetros
 
         # Expande las coordenadas del borde norte
         expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
