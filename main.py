@@ -852,10 +852,10 @@ def main():
         distance_increase = 200  # en kilómetros
 
         # Expande las coordenadas del borde norte
-        expanded_coordinates_norte = expand_coordinates_north(coordinates_norte, distance_increase)
+        expanded_coordinates_norte = expand_coordinates_north(coordinates_sur, distance_increase)
 
         # Expande las coordenadas del borde sur    
-        expanded_coordinates_sur = expand_coordinates_south(coordinates_sur, distance_increase) 
+        expanded_coordinates_sur = expand_coordinates_south(coordinates_norte, distance_increase) 
 
         # Mostrar el mapa#
         #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
