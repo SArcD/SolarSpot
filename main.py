@@ -733,75 +733,45 @@ def main():
         folium.PolyLine(locations=coordinates_sur, color='cyan').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_norte, color='red').add_to(mexico_map)
 
-        from math import radians, sin, cos, sqrt, atan2
+        from geopy.distance import geodesic
 
-        def calculate_distance(lat1, lon1, lat2, lon2):
-            # Convertir grados a radianes
-            lat1_rad = radians(lat1)
-            lon1_rad = radians(lon1)
-            lat2_rad = radians(lat2)
-            lon2_rad = radians(lon2)
+        def calculate_distance(coord1, coord2):
+            # Calcula la distancia geodésica entre dos coordenadas en kilómetros
+            return geodesic(coord1, coord2).kilometers
 
-            # Radio de la Tierra en kilómetros
-            R = 6371000.0
+        def expand_coordinates(coordinates, distance_increase):
+            # Calcula la distancia actual entre los bordes norte y sur
+            current_distance = calculate_distance(coordinates[0], coordinates[-1])
 
-            # Diferencia de longitudes y latitudes
-            dlon = lon2_rad - lon1_rad
-            dlat = lat2_rad - lat1_rad
+            # Calcula el factor de escala necesario para aumentar la distancia en 200 km
+            scale_factor = (current_distance + distance_increase) / current_distance
 
-            # Fórmula del gran círculo
-            a = sin(dlat / 2)**2 + cos(lat1_rad) * cos(lat2_rad) * sin(dlon / 2)**2
-            c = 2 * atan2(sqrt(a), sqrt(1 - a))
+            # Expande las coordenadas aplicando el factor de escala
+            expanded_coordinates = [(lat, lon) for lat, lon in coordinates]
+            for i in range(len(expanded_coordinates)):
+                lat, lon = expanded_coordinates[i]
+                lat = lat * scale_factor
+                expanded_coordinates[i] = (lat, lon)
 
-            # Distancia en kilómetros
-            distance = R * c
+            return expanded_coordinates
 
-            return distance
-        
-        def calculate_partiality_80(coordinates):
-            partiality_80 = []
+        # Definir la distancia adicional que deseas agregar a la anchura
+        distance_increase = 200  # en kilómetros
 
-            # Iterar a través de cada par de coordenadas
-            for i in range(len(coordinates) - 1):
-                lat1, lon1 = coordinates[i]
-                lat2, lon2 = coordinates[i + 1]
+        # Expande las coordenadas del borde norte
+        expanded_coordinates = expand_coordinates(coordinates_norte, distance_increase)
+        print("Coordenadas expandidas del borde norte:")
+        print(expanded_coordinates_norte)
 
-                # Calcular la distancia entre los puntos
-                # Usar la fórmula de la distancia entre dos puntos en la superficie de la Tierra
-                distance = calculate_distance(lat1, lon1, lat2, lon2)
+        # Expande las coordenadas del borde sur
+        expanded_coordinates_sur = expand_coordinates(coordinates_sur, distance_increase)        
+        print("\nCoordenadas expandidas del borde sur:")
+        print(expanded_coordinates_sur)
 
-                # Dividir la distancia por 10
-                distance_partial = distance / 10
-
-                # Multiplicar por 4 para obtener la distancia correspondiente al 80% de la parcialidad
-                distance_partial_80 = distance_partial * 8
-
-                # Calcular las coordenadas de los puntos intermedios
-                lat_partial_80 = lat1 + (lat2 - lat1) * distance_partial_80 / distance
-                lon_partial_80 = lon1 + (lon2 - lon1) * distance_partial_80 / distance
-
-                # Agregar las coordenadas a la lista de parcialidad al 80%
-                partiality_80.append((lat_partial_80, lon_partial_80))
-
-            return partiality_80
-
-## Ejemplo de uso con las coordenadas del borde norte de la zona de totalidad
-#coordinates_norte = [
-#    (6 + (11.7 / 60), -(146 + (38.0 / 60))), (5 + (8.4 / 60), -(143 + (0.6 / 60))),
-#    # Resto de las coordenadas...
-#]
-
-        partiality_80_norte = calculate_partiality_80(coordinates)
-        #print(partiality_80_norte)
-        partiality_80_sur = calculate_partiality_80(coordinates_sur)
-
-        # Agregar la línea poligonal al mapa
-        #folium.PolyLine(locations=[(lat, -abs(deg) - (min / 60)) for deg, min, _, _ in coordinates], color='blue').add_to(mexico_map)
 
         # Mostrar el mapa
-        #mexico_map
-        folium.PolyLine(locations=partiality_80_norte, color='purple').add_to(mexico_map)
-        folium.PolyLine(locations=partiality_80_sur, color='purple').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates, color='purple').add_to(mexico_map)
+        folium.PolyLine(locations=expanded_coordinates_sur, color='purple').add_to(mexico_map)
 
 
         # Mostrar el mapa en Streamlit
