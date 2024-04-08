@@ -764,10 +764,10 @@ def main():
 
             # Expande las coordenadas aplicando el factor de escala
             expanded_coordinates_s = [(lat, lon) for lat, lon in coordinates]
-            for i in range(len(expanded_coordinates)):
+            for i in range(len(expanded_coordinates_s)):
                 lat, lon = expanded_coordinates_s[i]
                 lat = lat * scale_factor
-                expanded_coordinates[i] = (lat, lon)
+                expanded_coordinates_s[i] = (lat, lon)
 
             return expanded_coordinates_s
 
