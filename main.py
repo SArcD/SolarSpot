@@ -743,7 +743,7 @@ def main():
             lon2_rad = radians(lon2)
 
             # Radio de la Tierra en kilómetros
-            R = 6371.0
+            R = 6371000.0
 
             # Diferencia de longitudes y latitudes
             dlon = lon2_rad - lon1_rad
