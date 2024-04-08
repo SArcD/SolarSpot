@@ -733,6 +733,31 @@ def main():
         folium.PolyLine(locations=coordinates_sur, color='cyan').add_to(mexico_map)
         folium.PolyLine(locations=coordinates_norte, color='red').add_to(mexico_map)
 
+        from math import radians, sin, cos, sqrt, atan2
+
+        def calculate_distance(lat1, lon1, lat2, lon2):
+            # Convertir grados a radianes
+            lat1_rad = radians(lat1)
+            lon1_rad = radians(lon1)
+            lat2_rad = radians(lat2)
+            lon2_rad = radians(lon2)
+
+            # Radio de la Tierra en kilómetros
+            R = 6371.0
+
+            # Diferencia de longitudes y latitudes
+            dlon = lon2_rad - lon1_rad
+            dlat = lat2_rad - lat1_rad
+
+            # Fórmula del gran círculo
+            a = sin(dlat / 2)**2 + cos(lat1_rad) * cos(lat2_rad) * sin(dlon / 2)**2
+            c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+            # Distancia en kilómetros
+            distance = R * c
+
+            return distance
+        
         def calculate_partiality_80(coordinates):
             partiality_80 = []
 
