@@ -760,7 +760,7 @@ def main():
             current_distance = calculate_distance(coordinates[0], coordinates[-1])
 
             # Calcula el factor de escala necesario para aumentar la distancia en 200 km
-            scale_factor = (current_distance + distance_increase) / current_distance
+            scale_factor = (current_distance - distance_increase) / current_distance
 
             # Expande las coordenadas aplicando el factor de escala
             expanded_coordinates_s = [(lat, lon) for lat, lon in coordinates]
