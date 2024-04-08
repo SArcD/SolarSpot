@@ -677,7 +677,7 @@ def main():
         ]
 
         # Coordenadas proporcionadas
-        coordinates_norte = [
+        coordinates_centro = [
             (5 + (50.2 / 60), -(148 + (7.8 / 60))), (4 + (44.0 / 60), -(144 + (13.0 / 60))),
             (3 + (46.4 / 60), -(141 + (20.3 / 60))), (2 + (53.3 / 60), -(138 + (59.7 / 60))),
             (2 + (3.3 / 60), -(136 + (59.7 / 60))), (1 + (15.4 / 60), -(135 + (14.1 / 60))),
@@ -729,9 +729,9 @@ def main():
         ]
         
         
-        folium.PolyLine(locations=coordinates, color='cyan').add_to(mexico_map)
-        folium.PolyLine(locations=coordinates_sur, color='black').add_to(mexico_map)
-        folium.PolyLine(locations=coordinates_norte, color='red').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates_sur, color='cyan').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates_norte, color='black').add_to(mexico_map)
+        folium.PolyLine(locations=coordinates_centro, color='red').add_to(mexico_map)
 
         from geopy.distance import geodesic
 
