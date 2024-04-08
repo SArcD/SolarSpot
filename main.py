@@ -856,7 +856,7 @@ def main():
 
 # Mostrar el mapa
 #mexico_map = folium.Map(location=[23.6345, -102.5528], zoom_start=5)  # Ubicación central de México
-        folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
+        #folium.PolyLine(locations=expanded_coordinates_norte, color='orange').add_to(mexico_map)
         folium.PolyLine(locations=expanded_coordinates_sur, color='orange').add_to(mexico_map)
 #mexico_map.save('mexico_map.html')
 
