@@ -775,12 +775,12 @@ def main():
         distance_increase = 1200  # en kilómetros
 
         # Expande las coordenadas del borde norte
-        expanded_coordinates_norte = expand_coordinates(coordinates_sur, distance_increase)
+        expanded_coordinates_norte = expand_coordinates(coordinates_norte, distance_increase)
         #print("Coordenadas expandidas del borde norte:")
         #print(expanded_coordinates)
 
         # Expande las coordenadas del borde sur
-        expanded_coordinates_sur = expand_coordinates_s(coordinates_norte, distance_increase)        
+        expanded_coordinates_sur = expand_coordinates_s(coordinates_sur, distance_increase)        
         #print("\nCoordenadas expandidas del borde sur:")
         #print(expanded_coordinates_sur)
 
