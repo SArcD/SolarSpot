@@ -843,7 +843,7 @@ def main():
                 south_expanded.append(new_coord)
 
             # Retorna la lista combinada de coordenadas expandidas
-        return north_expanded + south_expanded[1:]
+            return north_expanded + south_expanded[1:]
 
         # Definir la distancia adicional que deseas agregar a la anchura
         distance_increase = 200  # en kilómetros
