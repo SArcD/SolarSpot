@@ -341,14 +341,14 @@ def main():
             st.write(f"Porcentaje del área visible del disco solar: {percentage_area_not_in_intersection}%")
 
         with st.sidebar:
-            pos_x1 = st.slider('PosX1', -20.0, 20.0, 0.0, 0.1)
-            pos_y1 = st.slider('PosY1', -20.0, 20.0, 0.0, 0.1)
+            pos_x1 = st.slider('PosX1', -30.0, 30.0, 0.0, 0.1)
+            pos_y1 = st.slider('PosY1', -30.0, 30.0, 0.0, 0.1)
             radio1 = st.slider('Radio1', 0.0, 20.0, 10.0, 0.1)
-            pos_x2 = st.slider('PosX2', -20.0, 20.0, 5.0, 0.1)
-            pos_y2 = st.slider('PosY2', -20.0, 20.0, 5.0, 0.1)
+            pos_x2 = st.slider('PosX2', -30.0, 30.0, 5.0, 0.1)
+            pos_y2 = st.slider('PosY2', -30.0, 30.0, 5.0, 0.1)
             radio2 = st.slider('Radio2', 0.0, 20.0, 7.0, 0.1)
             x_limit = st.slider('Límite X', 1.0, 50.0, 30.0, 1.0)
-            y_limit = st.slider('Límite Y', 1.0, 50.0, 20.0, 1.0)
+            y_limit = st.slider('Límite Y', 1.0, 50.0, 30.0, 1.0)
 
         
         # Llamar a la función update con los valores de los deslizadores
