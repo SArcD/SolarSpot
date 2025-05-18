@@ -86,7 +86,7 @@ def main():
 
             ---
             """)
-     mostrar_introduccion_estrellas()
+        mostrar_introduccion_estrellas()
 
     
     if page == "Visualizador de Imagen del Sol":
