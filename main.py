@@ -17,7 +17,7 @@ def main():
     # Crear una barra lateral para la navegación entre páginas
     page = st.sidebar.radio("Seleccionar página", ("Introducción", "Datos generales sobre el Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
 
-    if page == "Itroducción":
+    if page == "Introducción":
         import streamlit as st
         #from introduccion_estrellas import mostrar_introduccion_estrellas
 
