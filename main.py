@@ -169,6 +169,12 @@ def main():
         st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sun_layers.svg/1920px-Sun_layers.svg.png",
              caption="Capas del Sol", use_column_width=True)
 
+        st.image(
+            "https://solarsystem.nasa.gov/system/resources/detail_files/769_sunlayers.jpg",
+            caption="Capas del Sol",
+            use_column_width=True
+        )
+        
         st.markdown("""
         ---
 
