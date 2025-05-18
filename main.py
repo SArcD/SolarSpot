@@ -19,6 +19,8 @@ def main():
 
     if page == "Itroducción":
         import streamlit as st
+        from introduccion_estrellas import mostrar_introduccion_estrellas
+
 
         def mostrar_introduccion_estrellas():
             st.title("🌌 Introducción: ¿Qué son las estrellas?")
