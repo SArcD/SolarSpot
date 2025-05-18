@@ -267,6 +267,54 @@ def main():
         """)
 
 
+        import streamlit as st
+        from PIL import Image
+
+        st.title("🧠 Detección de bordes: ¿Cómo encontramos las manchas solares?")
+
+        st.markdown("""
+        La **detección de bordes** es una técnica esencial del procesamiento de imágenes.  
+        Nos permite encontrar los **límites de objetos** dentro de una imagen, como el borde del Sol y las manchas solares.
+
+        ---
+
+        ### 🧭 ¿Qué es un borde?
+
+        Un **borde** es una zona donde hay un cambio abrupto de color o intensidad de luz.  
+        El ojo humano lo reconoce como "límite" entre objetos, y los algoritmos también pueden hacerlo.
+
+        En imágenes del Sol:
+        - Los **bordes externos** permiten identificar el disco solar.
+        - Las **manchas oscuras** internas también tienen bordes que permiten delimitar su forma y tamaño.
+
+        ---
+
+        ### 🎨 Ilustración del proceso
+
+        A continuación puedes ver un resumen visual del proceso paso a paso:
+        """)
+
+        # Cargar imagen ilustrativa desde archivo local
+        imagen_ilustrativa = Image.open("/mnt/data/A_screenshot_of_an_educational_interface_in_Spanis.png")
+        st.image(imagen_ilustrativa, caption="Resumen visual del proceso de detección de bordes", use_column_width=True)
+
+        st.markdown("""
+        ---
+
+        ### 🔍 Etapas del proceso
+
+        1. **Imagen original**: la foto del Sol en color.
+        2. **Escala de grises**: convertimos a blanco y negro para trabajar con intensidad.
+        3. **Umbralización (binarización)**: dividimos la imagen en zonas claras (fondo) y oscuras (manchas).
+        4. **Detección de bordes**: el algoritmo marca los límites de las regiones oscuras.
+
+        ---
+
+        ✅ ¡Ya tienes la base para entender cómo detectamos las manchas solares!  
+        En la siguiente sección podrás aplicar este proceso a tu propia imagen y ajustar los parámetros manualmente.
+        """)
+
+    
     
     
     if page == "Visualizador de Imagen del Sol":
