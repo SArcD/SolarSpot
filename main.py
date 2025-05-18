@@ -193,6 +193,80 @@ def main():
         st.markdown("---")
         st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
 
+
+        st.title("🌑 ¿Qué son las manchas solares?")
+
+        st.markdown("""
+        Las **manchas solares** son zonas más frías y oscuras que aparecen sobre la **fotosfera** del Sol.  
+        Aunque parecen negras, tienen temperaturas de aproximadamente **3,500 °C**, comparadas con los **5,500 °C** del resto del Sol.
+
+        ---
+
+        ### 🔍 ¿Por qué se forman?
+
+        Son causadas por **campos magnéticos intensos** que bloquean el flujo normal de energía térmica.  
+        Esto hace que esas zonas se enfríen ligeramente, lo que las vuelve más oscuras.
+
+        ---
+
+        ### 🧲 Campo magnético solar
+
+        Las manchas aparecen en pares con **polos magnéticos opuestos** y a menudo están unidas por arcos de plasma o protuberancias solares.
+
+        """)
+
+        st.image(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Solar_sunspots_ar2665.jpg/1024px-Solar_sunspots_ar2665.jpg",
+            caption="Manchas solares captadas por telescopio (NASA, AR2665)",
+            use_column_width=True
+        )
+
+        st.markdown("""
+        ---
+
+        ### 🧬 Estructura de una mancha solar
+
+        - **Umbra**: centro oscuro y frío
+        - **Penumbra**: anillo exterior más claro
+
+        """)
+
+        st.image(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Sunspot_Umbra_Penumbra.jpg/1024px-Sunspot_Umbra_Penumbra.jpg",
+            caption="Estructura de una mancha solar: Umbra y penumbra",
+            use_column_width=True
+        )
+
+        st.markdown("""
+        ---
+
+        ### 🌍 ¿Por qué son importantes?
+
+        - Indican niveles de **actividad solar**
+        - Se relacionan con **tormentas solares** que pueden afectar la Tierra
+        - Aumentan durante el **máximo solar**, dentro de un ciclo de 11 años
+
+        """)
+
+        st.image(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Solar_cycle.svg/1200px-Solar_cycle.svg.png",
+            caption="Ciclo de manchas solares (Solar Cycle, NASA)",
+            use_column_width=True
+        )
+
+        st.markdown("""
+        ---
+
+        ### 💡 ¿Sabías que...?
+
+        - Galileo Galilei fue de los primeros en observarlas con telescopio.
+        - Algunas manchas solares son **más grandes que la Tierra**.
+        - Se clasifican y se cuentan con el **número de Wolf**.
+
+        ---
+        """)
+
+
     
     
     if page == "Visualizador de Imagen del Sol":
