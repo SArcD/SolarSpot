@@ -19,76 +19,76 @@ def main():
 
     if page == "Itroducción":
         import streamlit as st
-        from introduccion_estrellas import mostrar_introduccion_estrellas
+        #from introduccion_estrellas import mostrar_introduccion_estrellas
 
 
-        def mostrar_introduccion_estrellas():
-            st.title("🌌 Introducción: ¿Qué son las estrellas?")
+        #def mostrar_introduccion_estrellas():
+        st.title("🌌 Introducción: ¿Qué son las estrellas?")
 
-            st.markdown("""
-            Las **estrellas** son enormes esferas de gas caliente, compuestas principalmente por **hidrógeno** y **helio**.  
-            En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor.
+        st.markdown("""
+        Las **estrellas** son enormes esferas de gas caliente, compuestas principalmente por **hidrógeno** y **helio**.  
+        En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor.
 
-            ---
+        ---
 
-            ### 🔭 ¿Cómo las vemos?
+        ### 🔭 ¿Cómo las vemos?
 
-            Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  
-            Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio.
+        Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  
+        Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio.
 
-            Algunas estrellas famosas:
+        Algunas estrellas famosas:
 
-            - 🌟 **Sirius** (la más brillante del cielo nocturno)
-            - 🔴 **Betelgeuse** (gigante roja)
-            - 🔵 **Rigel** (estrella azul)
-            - 💎 **Vega**, **Antares**, y más.
+        - 🌟 **Sirius** (la más brillante del cielo nocturno)
+        - 🔴 **Betelgeuse** (gigante roja)
+        - 🔵 **Rigel** (estrella azul)
+        - 💎 **Vega**, **Antares**, y más.
 
-            ---
+        ---
 
-            ### 🌈 Tipos de estrellas
+        ### 🌈 Tipos de estrellas
 
-            Las estrellas varían en **color, tamaño y temperatura**, lo que nos permite clasificarlas.  
-            Aquí tienes una tabla con ejemplos:
+        Las estrellas varían en **color, tamaño y temperatura**, lo que nos permite clasificarlas.  
+        Aquí tienes una tabla con ejemplos:
 
-            | Tipo de estrella   | Color          | Temperatura aprox. | Ejemplo            |
-            |--------------------|----------------|---------------------|---------------------|
-            | Enana roja         | 🔴 Rojo tenue  | ~3,000 °C           | Proxima Centauri   |
-            | Estrella amarilla  | 🟡 Amarillo    | ~5,500 °C           | El Sol             |
-            | Estrella azul      | 🔵 Azul intenso| >25,000 °C          | Rigel              |
-            | Gigante roja       | 🔴🔶 Rojo anaranjado | ~3,000-5,000 °C | Betelgeuse         |
+        | Tipo de estrella   | Color          | Temperatura aprox. | Ejemplo            |
+        |--------------------|----------------|---------------------|---------------------|
+        | Enana roja         | 🔴 Rojo tenue  | ~3,000 °C           | Proxima Centauri   |
+        | Estrella amarilla  | 🟡 Amarillo    | ~5,500 °C           | El Sol             |
+        | Estrella azul      | 🔵 Azul intenso| >25,000 °C          | Rigel              |
+        | Gigante roja       | 🔴🔶 Rojo anaranjado | ~3,000-5,000 °C | Betelgeuse         |
 
-            ---
+        ---
 
-            ### 🌟 Ciclo de vida estelar
+        ### 🌟 Ciclo de vida estelar
 
-            Las estrellas **nacen, viven y mueren**, dependiendo de su masa:
+        Las estrellas **nacen, viven y mueren**, dependiendo de su masa:
 
-            1. **Nacimiento**: en **nebulosas**, nubes de gas y polvo.
-            2. **Vida activa**: liberan energía por millones o miles de millones de años.
-            3. **Muerte**: pueden terminar como:
-               - 💀 Enanas blancas
-               - ⚛️ Estrellas de neutrones
-               -  🕳️ Agujeros negros
+        1. **Nacimiento**: en **nebulosas**, nubes de gas y polvo.
+        2. **Vida activa**: liberan energía por millones o miles de millones de años.
+        3. **Muerte**: pueden terminar como:
+            - 💀 Enanas blancas
+            - ⚛️ Estrellas de neutrones
+            -  🕳️ Agujeros negros
 
-            ---
+        ---
 
-            ### ☀️ ¿Y el Sol?
+        ### ☀️ ¿Y el Sol?
 
-            El **Sol es una estrella**: una esfera de gas caliente en fusión, **mucho más cerca** de nosotros que las demás estrellas.  
-            Por eso lo vemos tan grande y brillante.  
-            Es una **estrella amarilla de tamaño medio**, pero es fundamental para la vida en la Tierra.
+        El **Sol es una estrella**: una esfera de gas caliente en fusión, **mucho más cerca** de nosotros que las demás estrellas.  
+        Por eso lo vemos tan grande y brillante.  
+        Es una **estrella amarilla de tamaño medio**, pero es fundamental para la vida en la Tierra.
     
-            ---
+        ---
 
-            ### 💡 ¿Sabías que...?
+        ### 💡 ¿Sabías que...?
 
-            - Una cucharadita de una estrella de neutrones pesa millones de toneladas.
-            - Las estrellas parecen "parpadear" por la atmósfera terrestre, no porque realmente lo hagan.
-            - El Sol tiene unos **4,600 millones de años** y vivirá unos 5,000 millones más.
+        - Una cucharadita de una estrella de neutrones pesa millones de toneladas.
+        - Las estrellas parecen "parpadear" por la atmósfera terrestre, no porque realmente lo hagan.
+        - El Sol tiene unos **4,600 millones de años** y vivirá unos 5,000 millones más.
 
-            ---
-            """)
-        mostrar_introduccion_estrellas()
+        ---
+        """)
+        #mostrar_introduccion_estrellas()
 
     
     if page == "Visualizador de Imagen del Sol":
