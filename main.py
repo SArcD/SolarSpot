@@ -133,7 +133,7 @@ def main():
         st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Solar_System_evolution.svg/1280px-Solar_System_evolution.svg.png",
              caption="Ciclo de vida estimado del Sol", use_column_width=True)
 
-            st.markdown("""
+        st.markdown("""
         ---
 
         ## 🧬 Estructura del Sol
