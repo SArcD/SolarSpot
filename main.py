@@ -15,7 +15,7 @@ def main():
     import numpy as np
     from PIL import Image
     # Crear una barra lateral para la navegación entre páginas
-    page = st.sidebar.radio("Seleccionar página", ("Introducción a la app", "Datos generales sobre el Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
+    page = st.sidebar.radio("Seleccionar página", ("Introducción", "Datos generales sobre el Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
     
     if page == "Visualizador de Imagen del Sol":
         import streamlit as st
