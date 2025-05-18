@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
+#  Este es el codigo para la visualización de imagenes solares "solar spot"
 
-import streamlit as st
-from PIL import Image
-import numpy as np
-import cv2
-import pandas as pd
-import math
+import streamlit as st #se encarga de generar la aplicaicón interactiva a partir del codigo de python
+from PIL import Image  # Se utiliza para cargar y procesar imagenes.
+import numpy as np  # realiza  operaciones numéricas
+import cv2  # sirve para procesamiento de imagenes
+import pandas as pd # genera tablas
+import math # carga funciones matematicas 
 import cv2
 
 
@@ -15,7 +15,7 @@ def main():
     import numpy as np
     from PIL import Image
     # Crear una barra lateral para la navegación entre páginas
-    page = st.sidebar.radio("Seleccionar página", ("Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
+    page = st.sidebar.radio("Seleccionar página", ("Introducción a la app", "Datos generales sobre el Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
     
     if page == "Visualizador de Imagen del Sol":
         import streamlit as st
