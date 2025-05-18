@@ -88,8 +88,106 @@ def main():
 
         ---
         """)
-        #mostrar_introduccion_estrellas()
 
+        import streamlit as st
+
+        st.title("☀️ El Sol: Nuestra estrella más cercana")
+
+        st.markdown("""
+        El **Sol** es una estrella muy especial para nosotros: es la fuente principal de luz, calor y energía que permite la vida en la Tierra.  
+        A continuación, exploraremos sus características, composición, estructura e historia en el universo.
+
+        ---
+
+        ## 🧪 Composición del Sol
+
+        El Sol está formado principalmente por:
+
+        - **Hidrógeno (≈ 74%)**
+        - **Helio (≈ 24%)**
+        - Pequeñas cantidades de oxígeno, carbono, hierro y otros elementos (≈ 2%)
+
+        La **fusión nuclear** en su núcleo convierte hidrógeno en helio, liberando enormes cantidades de energía.
+
+        📌 Esta energía tarda **miles de años** en llegar desde el núcleo hasta la superficie del Sol, y solo **8 minutos** desde allí hasta la Tierra.
+
+        """)
+
+            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Sun_poster.svg/1920px-Sun_poster.svg.png",
+             caption="Composición del Sol (NASA/SDO)", use_column_width=True)
+
+            st.markdown("""
+        ---
+
+        ## 🕰️ Historia del Sol
+    
+        - 🌌 El Sol se formó hace unos **4,600 millones de años** a partir de una nube de gas y polvo.
+        - 🔭 Se encuentra **en la mitad de su vida** como estrella de tipo G (amarilla).
+        - ☄️ Formó el Sistema Solar a su alrededor con planetas, asteroides y cometas.
+        - 🕳️ En unos **5,000 millones de años**, se convertirá en una **gigante roja**, y después en una **enana blanca**.
+
+        📍 Actualmente, se encuentra en una etapa llamada **secuencia principal**: produce energía estable por fusión.
+
+        """)
+
+            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Solar_System_evolution.svg/1280px-Solar_System_evolution.svg.png",
+             caption="Ciclo de vida estimado del Sol", use_column_width=True)
+
+            st.markdown("""
+        ---
+
+        ## 🧬 Estructura del Sol
+
+        El Sol está dividido en **capas**, desde el centro hacia afuera:
+
+        ### 1. **Núcleo**
+        - Temperatura: **~15 millones °C**
+        - Lugar donde ocurre la **fusión nuclear**
+
+        ### 2. **Zona radiativa**
+        - La energía se transmite lentamente mediante radiación.
+        - La luz puede tardar **cientos de miles de años** en salir de aquí.
+
+        ### 3. **Zona convectiva**
+        - Movimiento de gases calientes que ascienden y fríos que descienden.
+
+        ### 4. **Fotosfera**
+        - **“Superficie” visible del Sol**
+        - Temperatura: ~5,500 °C
+        - Aquí se observan las **manchas solares**.
+
+        ### 5. **Cromosfera**
+        - Capa rojiza, visible durante los eclipses solares.
+        - Sede de explosiones como las **protuberancias solares**.
+
+        ### 6. **Corona**    
+        - Atmósfera externa del Sol, muy tenue y caliente (más de 1 millón °C).
+        - Se ve como un halo blanco durante los eclipses.
+
+        """)
+
+            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sun_layers.svg/1920px-Sun_layers.svg.png",
+             caption="Capas del Sol", use_column_width=True)
+
+            st.markdown("""
+        ---
+
+        ## 🌍 Importancia del Sol para la Tierra
+
+        - Proporciona luz y calor esenciales para los ecosistemas.
+        - Influye en el **clima**, los **ciclos biológicos** y la **agricultura**.
+        - Su campo magnético protege a la Tierra del **viento solar**.
+        - Las variaciones en su actividad pueden afectar satélites y telecomunicaciones.
+
+        """)
+
+            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Solar_Energy_on_Earth.svg/1920px-Solar_Energy_on_Earth.svg.png",
+             caption="Relación entre el Sol y la Tierra", use_column_width=True)
+
+            st.markdown("---")
+            st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
+
+    
     
     if page == "Visualizador de Imagen del Sol":
         import streamlit as st
