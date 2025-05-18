@@ -113,7 +113,7 @@ def main():
 
         """)
 
-            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Sun_poster.svg/1920px-Sun_poster.svg.png",
+        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Sun_poster.svg/1920px-Sun_poster.svg.png",
              caption="Composición del Sol (NASA/SDO)", use_column_width=True)
 
             st.markdown("""
