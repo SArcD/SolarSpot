@@ -116,7 +116,7 @@ def main():
         st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Sun_poster.svg/1920px-Sun_poster.svg.png",
              caption="Composición del Sol (NASA/SDO)", use_column_width=True)
 
-            st.markdown("""
+        st.markdown("""
         ---
 
         ## 🕰️ Historia del Sol
@@ -130,7 +130,7 @@ def main():
 
         """)
 
-            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Solar_System_evolution.svg/1280px-Solar_System_evolution.svg.png",
+        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Solar_System_evolution.svg/1280px-Solar_System_evolution.svg.png",
              caption="Ciclo de vida estimado del Sol", use_column_width=True)
 
             st.markdown("""
@@ -166,10 +166,10 @@ def main():
 
         """)
 
-            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sun_layers.svg/1920px-Sun_layers.svg.png",
+        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sun_layers.svg/1920px-Sun_layers.svg.png",
              caption="Capas del Sol", use_column_width=True)
 
-            st.markdown("""
+        st.markdown("""
         ---
 
         ## 🌍 Importancia del Sol para la Tierra
@@ -181,11 +181,11 @@ def main():
 
         """)
 
-            st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Solar_Energy_on_Earth.svg/1920px-Solar_Energy_on_Earth.svg.png",
+        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Solar_Energy_on_Earth.svg/1920px-Solar_Energy_on_Earth.svg.png",
              caption="Relación entre el Sol y la Tierra", use_column_width=True)
 
-            st.markdown("---")
-            st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
+        st.markdown("---")
+        st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
 
     
     
