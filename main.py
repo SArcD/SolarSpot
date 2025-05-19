@@ -61,7 +61,7 @@ def main():
         """)
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_01.png")
-        st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_column_width=True)
+        st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_container_width=True)
 
         ### 🌟 Ciclo de vida estelar
 
