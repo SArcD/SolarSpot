@@ -264,7 +264,7 @@ def main():
         with open("im_06.gif", "rb") as f:
             gif = f.read()
 
-        st.image(gif, format="gif", caption="im_06.gif - "Zonas en una mancha solar"")
+        st.image(gif, format="gif", caption="im_06.gif - ""Zonas en una mancha solar"")
 
 
 
