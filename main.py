@@ -258,7 +258,8 @@ def main():
         with open("im_06.gif", "rb") as f:
             gif = f.read()
 
-        st.image(gif, format="gif", caption="Zonas en una mancha solar")
+        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
+        st.image("im_06.gif", caption="Zonas en una mancha solar")
 
 
         st.markdown("""
