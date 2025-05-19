@@ -184,15 +184,6 @@ def main():
         """)
 
         
-        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sun_layers.svg/1920px-Sun_layers.svg.png",
-             caption="Capas del Sol", use_column_width=True)
-
-        st.image(
-            "https://solarsystem.nasa.gov/system/resources/detail_files/769_sunlayers.jpg",
-            caption="Capas del Sol",
-            use_column_width=True
-        )
-        
         st.markdown("""
         ---
 
@@ -205,8 +196,6 @@ def main():
 
         """)
 
-        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Solar_Energy_on_Earth.svg/1920px-Solar_Energy_on_Earth.svg.png",
-             caption="Relación entre el Sol y la Tierra", use_column_width=True)
 
         st.markdown("---")
         st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
@@ -303,11 +292,6 @@ def main():
 
         """)
 
-        st.image(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Solar_cycle.svg/1200px-Solar_cycle.svg.png",
-            caption="Ciclo de manchas solares (Solar Cycle, NASA)",
-            use_column_width=True
-        )
 
         st.markdown("""
         ---
