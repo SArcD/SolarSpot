@@ -348,7 +348,12 @@ def main():
         4. **Detección de bordes**: el algoritmo marca los límites de las regiones oscuras.
 
         ---
+        """)
+        
+        st.image("im_13.gif", caption="proceso de detección de manchas solares mediante bordes")
 
+        st.markdown(
+        """
         ✅ ¡Ya tienes la base para entender cómo detectamos las manchas solares!  
         En la siguiente sección podrás aplicar este proceso a tu propia imagen y ajustar los parámetros manualmente.
         """)
