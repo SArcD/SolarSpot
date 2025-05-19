@@ -144,11 +144,17 @@ def main():
         st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Solar_System_evolution.svg/1280px-Solar_System_evolution.svg.png",
              caption="Ciclo de vida estimado del Sol", use_column_width=True)
 
+        # Mostrar imagen ilustrativa
+        imagen = Image.open("im_04.png")
+        st.image(imagen, caption="Capas del Sol", use_container_width=True)
+
+
+        
         st.markdown("""
         ---
 
         ## 🧬 Estructura del Sol
-
+        
         El Sol está dividido en **capas**, desde el centro hacia afuera:
 
         ### 1. **Núcleo**
@@ -177,6 +183,7 @@ def main():
 
         """)
 
+        
         st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sun_layers.svg/1920px-Sun_layers.svg.png",
              caption="Capas del Sol", use_column_width=True)
 
@@ -213,6 +220,26 @@ def main():
 
         ---
 
+        """)
+
+        st.markdown("""
+        ---
+
+        ### 🧬 Estructura de una mancha solar
+
+        - **Umbra**: centro oscuro y frío
+        - **Penumbra**: anillo exterior más claro
+
+        """)
+
+        
+        imagen = Image.open("im_05.png")
+        st.image(imagen, caption="Zonas en una mancha solar", use_container_width=True)
+
+        
+        st.markdown(
+        """
+        
         ### 🔍 ¿Por qué se forman?
 
         Son causadas por **campos magnéticos intensos** que bloquean el flujo normal de energía térmica.  
@@ -232,21 +259,11 @@ def main():
             use_column_width=True
         )
 
-        st.markdown("""
-        ---
 
-        ### 🧬 Estructura de una mancha solar
+        imagen = Image.open("im_06.gif")
+        st.image(imagen, caption="Zonas en una mancha solar", use_container_width=True)
 
-        - **Umbra**: centro oscuro y frío
-        - **Penumbra**: anillo exterior más claro
 
-        """)
-
-        st.image(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Sunspot_Umbra_Penumbra.jpg/1024px-Sunspot_Umbra_Penumbra.jpg",
-            caption="Estructura de una mancha solar: Umbra y penumbra",
-            use_column_width=True
-        )
 
         st.markdown("""
         ---
