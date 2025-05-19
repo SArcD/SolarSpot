@@ -259,8 +259,36 @@ def main():
             gif = f.read()
 
         #st.image(gif, format="gif", caption="Zonas en una mancha solar")
-        st.image("im_06.gif", caption="Zonas en una mancha solar")
+        st.image("im_06.gif", caption="Fragmentación y erosión de una mancha solar")
 
+
+        # Leer y mostrar el GIF animado
+        with open("im_07.gif", "rb") as f:
+            gif = f.read()
+
+        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
+        st.image("im_07.gif", caption="Movimiento aparente de las manchas solares causado por la rotación terrestre")
+
+
+                # Leer y mostrar el GIF animado
+        with open("im_08.gif", "rb") as f:
+            gif = f.read()
+
+        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
+        st.image("im_08.gif", caption="Movimiento aparente de las manchas solares causado por la rotación del Sol")
+
+
+        # Leer y mostrar el GIF animado
+        with open("im_09.gif", "rb") as f:
+            gif = f.read()
+
+        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
+        st.image("im_09.gif", caption="Movimiento de las manchas solares durante el ciclo de 11 años")
+
+
+
+
+        
 
         st.markdown("""
         ---
