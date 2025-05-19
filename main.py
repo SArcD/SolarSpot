@@ -253,19 +253,12 @@ def main():
 
         """)
 
-        st.image(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Solar_sunspots_ar2665.jpg/1024px-Solar_sunspots_ar2665.jpg",
-            caption="Manchas solares captadas por telescopio (NASA, AR2665)",
-            use_column_width=True
-        )
-
         
         # Leer y mostrar el GIF animado
         with open("im_06.gif", "rb") as f:
             gif = f.read()
 
-        st.image(gif, format="gif", caption=""Zonas en una mancha solar"")
-
+        st.image(gif, format="gif", caption="Zonas en una mancha solar")
 
 
         st.markdown("""
