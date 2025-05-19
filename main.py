@@ -58,9 +58,14 @@ def main():
         | Gigante roja       | 🔴🔶 Rojo anaranjado | ~3,000-5,000 °C | Betelgeuse         |
 
         ---
+        """)
+        # Mostrar imagen ilustrativa
+        imagen = Image.open("im_01.png")
+        st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_column_width=True)
 
         ### 🌟 Ciclo de vida estelar
 
+        st.markdown("""
         Las estrellas **nacen, viven y mueren**, dependiendo de su masa:
 
         1. **Nacimiento**: en **nebulosas**, nubes de gas y polvo.
