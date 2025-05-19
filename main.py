@@ -259,9 +259,12 @@ def main():
             use_column_width=True
         )
 
+        
+        # Leer y mostrar el GIF animado
+        with open("im_06.gif", "rb") as f:
+            gif = f.read()
 
-        imagen = Image.open("im_06.gif")
-        st.image(imagen, caption="Zonas en una mancha solar", use_container_width=True)
+        st.image(gif, format="gif", caption="im_06.gif - "Zonas en una mancha solar"")
 
 
 
