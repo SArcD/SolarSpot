@@ -76,9 +76,15 @@ def main():
             -  🕳️ Agujeros negros
 
         ---
+        """)
+        # Mostrar imagen ilustrativa
+        imagen = Image.open("im_02.png")
+        st.image(imagen, caption="Recorrido evolutivo que siguen estrellas como el sol a lo largo de su vida", use_container_width=True)
+
 
         ### ☀️ ¿Y el Sol?
-
+        st.markdown(
+        """
         El **Sol es una estrella**: una esfera de gas caliente en fusión, **mucho más cerca** de nosotros que las demás estrellas.  
         Por eso lo vemos tan grande y brillante.  
         Es una **estrella amarilla de tamaño medio**, pero es fundamental para la vida en la Tierra.
