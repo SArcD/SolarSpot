@@ -216,76 +216,78 @@ def main():
 
         st.markdown("""
         Las **manchas solares** son zonas más frías y oscuras que aparecen sobre la **fotosfera** del Sol.  
-        Aunque parecen negras, tienen temperaturas de aproximadamente **3,500 °C**, comparadas con los **5,500 °C** del resto del Sol.
+        Aunque parecen negras, tienen temperaturas cercanas a los **3,500 °C**, en contraste con los **5,500 °C** del resto del disco solar.
+
+        Estas regiones son temporales y están asociadas con una intensa actividad magnética del Sol.
 
         ---
-
         """)
 
+        # Imagen estática con etiquetas
+        st.markdown("### 🧬 Estructura de una mancha solar")
         st.markdown("""
-        ---
-
-        ### 🧬 Estructura de una mancha solar
-
-        - **Umbra**: centro oscuro y frío
-        - **Penumbra**: anillo exterior más claro
-
+        - **Umbra**: núcleo central, más oscuro y frío.  
+        - **Penumbra**: anillo exterior, con textura filamentosa.  
+        - Observa cómo ambas zonas están rodeadas por la **fotosfera**, donde también pueden verse los granos solares.
         """)
 
-        
         imagen = Image.open("im_05.png")
         st.image(imagen, caption="Zonas en una mancha solar", use_container_width=True)
 
-        
-        st.markdown(
-        """
-        
+        # Explicación física
+        st.markdown("""
+        ---
+
         ### 🔍 ¿Por qué se forman?
 
-        Son causadas por **campos magnéticos intensos** que bloquean el flujo normal de energía térmica.  
-        Esto hace que esas zonas se enfríen ligeramente, lo que las vuelve más oscuras.
+        Las manchas solares se deben a **campos magnéticos intensos** que bloquean el flujo de energía térmica desde el interior del Sol.  
+        Esto provoca que ciertas zonas se enfríen y oscurezcan respecto al entorno.
 
         ---
 
-        ### 🧲 Campo magnético solar
+        ### 🔧 Evolución de una mancha
 
-        Las manchas aparecen en pares con **polos magnéticos opuestos** y a menudo están unidas por arcos de plasma o protuberancias solares.
+        A lo largo del tiempo, una mancha puede **fragmentarse**, **dispersarse** y **desaparecer**.  
+        Este proceso depende del comportamiento del campo magnético.
 
         """)
 
-        
-        # Leer y mostrar el GIF animado
-        with open("im_06.gif", "rb") as f:
-            gif = f.read()
-
-        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
         st.image("im_06.gif", caption="Fragmentación y erosión de una mancha solar")
 
+        # Movimiento aparente desde la Tierra
+        st.markdown("""
+        ---
 
-        # Leer y mostrar el GIF animado
-        with open("im_07.gif", "rb") as f:
-            gif = f.read()
+        ### 🌍 Movimiento aparente desde la Tierra
 
-        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
+        Debido a la rotación de la Tierra, las manchas solares parecen desplazarse de **este a oeste** en la bóveda celeste, aunque en realidad están en la superficie solar.
+
+        """)
         st.image("im_07.gif", caption="Movimiento aparente de las manchas solares causado por la rotación terrestre")
 
+        # Movimiento real del Sol
+        st.markdown("""
+        ---
 
-                # Leer y mostrar el GIF animado
-        with open("im_08.gif", "rb") as f:
-            gif = f.read()
+        ### ☀️ Movimiento real en el Sol
 
-        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
-        st.image("im_08.gif", caption="Movimiento aparente de las manchas solares causado por la rotación del Sol")
+        La **rotación del Sol** (que es diferencial) hace que las manchas también se desplacen sobre su superficie.  
+        Este movimiento es más rápido en el ecuador que en los polos.
 
+        """)
+        st.image("im_08.gif", caption="Movimiento real de las manchas solares sobre la superficie del Sol")
 
-        # Leer y mostrar el GIF animado
-        with open("im_09.gif", "rb") as f:
-            gif = f.read()
+        # Ciclo solar
+        st.markdown("""
+        ---
 
-        #st.image(gif, format="gif", caption="Zonas en una mancha solar")
-        st.image("im_09.gif", caption="Movimiento de las manchas solares durante el ciclo de 11 años")
+        ### 🔄 Ciclo de las manchas solares
 
+        Las manchas siguen un ciclo regular de aproximadamente **11 años**, en el que su número y posición cambian progresivamente.  
+        Inicialmente surgen cerca de los polos solares y, con el tiempo, migran hacia el ecuador.
 
+        """)
+        st.image("im_09.gif", caption="Migración de las manchas solares durante el ciclo solar de 11 años")
 
 
         
