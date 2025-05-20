@@ -104,13 +104,13 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown("#### Nube A")
+            #st.markdown("#### Nube A")
             with open("Nube_a.gif", "rb") as gif_a:
                 gif_bytes_a = gif_a.read()
             st.image(gif_bytes_a, caption="Colapso de una nube molecular", use_container_width=True)
 
         with col2:
-            st.markdown("#### Nube B")
+            #st.markdown("#### Nube B")
             with open("nube_b.gif", "rb") as gif_b:
                 gif_bytes_b = gif_b.read()
             st.image(gif_bytes_b, caption="Zoom: región densa que dará origen a una protoestrella", use_container_width=True)
@@ -122,7 +122,7 @@ def main():
         """)
 
 
-        st.markdown("## ¿Qué pasa con las estrellas después de formarse? Diagrama de Hertzsprung-Russell (HR)")
+        st.markdown("## ¿Qué pasa con las estrellas después de formarse?")
 
         st.markdown("""
         El **Diagrama de Hertzsprung-Russell (HR)** es una herramienta fundamental en astrofísica para **clasificar las estrellas** y entender su **evolución**.
@@ -134,15 +134,11 @@ def main():
 
         ---
 
-        ### 📌 ¿Qué nos muestra el diagrama?
-
         - 🌞 La mayoría de las estrellas, incluyendo al Sol, se encuentran en una banda llamada **secuencia principal**.  
         - 🔴 Las **gigantes rojas** y **supergigantes** son frías pero muy luminosas (arriba a la derecha).
         - ⚪ Las **enanas blancas** son muy calientes pero poco luminosas (abajo a la izquierda).
 
         ---
-
-        ### 🔄 Evolución estelar en el HR
 
         Las estrellas **no permanecen estáticas** en el diagrama. A lo largo de su vida, **se mueven de una región a otra** dependiendo de su masa y del estado de su núcleo:
 
