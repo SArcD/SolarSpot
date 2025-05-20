@@ -15,9 +15,9 @@ def main():
     import numpy as np
     from PIL import Image
     # Crear una barra lateral para la navegación entre páginas
-    page = st.sidebar.radio("Seleccionar página", ("Introducción", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
+    page = st.sidebar.radio("Seleccionar página", ("Las estrellas", "El Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
 
-    if page == "Introducción":
+    if page == "Las estrellas":
         import streamlit as st
         #from introduccion_estrellas import mostrar_introduccion_estrellas
 
@@ -65,36 +65,90 @@ def main():
 
         ### 🌟 Ciclo de vida estelar
 
+    #    st.markdown("""
+    #    Las estrellas **no tienen un único destino**. Su **masa inicial** determina la ruta que seguirán desde su nacimiento hasta su muerte:
+
+    #    1. 🌌 **Nacimiento**: en **nebulosas**, grandes nubes de gas y polvo.
+    #    2. 🔥 **Fase principal**: se estabilizan y fusionan hidrógeno en helio durante millones a miles de millones de años.
+    #    3. 🌠 **Evolución**: según su masa, pueden transformarse en:
+    #       - ⭐ Estrellas como el Sol → se expanden como **gigantes rojas** y terminan como **enanas blancas**.
+    #       - 💥 Estrellas masivas → se convierten en **supergigantes**, explotan como **supernovas** y dejan:
+    #         - ⚛️ **Estrella de neutrones** (si la masa es intermedia)
+    #         - 🕳️ **Agujero negro** (si la masa es muy alta)
+
+    #    ---
+
+    #    """)
+
+
+        st.markdown("## 🌟 Formación de estrellas en nubes moleculares")
+
         st.markdown("""
-        Las estrellas **no tienen un único destino**. Su **masa inicial** determina la ruta que seguirán desde su nacimiento hasta su muerte:
+        Las **estrellas nacen dentro de nubes moleculares frías y densas**, compuestas principalmente por **hidrógeno molecular (H₂)**, polvo y otros gases.  
+        Estas regiones también son conocidas como **viveros estelares**.
 
-        1. 🌌 **Nacimiento**: en **nebulosas**, grandes nubes de gas y polvo.
-        2. 🔥 **Fase principal**: se estabilizan y fusionan hidrógeno en helio durante millones a miles de millones de años.
-        3. 🌠 **Evolución**: según su masa, pueden transformarse en:
-           - ⭐ Estrellas como el Sol → se expanden como **gigantes rojas** y terminan como **enanas blancas**.
-           - 💥 Estrellas masivas → se convierten en **supergigantes**, explotan como **supernovas** y dejan:
-             - ⚛️ **Estrella de neutrones** (si la masa es intermedia)
-             - 🕳️ **Agujero negro** (si la masa es muy alta)
+        Cuando una región de la nube alcanza suficiente densidad, comienza a **colapsar por efecto de su propia gravedad**. Este proceso puede ser desencadenado por eventos externos como:
+        - Ondas de choque de una supernova cercana
+        - Colisiones entre nubes
+        - Interacción con brazos espirales galácticos
 
-        ---
+        Durante el colapso:
+        - Se forman zonas **más densas y calientes** llamadas **núcleos preestelares**
+        - La materia cae hacia el centro, aumentando la presión y temperatura
+        - Surge una **protoestrella**, rodeada de un disco de gas y polvo
+
 
         """)
 
-        st.markdown("### ☁️ Proceso de formación estelar")
-
+        
         col1, col2 = st.columns(2)
 
         with col1:
             st.markdown("#### Nube A")
             with open("Nube_a.gif", "rb") as gif_a:
                 gif_bytes_a = gif_a.read()
-            st.image(gif_bytes_a, caption="Colapso de una nube molecular", use_column_width=True)
+            st.image(gif_bytes_a, caption="Colapso de una nube molecular", use_container_width=True)
 
         with col2:
             st.markdown("#### Nube B")
             with open("nube_b.gif", "rb") as gif_b:
                 gif_bytes_b = gif_b.read()
-            st.image(gif_bytes_b, caption="Zoom: región densa que dará origen a una protoestrella", use_column_width=True)
+            st.image(gif_bytes_b, caption="Zoom: región densa que dará origen a una protoestrella", use_container_width=True)
+
+
+        st.markdown(
+            """Si la presión y temperatura del centro son suficientes, se inicia la **fusión nuclear**: ¡nace una estrella!
+
+        """)
+
+
+        st.markdown("## ¿Qué pasa con las estrellas después de formarse? Diagrama de Hertzsprung-Russell (HR)")
+
+        st.markdown("""
+        El **Diagrama de Hertzsprung-Russell (HR)** es una herramienta fundamental en astrofísica para **clasificar las estrellas** y entender su **evolución**.
+
+        En este gráfico se relacionan dos propiedades físicas clave:
+
+        - 🔥 **Temperatura efectiva** (en el eje X): de **mayor a menor** hacia la derecha  
+        - 💡 **Luminosidad** (en el eje Y): desde **menos luminosa** abajo hasta **más luminosa** arriba
+
+        ---
+
+        ### 📌 ¿Qué nos muestra el diagrama?
+
+        - 🌞 La mayoría de las estrellas, incluyendo al Sol, se encuentran en una banda llamada **secuencia principal**.  
+        - 🔴 Las **gigantes rojas** y **supergigantes** son frías pero muy luminosas (arriba a la derecha).
+        - ⚪ Las **enanas blancas** son muy calientes pero poco luminosas (abajo a la izquierda).
+
+        ---
+
+        ### 🔄 Evolución estelar en el HR
+
+        Las estrellas **no permanecen estáticas** en el diagrama. A lo largo de su vida, **se mueven de una región a otra** dependiendo de su masa y del estado de su núcleo:
+
+        - El Sol, por ejemplo, **nace y vive en la secuencia principal**, pero eventualmente **se moverá hacia la región de las gigantes rojas** y terminará como **una enana blanca**.
+
+        """)
 
 
         
@@ -109,6 +163,9 @@ def main():
             video_bytes = video_file.read()
 
         st.video(video_bytes)
+
+
+    if page == "El Sol":
 
         
         ### ☀️ ¿Y el Sol?
