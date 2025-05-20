@@ -85,6 +85,14 @@ def main():
         st.image(imagen, caption="Recorrido evolutivo que siguen estrellas como el sol a lo largo de su vida", use_container_width=True)
 
 
+        st.markdown("### 🎬 Evolución del Sol (video)")
+
+        with open("evol_sol.mp4", "rb") as video_file:
+            video_bytes = video_file.read()
+
+        st.video(video_bytes)
+
+        
         ### ☀️ ¿Y el Sol?
         st.markdown(
         """
