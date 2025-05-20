@@ -76,14 +76,14 @@ def main():
 
         | Clase espectral ([Wikipedia](https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estelar)) | Color           | Temperatura aprox. | Ejemplo (clic en el nombre)                         |
         |--------------------------------------------------------|-------------------|---------------------|-----------------------------------------------------|
-        | [O](https://es.wikipedia.org/wiki/Clase_O)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
-        | [B](https://es.wikipedia.org/wiki/Clase_B)             | 🔵 Azul            | ~10,000–30,000 °C   | [Rigel](https://es.wikipedia.org/wiki/Rigel)        |
-        | [A](https://es.wikipedia.org/wiki/Clase_A)             | ⚪ Blanco-azulado  | ~7,500–10,000 °C    | [Sirius](https://es.wikipedia.org/wiki/Sirio)       |
-        | [F](https://es.wikipedia.org/wiki/Clase_F)             | ⚪ Blanco amarillento | ~6,000–7,500 °C | [Procyon](https://es.wikipedia.org/wiki/Procyon)    |
-        | [G](https://es.wikipedia.org/wiki/Clase_G)             | 🟡 Amarillo        | ~5,200–6,000 °C     | [El Sol](https://es.wikipedia.org/wiki/Sol)         |
-        | [K](https://es.wikipedia.org/wiki/Clase_K)             | 🟠 Naranja         | ~3,700–5,200 °C     | [Arcturus](https://es.wikipedia.org/wiki/Arcturus)  |
-        | [M (gigante)](https://es.wikipedia.org/wiki/Clase_M)   | 🔴🔶 Rojo anaranjado | ~3,000–3,700 °C | [Betelgeuse](https://es.wikipedia.org/wiki/Betelgeuse) |
-        | [M (enana)](https://es.wikipedia.org/wiki/Clase_M)     | 🔴 Rojo tenue      | ~2,400–3,700 °C     | [Proxima Centauri](https://es.wikipedia.org/wiki/Proxima_Centauri) |
+        | [O](https://wiki.ed-board.net/es/stellar/A)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
+        | [B](https://wiki.ed-board.net/es/stellar/B)             | 🔵 Azul            | ~10,000–30,000 °C   | [Rigel](https://es.wikipedia.org/wiki/Rigel)        |
+        | [A](https://wiki.ed-board.net/es/stellar/A)             | ⚪ Blanco-azulado  | ~7,500–10,000 °C    | [Sirius](https://es.wikipedia.org/wiki/Sirio)       |
+        | [F](https://wiki.ed-board.net/es/stellar/F)             | ⚪ Blanco amarillento | ~6,000–7,500 °C | [Procyon](https://es.wikipedia.org/wiki/Procyon)    |
+        | [G](https://wiki.ed-board.net/es/stellar/G)             | 🟡 Amarillo        | ~5,200–6,000 °C     | [El Sol](https://es.wikipedia.org/wiki/Sol)         |
+        | [K](https://wiki.ed-board.net/es/stellar/K)             | 🟠 Naranja         | ~3,700–5,200 °C     | [Arcturus](https://es.wikipedia.org/wiki/Arcturus)  |
+        | [M (gigante)](https://es.wikipedia.org/wiki/Gigante_roja)   | 🔴🔶 Rojo anaranjado | ~3,000–3,700 °C | [Betelgeuse](https://es.wikipedia.org/wiki/Betelgeuse) |
+        | [M (enana)](https://wiki.ed-board.net/es/stellar/M)     | 🔴 Rojo tenue      | ~2,400–3,700 °C     | [Proxima Centauri](https://es.wikipedia.org/wiki/Proxima_Centauri) |
 
         ---
         """)
