@@ -159,6 +159,11 @@ def main():
         
         st.markdown("### ¿Cómo se ven los cambios?")
 
+        st.markdown(
+        """
+        LA evolución estelar implica cambios bastante notorios en la apariencia, tamaño y brillo de las estrellas. El siguiente video muestra la evolución del Sol desde su nacimiento hasta que se convierte en una gigante roja.
+        """)
+        
         with open("evo_sol.mp4", "rb") as video_file:
             video_bytes = video_file.read()
 
