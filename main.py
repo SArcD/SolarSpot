@@ -24,13 +24,22 @@ def main():
 
         #def mostrar_introduccion_estrellas():
         st.title("🌌 Introducción: ¿Qué son las estrellas?")
-
+          
         st.markdown("""
         Las **estrellas** son enormes esferas de gas caliente, compuestas principalmente por **hidrógeno** y **helio**.  
         En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor.
 
         ---
 
+        """)
+
+        imagen = Image.open("Sol.PNG")
+        st.image(imagen, caption="Fotografía del Sol, visto a través de un filtro de luz blanca", use_container_width=True)
+
+        
+        st.markdown(
+            """
+        
         ### 🔭 ¿Cómo las vemos?
 
         Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  
