@@ -173,30 +173,28 @@ def main():
     if page == "El Sol":
 
         
-        ### ☀️ ¿Y el Sol?
-        st.markdown(
-        """
-        El **Sol es una estrella**: una esfera de gas caliente en fusión, **mucho más cerca** de nosotros que las demás estrellas.  
-        Por eso lo vemos tan grande y brillante.  
-        Es una **estrella amarilla de tamaño medio**, pero es fundamental para la vida en la Tierra.
+        #### ☀️ ¿Y el Sol?
+        #st.markdown(
+        #"""
+
+        #Por eso lo vemos tan grande y brillante.  
+        #Es una **estrella amarilla de tamaño medio**, pero es fundamental para la vida en la Tierra.
     
-        ---
+        #---
 
         ### 💡 ¿Sabías que...?
 
-        - Una cucharadita de una estrella de neutrones pesa millones de toneladas.
-        - Las estrellas parecen "parpadear" por la atmósfera terrestre, no porque realmente lo hagan.
-        - El Sol tiene unos **4,600 millones de años** y vivirá unos 5,000 millones más.
+        #- Una cucharadita de una estrella de neutrones pesa millones de toneladas.
+        #- Las estrellas parecen "parpadear" por la atmósfera terrestre, no porque realmente lo hagan.
+        #- El Sol tiene unos **4,600 millones de años** y vivirá unos 5,000 millones más.
 
-        ---
-        """)
-
-        import streamlit as st
+        #---
+        #""")
 
         st.title("☀️ El Sol: Nuestra estrella más cercana")
 
         st.markdown("""
-        El **Sol** es una estrella muy especial para nosotros: es la fuente principal de luz, calor y energía que permite la vida en la Tierra.  
+        El **Sol es una estrella**: una esfera de gas caliente en fusión, **mucho más cerca** de nosotros que las demás estrellas.  El **Sol** es la fuente principal de luz, calor y energía que permite la vida en la Tierra.  
         A continuación, exploraremos sus características, composición, estructura e historia en el universo.
 
         ---
@@ -221,31 +219,31 @@ def main():
 
 
         
-        st.markdown("""
-        ---
+        #st.markdown("""
+        #---
 
-        ## 🕰️ Historia del Sol
+        ### 🕰️ Historia del Sol
     
-        - 🌌 El Sol se formó hace unos **4,600 millones de años** a partir de una nube de gas y polvo.
-        - 🔭 Se encuentra **en la mitad de su vida** como estrella de tipo G (amarilla).
-        - ☄️ Formó el Sistema Solar a su alrededor con planetas, asteroides y cometas.
-        - 🕳️ En unos **5,000 millones de años**, se convertirá en una **gigante roja**, y después en una **enana blanca**.
+        #- 🌌 El Sol se formó hace unos **4,600 millones de años** a partir de una nube de gas y polvo.
+        #- 🔭 Se encuentra **en la mitad de su vida** como estrella de tipo G (amarilla).
+        #- ☄️ Formó el Sistema Solar a su alrededor con planetas, asteroides y cometas.
+        #- 🕳️ En unos **5,000 millones de años**, se convertirá en una **gigante roja**, y después en una **enana blanca**.
 
-        📍 Actualmente, se encuentra en una etapa llamada **secuencia principal**: produce energía estable por fusión.
+        #📍 Actualmente, se encuentra en una etapa llamada **secuencia principal**: produce energía estable por fusión.
 
-        """)
+        #""")
 
+        st.markdown(""" ## 🧬 Estructura del Sol
+        
+        
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_04.png")
         st.image(imagen, caption="Capas del Sol", use_container_width=True)
-
+        """)
 
         
         st.markdown("""
-        ---
 
-        ## 🧬 Estructura del Sol
-        
         El Sol está dividido en **capas**, desde el centro hacia afuera:
 
         ### 1. **Núcleo**
