@@ -87,7 +87,7 @@ def main():
 
         st.markdown("### 🎬 Evolución del Sol (video)")
 
-        with open("evol_sol.mp4", "rb") as video_file:
+        with open("evo_sol.mp4", "rb") as video_file:
             video_bytes = video_file.read()
 
         st.video(video_bytes)
