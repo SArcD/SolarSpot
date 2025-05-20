@@ -42,6 +42,10 @@ def main():
 
         Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio. Una de las primeras cosas que podemos notar es que existen estrellas con diferentes colores, que van del rojo al azul, a estos colores se les llama **Clases espectrales** y se puede asociar al tamaño, temperatura y masa de cada estrella.
 
+        # Mostrar imagen ilustrativa
+        imagen = Image.open("im_01.png")
+        st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_container_width=True)
+
         | Clase espectral ([Wikipedia](https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estelar)) | Color           | Temperatura aprox. | Ejemplo (clic en el nombre)                         |
         |--------------------------------------------------------|-------------------|---------------------|-----------------------------------------------------|
         | [O](https://wiki.ed-board.net/es/stellar/O)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
@@ -50,17 +54,12 @@ def main():
         | [F](https://wiki.ed-board.net/es/stellar/F)             | ⚪ Blanco amarillento | ~6,000–7,500 °C | [Procyon](https://es.wikipedia.org/wiki/Procyon)    |
         | [G](https://wiki.ed-board.net/es/stellar/G)             | 🟡 Amarillo        | ~5,200–6,000 °C     | [El Sol](https://es.wikipedia.org/wiki/Sol)         |
         | [K](https://wiki.ed-board.net/es/stellar/K)             | 🟠 Naranja         | ~3,700–5,200 °C     | [Arcturus](https://es.wikipedia.org/wiki/Arcturus)  |
-        | [M (gigante)](https://es.wikipedia.org/wiki/Gigante_roja)   | 🔴🔶 Rojo anaranjado | ~3,000–3,700 °C | [Betelgeuse](https://es.wikipedia.org/wiki/Betelgeuse) |
+        | [M (gigante)](https://es.wikipedia.org/wiki/Gigante_roja)   | 🔴 Rojo anaranjado | ~3,000–3,700 °C | [Betelgeuse](https://es.wikipedia.org/wiki/Betelgeuse) |
         | [M (enana)](https://wiki.ed-board.net/es/stellar/M)     | 🔴 Rojo tenue      | ~2,400–3,700 °C     | [Proxima Centauri](https://es.wikipedia.org/wiki/Proxima_Centauri) |
 
         ---
         """)
 
-
-        
-        # Mostrar imagen ilustrativa
-        imagen = Image.open("im_01.png")
-        st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_container_width=True)
 
         ### 🌟 Ciclo de vida estelar
 
