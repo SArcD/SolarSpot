@@ -41,11 +41,13 @@ def main():
         ### 🔭 ¿Cómo las vemos?
 
         Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio. Una de las primeras cosas que podemos notar es que existen estrellas con diferentes colores, que van del rojo al azul, a estos colores se les llama **Clases espectrales** y se puede asociar al tamaño, temperatura y masa de cada estrella.
-
+        """)
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_01.png")
         st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_container_width=True)
 
+        st.markdown(
+        """
         | Clase espectral ([Wikipedia](https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estelar)) | Color           | Temperatura aprox. | Ejemplo (clic en el nombre)                         |
         |--------------------------------------------------------|-------------------|---------------------|-----------------------------------------------------|
         | [O](https://wiki.ed-board.net/es/stellar/O)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
@@ -64,17 +66,20 @@ def main():
         ### 🌟 Ciclo de vida estelar
 
         st.markdown("""
-        Las estrellas **nacen, viven y mueren**, dependiendo de su masa:
+        Las estrellas **no tienen un único destino**. Su **masa inicial** determina la ruta que seguirán desde su nacimiento hasta su muerte:
 
-        1. **Nacimiento**: en **nebulosas**, nubes de gas y polvo.
-        2. **Vida activa**: liberan energía por millones o miles de millones de años.
-        3. **Muerte**: pueden terminar como:
-            - 💀 Enanas blancas
-            - ⚛️ Estrellas de neutrones
-            -  🕳️ Agujeros negros
+        1. 🌌 **Nacimiento**: en **nebulosas**, grandes nubes de gas y polvo.
+        2. 🔥 **Fase principal**: se estabilizan y fusionan hidrógeno en helio durante millones a miles de millones de años.
+        3. 🌠 **Evolución**: según su masa, pueden transformarse en:
+           - ⭐ Estrellas como el Sol → se expanden como **gigantes rojas** y terminan como **enanas blancas**.
+           - 💥 Estrellas masivas → se convierten en **supergigantes**, explotan como **supernovas** y dejan:
+             - ⚛️ **Estrella de neutrones** (si la masa es intermedia)
+             - 🕳️ **Agujero negro** (si la masa es muy alta)
 
         ---
+
         """)
+
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_02.png")
         st.image(imagen, caption="Recorrido evolutivo que siguen estrellas como el sol a lo largo de su vida", use_container_width=True)
