@@ -86,7 +86,7 @@ def main():
 
         with col1:
             st.markdown("#### Nube A")
-            with open("nube_a.gif", "rb") as gif_a:
+            with open("Nube_a.gif", "rb") as gif_a:
                 gif_bytes_a = gif_a.read()
             st.image(gif_bytes_a, caption="Colapso de una nube molecular", use_column_width=True)
 
