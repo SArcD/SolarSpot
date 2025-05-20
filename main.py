@@ -34,11 +34,7 @@ def main():
         - 🌟 [**Sirius**](https://es.wikipedia.org/wiki/Sirio) (la más brillante del cielo nocturno)  
         - 🔴 [**Betelgeuse**](https://es.wikipedia.org/wiki/Betelgeuse) (gigante roja)  
         - 🔵 [**Rigel**](https://es.wikipedia.org/wiki/Rigel) (estrella azul)  
-        - 💎 [**Vega**](https://es.wikipedia.org/wiki/Vega), [**Antares**](https://es.wikipedia.org/wiki/Antares), y más.
-
-        ---
-
-        ---
+        - 💎 [**Vega**](https://es.wikipedia.org/wiki/Vega), [**Antares**](https://es.wikipedia.org/wiki/Antares)
 
         """)
 
