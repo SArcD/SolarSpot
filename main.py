@@ -15,7 +15,7 @@ def main():
     import numpy as np
     from PIL import Image
     # Mostrar el logo en la parte superior
-    st.image("Logo.png", use_column_width=False, width=200)
+    st.image("Logo.jpg", use_column_width=False, width=200)
 
     # Crear una barra lateral para la navegación entre páginas
     page = st.sidebar.radio("Seleccionar página", ("Las estrellas", "El Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
