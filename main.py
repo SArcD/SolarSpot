@@ -15,7 +15,7 @@ def main():
     import numpy as np
     from PIL import Image
     # Crear una barra lateral para la navegación entre páginas
-    page = st.sidebar.radio("Seleccionar página", ("Introducción", "Datos generales sobre el Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
+    page = st.sidebar.radio("Seleccionar página", ("Introducción", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
 
     if page == "Introducción":
         import streamlit as st
@@ -23,16 +23,20 @@ def main():
 
 
         #def mostrar_introduccion_estrellas():
-        st.title("🌌 Introducción: ¿Qué son las estrellas?")
+        st.title("¿Qué son las estrellas?")
           
         st.markdown("""
         Las **estrellas** son enormes esferas de gas caliente, compuestas principalmente por **hidrógeno** y **helio**.  
-        En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor.
+        En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor. La estrella mas cercana a nuestro planeta es el Sol, ubicado a una unidad astronómica de distancia (150 millones de kilómetros). Cada segundo el Sol produce
 
         ---
 
         """)
 
+
+        st.markdown("La potencia del Sol es de aproximadamente:  \n$$3.86 \\times 10^{26}\\ \\text{watts}$$")
+
+        
         imagen = Image.open("Sol.PNG")
         st.image(imagen, caption="Fotografía del Sol, visto a través de un filtro de luz blanca", use_container_width=True)
 
