@@ -234,12 +234,12 @@ def main():
         #""")
 
         st.markdown(""" ## 🧬 Estructura del Sol
-        
+        """)
+
         
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_04.png")
         st.image(imagen, caption="Capas del Sol", use_container_width=True)
-        """)
 
         
         st.markdown("""
