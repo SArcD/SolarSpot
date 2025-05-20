@@ -27,23 +27,12 @@ def main():
           
         st.markdown("""
         Las **estrellas** son enormes esferas de gas caliente, compuestas principalmente por **hidrógeno** y **helio**.  
-        En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor. La estrella mas cercana a nuestro planeta es el Sol, ubicado a una unidad astronómica de distancia (150 millones de kilómetros). Cada segundo el Sol produce \n$$3.86 \\times 10^{26}\\ \\text{watts}$$, lo que equivale a 20 millones de veces el consumo anual de energía en todo el planeta. Esta energía es la que permite que podamos observar a las estrellas aún a distancias astronómicas.
+        En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor. La estrella mas cercana a nuestro planeta es el Sol, ubicado a una unidad astronómica de distancia (**150 millones de kilómetros**). **Cada segundo el Sol produce \n$$3.86 \\times 10^{26}\\ \\text{watts}$$, lo que equivale a 20 millones de veces el consumo anual de energía en todo el planeta**. Esta energía es la que permite que podamos observar a las estrellas aún a distancias astronómicas.
 
         """)
 
         imagen = Image.open("Sol.PNG")
         st.image(imagen, caption="Fotografía del Sol, visto a través de un filtro de luz blanca", use_container_width=True)
-
-
-        st.markdown("""
-        ### ✨ Algunas estrellas famosas
-
-        - 🌟 [**Sirius**](https://es.wikipedia.org/wiki/Sirio) — la más brillante del cielo nocturno  
-        - 🔴 [**Betelgeuse**](https://es.wikipedia.org/wiki/Betelgeuse) — una gigante roja  
-        - 🔵 [**Rigel**](https://es.wikipedia.org/wiki/Rigel) — una estrella azul  
-        - 💎 [**Vega**](https://es.wikipedia.org/wiki/Vega), [**Antares**](https://es.wikipedia.org/wiki/Antares) y más...
-        """)
-        
 
         
         st.markdown(
@@ -51,32 +40,11 @@ def main():
         
         ### 🔭 ¿Cómo las vemos?
 
-
-
-        ### 🌈 Tipos de estrellas
-        Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio.
-
-        Las estrellas varían en **color, tamaño y temperatura**, lo que nos permite clasificarlas.  
-        Aquí tienes una tabla con ejemplos:
-
-        | Tipo de estrella   | Color          | Temperatura aprox. | Ejemplo            |
-        |--------------------|----------------|---------------------|---------------------|
-        | Enana roja         | 🔴 Rojo tenue  | ~3,000 °C           | Proxima Centauri   |
-        | Estrella amarilla  | 🟡 Amarillo    | ~5,500 °C           | El Sol             |
-        | Estrella azul      | 🔵 Azul intenso| >25,000 °C          | Rigel              |
-        | Gigante roja       | 🔴🔶 Rojo anaranjado | ~3,000-5,000 °C | Betelgeuse         |
-
-        ---
-        """)
-
-        st.markdown("""
-        ### 🌟 Tipos espectrales de estrellas
-
-        Las estrellas se clasifican por su temperatura y color en **clases espectrales**:
+        Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio. Una de las primeras cosas que podemos notar es que existen estrellas con diferentes colores, que van del rojo al azul, a estos colores se les llama **Clases espectrales** y se puede asociar al tamaño, temperatura y masa de cada estrella.
 
         | Clase espectral ([Wikipedia](https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estelar)) | Color           | Temperatura aprox. | Ejemplo (clic en el nombre)                         |
         |--------------------------------------------------------|-------------------|---------------------|-----------------------------------------------------|
-        | [O](https://wiki.ed-board.net/es/stellar/A)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
+        | [O](https://wiki.ed-board.net/es/stellar/O)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
         | [B](https://wiki.ed-board.net/es/stellar/B)             | 🔵 Azul            | ~10,000–30,000 °C   | [Rigel](https://es.wikipedia.org/wiki/Rigel)        |
         | [A](https://wiki.ed-board.net/es/stellar/A)             | ⚪ Blanco-azulado  | ~7,500–10,000 °C    | [Sirius](https://es.wikipedia.org/wiki/Sirio)       |
         | [F](https://wiki.ed-board.net/es/stellar/F)             | ⚪ Blanco amarillento | ~6,000–7,500 °C | [Procyon](https://es.wikipedia.org/wiki/Procyon)    |
