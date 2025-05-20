@@ -14,9 +14,14 @@ def main():
     import cv2
     import numpy as np
     from PIL import Image
-    # Mostrar el logo en la parte superior
-    st.image("Logo.jpg", use_column_width=False, width=200)
+   # Encabezado con logo a la izquierda y título a la derecha
+    col1, col2 = st.columns([1, 5])  # Ajusta la proporción si deseas que el título ocupe más espacio
+    with col1:
+        st.image("Logo.jpg", width=80)  # Tamaño pequeño
+    with col2:
+        st.markdown("<h1 style='margin-top: 15px;'>Contador de manchas solares</h1>", unsafe_allow_html=True)
 
+    
     # Crear una barra lateral para la navegación entre páginas
     page = st.sidebar.radio("Seleccionar página", ("Las estrellas", "El Sol", "Visualizador de Imagen del Sol", "Visualizador de Eclipse", "Reloj","Galeria"))
 
