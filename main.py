@@ -80,6 +80,24 @@ def main():
 
         """)
 
+        st.markdown("### ☁️ Proceso de formación estelar")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown("#### Nube A")
+            with open("nube_a.gif", "rb") as gif_a:
+                gif_bytes_a = gif_a.read()
+            st.image(gif_bytes_a, caption="Colapso de una nube molecular", use_column_width=True)
+
+        with col2:
+            st.markdown("#### Nube B")
+            with open("nube_b.gif", "rb") as gif_b:
+                gif_bytes_b = gif_b.read()
+            st.image(gif_bytes_b, caption="Zoom: región densa que dará origen a una protoestrella", use_column_width=True)
+
+
+        
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_02.png")
         st.image(imagen, caption="Recorrido evolutivo que siguen estrellas como el sol a lo largo de su vida", use_container_width=True)
