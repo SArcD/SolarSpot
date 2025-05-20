@@ -334,8 +334,8 @@ def main():
         """)
 
         # Cargar imagen ilustrativa desde archivo local
-        imagen_ilustrativa = Image.open("/mnt/data/A_screenshot_of_an_educational_interface_in_Spanis.png")
-        st.image(imagen_ilustrativa, caption="Resumen visual del proceso de detección de bordes", use_column_width=True)
+        #imagen_ilustrativa = Image.open("/mnt/data/A_screenshot_of_an_educational_interface_in_Spanis.png")
+        #st.image(imagen_ilustrativa, caption="Resumen visual del proceso de detección de bordes", use_column_width=True)
 
         st.markdown("""
         ---
@@ -350,7 +350,7 @@ def main():
         ---
         """)
         
-        st.image("im_13.gif", caption="proceso de detección de manchas solares mediante bordes")
+        st.image("im_12.gif", caption="proceso de detección de manchas solares mediante bordes")
 
         st.markdown(
         """
