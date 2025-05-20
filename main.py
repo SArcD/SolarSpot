@@ -29,6 +29,15 @@ def main():
         Las **estrellas** son enormes esferas de gas caliente, compuestas principalmente por **hidrógeno** y **helio**.  
         En su núcleo ocurre un proceso llamado **fusión nuclear**, donde los átomos de hidrógeno se combinan para formar helio, liberando **energía** en forma de luz y calor. La estrella mas cercana a nuestro planeta es el Sol, ubicado a una unidad astronómica de distancia (150 millones de kilómetros). Cada segundo el Sol produce \n$$3.86 \\times 10^{26}\\ \\text{watts}$$, lo que equivale a 20 millones de veces el consumo anual de energía en todo el planeta. Esta energía es la que permite que podamos observar a las estrellas aún a distancias astronómicas."
 
+
+        Algunas estrellas famosas: 
+        - 🌟 [**Sirius**](https://es.wikipedia.org/wiki/Sirio) (la más brillante del cielo nocturno)  
+        - 🔴 [**Betelgeuse**](https://es.wikipedia.org/wiki/Betelgeuse) (gigante roja)  
+        - 🔵 [**Rigel**](https://es.wikipedia.org/wiki/Rigel) (estrella azul)  
+        - 💎 [**Vega**](https://es.wikipedia.org/wiki/Vega), [**Antares**](https://es.wikipedia.org/wiki/Antares), y más.
+
+        ---
+
         ---
 
         """)
@@ -43,19 +52,10 @@ def main():
         
         ### 🔭 ¿Cómo las vemos?
 
-        Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  
-        Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio.
 
-        Algunas estrellas famosas:
-
-        - 🌟 **Sirius** (la más brillante del cielo nocturno)
-        - 🔴 **Betelgeuse** (gigante roja)
-        - 🔵 **Rigel** (estrella azul)
-        - 💎 **Vega**, **Antares**, y más.
-
-        ---
 
         ### 🌈 Tipos de estrellas
+        Desde la Tierra, las estrellas aparecen como puntos brillantes en el cielo nocturno.  Aunque están a **años luz** de distancia, su brillo es tan intenso que muchas se pueden ver sin telescopio.
 
         Las estrellas varían en **color, tamaño y temperatura**, lo que nos permite clasificarlas.  
         Aquí tienes una tabla con ejemplos:
