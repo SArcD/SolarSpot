@@ -273,22 +273,17 @@ def main():
         """)
 
         
-        st.markdown("""
-        ---
+#        st.markdown("""
+#        ---
 
-        ## 🌍 Importancia del Sol para la Tierra
+#        ## 🌍 Importancia del Sol para la Tierra
 
-        - Proporciona luz y calor esenciales para los ecosistemas.
-        - Influye en el **clima**, los **ciclos biológicos** y la **agricultura**.
-        - Su campo magnético protege a la Tierra del **viento solar**.
-        - Las variaciones en su actividad pueden afectar satélites y telecomunicaciones.
+#        - Proporciona luz y calor esenciales para los ecosistemas.
+#        - Influye en el **clima**, los **ciclos biológicos** y la **agricultura**.
+#        - Su campo magnético protege a la Tierra del **viento solar**.
+#        - Las variaciones en su actividad pueden afectar satélites y telecomunicaciones.
 
-        """)
-
-
-        st.markdown("---")
-        st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
-
+ #       """)
 
         st.title("🌑 ¿Qué son las manchas solares?")
 
@@ -394,6 +389,11 @@ def main():
         ---
         """)
 
+
+        st.markdown("---")
+        st.success("¡Ahora ya sabes más sobre nuestra estrella más cercana! Puedes continuar con el análisis de imágenes del Sol para ver sus manchas solares.")
+
+        
 
         import streamlit as st
         from PIL import Image
