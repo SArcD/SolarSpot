@@ -31,6 +31,9 @@ def main():
 
         """)
 
+        imagen = Image.open("Sol.PNG")
+        st.image(imagen, caption="Fotografía del Sol, visto a través de un filtro de luz blanca", use_container_width=True)
+
 
         st.markdown("""
         ### ✨ Algunas estrellas famosas
@@ -41,8 +44,6 @@ def main():
         - 💎 [**Vega**](https://es.wikipedia.org/wiki/Vega), [**Antares**](https://es.wikipedia.org/wiki/Antares) y más...
         """)
         
-        imagen = Image.open("Sol.PNG")
-        st.image(imagen, caption="Fotografía del Sol, visto a través de un filtro de luz blanca", use_container_width=True)
 
         
         st.markdown(
@@ -67,6 +68,28 @@ def main():
 
         ---
         """)
+
+        st.markdown("""
+        ### 🌟 Tipos espectrales de estrellas
+
+        Las estrellas se clasifican por su temperatura y color en **clases espectrales**:
+
+        | Clase espectral ([Wikipedia](https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estelar)) | Color           | Temperatura aprox. | Ejemplo (clic en el nombre)                         |
+        |--------------------------------------------------------|-------------------|---------------------|-----------------------------------------------------|
+        | [O](https://es.wikipedia.org/wiki/Clase_O)             | 🔵 Azul violáceo  | > 30,000 °C         | [Zeta Puppis](https://es.wikipedia.org/wiki/Zeta_Puppis) |
+        | [B](https://es.wikipedia.org/wiki/Clase_B)             | 🔵 Azul            | ~10,000–30,000 °C   | [Rigel](https://es.wikipedia.org/wiki/Rigel)        |
+        | [A](https://es.wikipedia.org/wiki/Clase_A)             | ⚪ Blanco-azulado  | ~7,500–10,000 °C    | [Sirius](https://es.wikipedia.org/wiki/Sirio)       |
+        | [F](https://es.wikipedia.org/wiki/Clase_F)             | ⚪ Blanco amarillento | ~6,000–7,500 °C | [Procyon](https://es.wikipedia.org/wiki/Procyon)    |
+        | [G](https://es.wikipedia.org/wiki/Clase_G)             | 🟡 Amarillo        | ~5,200–6,000 °C     | [El Sol](https://es.wikipedia.org/wiki/Sol)         |
+        | [K](https://es.wikipedia.org/wiki/Clase_K)             | 🟠 Naranja         | ~3,700–5,200 °C     | [Arcturus](https://es.wikipedia.org/wiki/Arcturus)  |
+        | [M (gigante)](https://es.wikipedia.org/wiki/Clase_M)   | 🔴🔶 Rojo anaranjado | ~3,000–3,700 °C | [Betelgeuse](https://es.wikipedia.org/wiki/Betelgeuse) |
+        | [M (enana)](https://es.wikipedia.org/wiki/Clase_M)     | 🔴 Rojo tenue      | ~2,400–3,700 °C     | [Proxima Centauri](https://es.wikipedia.org/wiki/Proxima_Centauri) |
+
+        ---
+        """)
+
+
+        
         # Mostrar imagen ilustrativa
         imagen = Image.open("im_01.png")
         st.image(imagen, caption="Clasificación visual de estrellas por color y temperatura", use_container_width=True)
