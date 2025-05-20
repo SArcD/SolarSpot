@@ -132,13 +132,6 @@ def main():
         - 🔥 **Temperatura efectiva** (en el eje X): de **mayor a menor** hacia la derecha  
         - 💡 **Luminosidad** (en el eje Y): desde **menos luminosa** abajo hasta **más luminosa** arriba
 
-        ---
-
-        - 🌞 La mayoría de las estrellas, incluyendo al Sol, se encuentran en una banda llamada **secuencia principal**.  
-        - 🔴 Las **gigantes rojas** y **supergigantes** son frías pero muy luminosas (arriba a la derecha).
-        - ⚪ Las **enanas blancas** son muy calientes pero poco luminosas (abajo a la izquierda).
-
-        ---
 
         Las estrellas **no permanecen estáticas** en el diagrama. A lo largo de su vida, **se mueven de una región a otra** dependiendo de su masa y del estado de su núcleo:
 
@@ -152,8 +145,19 @@ def main():
         imagen = Image.open("im_02.png")
         st.image(imagen, caption="Recorrido evolutivo que siguen estrellas como el sol a lo largo de su vida", use_container_width=True)
 
+        st.markdown(
+        """
 
-        st.markdown("### 🎬 Evolución del Sol (video)")
+
+        - 🌞 La mayoría de las estrellas, incluyendo al Sol, se encuentran en una banda llamada **secuencia principal**.  
+        - 🔴 Las **gigantes rojas** y **supergigantes** son frías pero muy luminosas (arriba a la derecha).
+        - ⚪ Las **enanas blancas** son muy calientes pero poco luminosas (abajo a la izquierda).
+
+        ---
+        """)
+
+        
+        st.markdown("### ¿Cómo se ven los cambios?")
 
         with open("evo_sol.mp4", "rb") as video_file:
             video_bytes = video_file.read()
