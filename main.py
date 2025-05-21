@@ -509,6 +509,44 @@ def main():
             hora = st.text_input("Hora", "")
             fecha = st.text_input("Fecha", "")
 
+
+            st.markdown("""
+            ### ℹ️ Guía para ajustar los contornos del Sol y las manchas solares
+
+            Al cargar una imagen, es posible que los **contornos no se vean correctamente al principio**. Esto es normal y puede corregirse usando los deslizadores en la barra lateral.
+
+            ---
+
+            #### 🎚️ Tamaño del bloque (`ksize`)
+            - Define el tamaño del área local analizada para detectar sombras.
+            - Debe ser un **número impar** (ej. 11, 15, 21).
+            - **Pequeños valores** detectan detalles finos pero pueden generar ruido.
+            - **Valores grandes** suavizan el resultado, útil si hay muchas sombras o reflejos.
+
+            #### 🎚️ Constante `C`
+            - Se **resta del brillo promedio local**.
+            - **Mayor C** reduce ruido excesivo.
+            - **Menor C** ayuda a detectar manchas más débiles.
+
+            ---
+
+            #### ✅ Recomendación inicial:
+            - Comienza con:
+            - `ksize = 11`
+            - `C = 2`
+            - Si no ves bordes definidos:
+              - Prueba con `ksize = 15`, `C = 5`
+              - O `ksize = 21`, `C = 10`
+    
+            ---
+
+            #### 🧪 Ejemplos visuales:
+
+            - Imagen sin ajustes iniciales:
+            """)
+
+
+            
             if st.button("Mostrar datos en imagen"):
                 # Convertir la imagen cargada a una matriz numpy
                 image_np = np.array(image.copy())
