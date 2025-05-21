@@ -884,16 +884,77 @@ def main():
                     "🌘 **Final del eclipse:** El disco lunar se aleja lentamente del Sol. "
                     "La silueta solar vuelve a verse completa poco a poco."
                 )
-        # Determinar la fuente final de imagen
-        if uploaded_file is not None:
-            image_file = uploaded_file
-            caption_text = "Imagen cargada"
-        elif example_image is not None:
-            image_file = example_image
-            caption_text = f"Ejemplo: {example_image}"
-        else:
-            image_file = None
-            st.warning("Por favor, carga una imagen o selecciona una de ejemplo.")
+
+        # Determinar la fuente final de imagen    
+        image_file = uploaded_file if uploaded_file else example_image
+        caption_text = "Imagen cargada" if uploaded_file else f"Ejemplo: {example_image}" if example_image else ""
+
+        # Si hay imagen válida, procesar
+        if image_file:
+            image = Image.open(image_file)
+            st.image(image, caption=caption_text, use_column_width=True)
+
+            if example_image:
+                st.info(f"Se está utilizando la imagen de ejemplo: {example_image}")
+                st.markdown(fase_eclipse)
+
+            # Ahora puedes convertirla a formato OpenCV sin error
+            image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+
+        
+
+
+        #import streamlit as st
+        #from PIL import Image
+        #import cv2
+        #import numpy as np
+
+        #st.title("Visualizador de Eclipse")
+        #st.write("Esta es la página del visualizador de eclipse. Aquí puedes cargar o seleccionar una imagen del eclipse solar.")
+
+        # Cargar imagen del usuario
+        #st.write("📷 **Carga una imagen del eclipse** (formatos permitidos: .jpg, .jpeg, .png):")
+        #uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+
+        ## Si no se carga imagen, mostrar selector de ejemplo
+        #example_image = None
+        #fase_eclipse = ""
+        #if uploaded_file is None:
+        #    opcion = st.selectbox("O selecciona una imagen de ejemplo:", (
+        #        "Ninguna",
+        #        "Inicio del eclipse (eclipse080424i)",
+        #        "Durante el eclipse (eclipse080424m)",
+        #        "Final del eclipse (eclipse080424f)"
+        #    ))
+
+       #     if opcion == "Inicio del eclipse (eclipse080424i)":
+       #         example_image = "eclipse080424i.jpg"
+       #         fase_eclipse = (
+       #             "🌒 **Inicio del eclipse:** Aquí comienza la ocultación del Sol por la Luna. "
+       #             "Es posible ver cómo el disco lunar empieza a 'morder' al Sol desde un borde."
+       #         )
+       #     elif opcion == "Durante el eclipse (eclipse080424m)":
+       #         example_image = "eclipse080424m.jpg"
+       #         fase_eclipse = (
+       #             "🌕 **Máximo del eclipse:** La Luna cubre la mayor parte del Sol observable desde el punto de captura. "
+       #             "Es el momento más impresionante visualmente."
+       #         )
+       #     elif opcion == "Final del eclipse (eclipse080424f)":
+       #         example_image = "eclipse080424f.jpg"
+       #         fase_eclipse = (
+       #             "🌘 **Final del eclipse:** El disco lunar se aleja lentamente del Sol. "
+       #             "La silueta solar vuelve a verse completa poco a poco."
+       #         )
+       # # Determinar la fuente final de imagen
+       # if uploaded_file is not None:
+       #     image_file = uploaded_file
+       #     caption_text = "Imagen cargada"
+       # elif example_image is not None:
+       #     image_file = example_image
+       #     caption_text = f"Ejemplo: {example_image}"
+       # else:
+       #     image_file = None
+       #     st.warning("Por favor, carga una imagen o selecciona una de ejemplo.")
 
         
         # Mostrar imagen cargada o ejemplo
@@ -910,9 +971,9 @@ def main():
 
         # Si hay imagen válida, continuar con la app
         #if uploaded_file is not None or example_image is not None:
-        if image_file is not None or example_image is not None:
+        #if image_file is not None or example_image is not None:
           
-            image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+        #    image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
             # Entradas para metadatos
             #st.text_input("Autor", key="autor")
