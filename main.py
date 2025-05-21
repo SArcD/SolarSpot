@@ -565,10 +565,10 @@ def main():
         
         if uploaded_file is not None:
             image = Image.open(uploaded_file)
-            st.image(image, caption="Imagen cargada", use_column_width=True)
+            st.image(image, caption="Imagen cargada", use_container_width=True)
         else:
             image = Image.open("ejemplo240324.jpg")  # Imagen de ejemplo actual
-            st.image(image, caption="Imagen de ejemplo", use_column_width=True)
+            st.image(image, caption="Imagen de ejemplo", use_container_width=True)
             st.info("Se está utilizando una imagen de ejemplo.")
         
         #if uploaded_file is not None:
@@ -892,7 +892,7 @@ def main():
         # Si hay imagen válida, procesar
         if image_file:
             image = Image.open(image_file)
-            st.image(image, caption=caption_text, use_column_width=True)
+            st.image(image, caption=caption_text, use_container_width=True)
 
             if example_image:
                 st.info(f"Se está utilizando la imagen de ejemplo: {example_image}")
@@ -1030,7 +1030,7 @@ def main():
 
                 st.write("Esta es tu foto del Sol:")
                 # Mostrar la imagen con texto
-                st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+                st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_container_width=True)
                 
         import numpy as np
         import matplotlib.pyplot as plt
@@ -1166,7 +1166,7 @@ def main():
 
             st.write("Esta es tu foto del Sol:")
             # Mostrar la imagen con texto
-            st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_column_width=True)
+            st.image(imagen_with_text, caption="Fotografía del Sol durante el eclipse", use_container_width=True)
 
 
         import cv2
