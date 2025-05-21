@@ -469,6 +469,23 @@ def main():
         import base64
         from io import BytesIO
 
+ #       def show_image_with_zoom(image_np, caption="Imagen"):
+ #           # Convertir imagen OpenCV a base64 para HTML
+ #           image_pil = Image.fromarray(cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB))
+ #           buffered = BytesIO()
+ #           image_pil.save(buffered, format="PNG")
+ #           img_str = base64.b64encode(buffered.getvalue()).decode()
+
+ #           html_code = f"""
+ #           <div style="overflow: auto; border: 1px solid #ccc; padding: 10px;">
+ #               <p><strong>{caption}</strong></p>
+ #               <img src="data:image/png;base64,{img_str}" style="width:100%; max-width:800px; transition: transform 0.2s;" 
+ #                    onwheel="this.style.transform = `scale(${Math.max(1, parseFloat(this.style.transform.replace('scale(', '').replace(')', '')) + (event.deltaY < 0 ? 0.1 : -0.1))})`"
+ #                    />
+ #           </div>
+ #           """
+ #           components.html(html_code, height=600)
+
         def show_image_with_zoom(image_np, caption="Imagen"):
             # Convertir imagen OpenCV a base64 para HTML
             image_pil = Image.fromarray(cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB))
@@ -479,12 +496,22 @@ def main():
             html_code = f"""
             <div style="overflow: auto; border: 1px solid #ccc; padding: 10px;">
                 <p><strong>{caption}</strong></p>
-                <img src="data:image/png;base64,{img_str}" style="width:100%; max-width:800px; transition: transform 0.2s;" 
-                     onwheel="this.style.transform = `scale(${Math.max(1, parseFloat(this.style.transform.replace('scale(', '').replace(')', '')) + (event.deltaY < 0 ? 0.1 : -0.1))})`"
-                     />
+                <img id="zoomable" src="data:image/png;base64,{img_str}" 
+                     style="width:100%; max-width:800px; transition: transform 0.2s; transform: scale(1);" />
+                <script>
+                const img = window.parent.document.getElementById("zoomable");
+                img.addEventListener("wheel", function(event) {{
+                    event.preventDefault();
+                    let scale = parseFloat(img.style.transform.replace('scale(', '').replace(')', '')) || 1;
+                    scale += (event.deltaY < 0 ? 0.1 : -0.1);
+                    scale = Math.max(1, Math.min(5, scale));
+                    img.style.transform = `scale(${{scale}})`;
+                }});
+                </script>
             </div>
             """
-            components.html(html_code, height=600)
+            components.html(html_code, height=650)
+
 
 
 #        st.title("Visualizador de Imagen del Sol")
