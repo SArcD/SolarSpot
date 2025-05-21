@@ -722,6 +722,28 @@ def main():
                 st.write("Información de los contornos:")
                 st.write(df)
 
+                # Constante del radio del Sol en kilómetros
+                RADIO_SOL_KM = 696340  # km
+
+                def convertir_pixeles_a_km2(df, radio_sol_pixeles):
+                    df_km = df.copy()
+                    factor_escala = (RADIO_SOL_KM / radio_sol_pixeles) ** 2  # (km/pix)^2
+
+                    df_km["Tamaño (km²)"] = df_km["Tamaño (pix^2)"] * factor_escala
+                    df_km["Distancia Radial (km)"] = df_km["Distancia Radial (pix)"] * (RADIO_SOL_KM / radio_sol_pixeles)
+
+                    return df_km[[
+                        "Contorno", "Centro_X (pixeles)", "Centro_Y (pixeles)",
+                        "Tamaño (km²)", "Distancia Radial (km)", "Ángulo (grados)"
+                    ]]
+
+                # Aplicar conversión si existe DataFrame y radio del Sol en píxeles
+                df_km = convertir_pixeles_a_km2(df, radio_sol_pixeles=radio_sol)
+
+                st.write("🧭 Información de contornos solares en unidades reales:")
+                st.dataframe(df_km)
+
+
 
     #########
 
