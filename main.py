@@ -741,7 +741,7 @@ def main():
                 df_km = convertir_pixeles_a_km2(df, radio_sol_pixeles=radio_sol)
 
                 st.write("🧭 Información de contornos solares en unidades reales:")
-                st.dataframe(df_km)
+                st.write(df_km)
 
 
 
