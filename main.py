@@ -789,7 +789,7 @@ def main():
                 
                 st.image(imagen_con_circulo, caption="Imagen con contornos", use_container_width=True)
                 #show_image_with_zoom(imagen_con_circulo, caption="Imagen con contornos")
-                mostrar_imagen_plotly(imagen_contornos, "Imagen con contornos etiquetados")
+                #mostrar_imagen_plotly(imagen_contornos, "Imagen con contornos etiquetados")
 
                 st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_container_width=True)
 
