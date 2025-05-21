@@ -466,17 +466,42 @@ def main():
         import math
         import pandas as pd
 
+#        st.title("Visualizador de Imagen del Sol")
+#        st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
+
+#        uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+#        st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
+#        ksize = st.sidebar.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
+#        c = st.sidebar.slider("C", -10, 71, 2)
+
+
         st.title("Visualizador de Imagen del Sol")
-        st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
+        st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, .jpeg, .png)")
 
         uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
-        st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
+
+        # Mostrar opción de imagen de ejemplo solo si no se ha subido una
+        use_example = False
+        if uploaded_file is None:
+            use_example = st.checkbox("Usar imagen de ejemplo", value=True)
+
+        # Parámetros para el procesamiento (ya sea con imagen cargada o de ejemplo)
         ksize = st.sidebar.slider("Tamaño del bloque (impares)", 3, 71, 11, step=2)
         c = st.sidebar.slider("C", -10, 71, 2)
 
+
+        
         if uploaded_file is not None:
-            # Mostrar la imagen cargada
             image = Image.open(uploaded_file)
+            st.image(image, caption="Imagen cargada", use_column_width=True)
+        else:
+            image = Image.open("ejemplo240324.jpg")  # Imagen de ejemplo actual
+            st.image(image, caption="Imagen de ejemplo", use_column_width=True)
+            st.info("Se está utilizando una imagen de ejemplo.")
+        
+        #if uploaded_file is not None:
+            # Mostrar la imagen cargada
+        #    image = Image.open(uploaded_file)
 
             # Cajas de entrada para el autor, lugar y hora
             autor = st.text_input("Autor", "")
