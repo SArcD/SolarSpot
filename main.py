@@ -884,21 +884,34 @@ def main():
                     "🌘 **Final del eclipse:** El disco lunar se aleja lentamente del Sol. "
                     "La silueta solar vuelve a verse completa poco a poco."
                 )
-
-        # Mostrar imagen cargada o ejemplo
+        # Determinar la fuente final de imagen
         if uploaded_file is not None:
-            image = Image.open(uploaded_file)
-            st.image(image, caption="Imagen cargada", use_column_width=True)
+            image_file = uploaded_file
+            caption_text = "Imagen cargada"
         elif example_image is not None:
-            image = Image.open(example_image)
-            st.image(image, caption=f"Ejemplo: {example_image}", use_column_width=True)
-            st.info(f"Se está utilizando la imagen de ejemplo: {example_image}")
-            st.markdown(fase_eclipse)
+            image_file = example_image
+            caption_text = f"Ejemplo: {example_image}"
         else:
+            image_file = None
             st.warning("Por favor, carga una imagen o selecciona una de ejemplo.")
 
+        
+        # Mostrar imagen cargada o ejemplo
+        #if uploaded_file is not None:
+        #    image = Image.open(uploaded_file)
+        #    st.image(image, caption="Imagen cargada", use_column_width=True)
+        #elif example_image is not None:
+        #    image = Image.open(example_image)
+        #    st.image(image, caption=f"Ejemplo: {example_image}", use_column_width=True)
+        #    st.info(f"Se está utilizando la imagen de ejemplo: {example_image}")
+        #    st.markdown(fase_eclipse)
+        #else:
+        #    st.warning("Por favor, carga una imagen o selecciona una de ejemplo.")
+
         # Si hay imagen válida, continuar con la app
-        if uploaded_file is not None or example_image is not None:
+        #if uploaded_file is not None or example_image is not None:
+        if image_file is not None or example_image is not None:
+          
             image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
             # Entradas para metadatos
