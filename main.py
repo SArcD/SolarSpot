@@ -718,6 +718,13 @@ def main():
                 st.image(imagen_con_circulo, caption="Imagen con contornos", use_container_width=True)
                 st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_container_width=True)
 
+                # Mostrar el radio del Sol en kilómetros
+                radio_sol_km = round(radio_sol * (696340 / radio_sol), 2)  # Equivale directamente a 696340 km
+                st.markdown(f"🌞 **Radio solar estimado en la imagen:** {radio_sol_km:,} km")
+                st.markdown(f"🌞 **Radio solar real:** {radio_sol_km:,} km")
+                st.markdown(f"📏 **Escala de la imagen:** 1 pixel ≈ {km_por_pixel:.2f} km")
+
+                
                 # Mostrar el DataFrame
                 st.write("Información de los contornos:")
                 st.write(df)
