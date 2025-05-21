@@ -684,8 +684,7 @@ def main():
 
                 # Mostrar las tres imágenes
                 st.image(image_np, caption="Imagen subida", use_column_width=True)
-                with st.expander("Guía para ajustar los contornos del Sol y las manchas solares")
-
+                with st.expander("Guía para ajustar los contornos del Sol y las manchas solares"):
                     st.markdown("""
                 
                     Al cargar una imagen, es posible que los **contornos no se vean correctamente al principio**. Esto es normal y puede corregirse usando los deslizadores en la barra lateral.
