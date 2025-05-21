@@ -1048,7 +1048,9 @@ def main():
 
             # Cargar la imagen del eclipse parcial del sol (imagen de ejemplo)
             #img = Image.open('eclipse_solar.jpg')  # Ruta de la imagen del eclipse solar
-            img = Image.open(uploaded_file)
+#            img = Image.open(uploaded_file)
+            img = Image.open(image_file)
+
             ax.imshow(img, extent=[-x_limit, x_limit, -y_limit, y_limit])  # Ajustar límites según los deslizadores
 
             # Dibujar los círculos con las posiciones y radios proporcionados
