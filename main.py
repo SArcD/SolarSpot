@@ -720,6 +720,8 @@ def main():
 
                 # Mostrar el radio del Sol en kilómetros
                 radio_sol_km = round(radio_sol * (696340 / radio_sol), 2)  # Equivale directamente a 696340 km
+                radio_sol_km = 696340  # siempre es el real
+                km_por_pixel = radio_sol_km / radio_sol
                 st.markdown(f"🌞 **Radio solar estimado en la imagen:** {radio_sol_km:,} km")
                 st.markdown(f"🌞 **Radio solar real:** {radio_sol_km:,} km")
                 st.markdown(f"📏 **Escala de la imagen:** 1 pixel ≈ {km_por_pixel:.2f} km")
