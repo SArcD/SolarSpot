@@ -683,7 +683,7 @@ def main():
 
 
                 # Mostrar las tres imágenes
-                st.image(image_np, caption="Imagen subida", use_column_width=True)
+                st.image(image_np, caption="Imagen subida", use_container_width=True)
                 with st.expander("Guía para ajustar los contornos del Sol y las manchas solares"):
                     st.markdown("""
                 
@@ -715,8 +715,8 @@ def main():
 
 
                 
-                st.image(imagen_con_circulo, caption="Imagen con contornos", use_column_width=True)
-                st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_column_width=True)
+                st.image(imagen_con_circulo, caption="Imagen con contornos", use_container_width=True)
+                st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_container_width=True)
 
                 # Mostrar el DataFrame
                 st.write("Información de los contornos:")
