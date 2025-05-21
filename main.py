@@ -729,7 +729,7 @@ def main():
                 
                 # Mostrar el DataFrame
                 st.write("Información de los contornos:")
-                st.write(df)
+                #st.write(df)
 
                 # Constante del radio del Sol en kilómetros
                 RADIO_SOL_KM = 696340  # km
