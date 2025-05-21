@@ -840,27 +840,100 @@ def main():
         from PIL import Image
         import shapely.geometry as sg
         #import streamlit as st
-        
+
+
+
+        import streamlit as st
+        from PIL import Image
+        import cv2
+        import numpy as np
+
         st.title("Visualizador de Eclipse")
-        st.write("Esta es la página del visualizador de eclipse. Aquí puedes agregar el código para visualizar eclipses.")
+        st.write("Esta es la página del visualizador de eclipse. Aquí puedes cargar o seleccionar una imagen del eclipse solar.")
 
-        st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
-
+        # Cargar imagen del usuario
+        st.write("📷 **Carga una imagen del eclipse** (formatos permitidos: .jpg, .jpeg, .png):")
         uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
-        st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
 
+        # Si no se carga imagen, mostrar selector de ejemplo
+        example_image = None
+        fase_eclipse = ""
+        if uploaded_file is None:
+            opcion = st.selectbox("O selecciona una imagen de ejemplo:", (
+                "Ninguna",
+                "Inicio del eclipse (eclipse080424i)",
+                "Durante el eclipse (eclipse080424m)",
+                "Final del eclipse (eclipse080424f)"
+            ))
+
+            if opcion == "Inicio del eclipse (eclipse080424i)":
+                example_image = "eclipse080424i.jpg"
+                fase_eclipse = (
+                    "🌒 **Inicio del eclipse:** Aquí comienza la ocultación del Sol por la Luna. "
+                    "Es posible ver cómo el disco lunar empieza a 'morder' al Sol desde un borde."
+                )
+            elif opcion == "Durante el eclipse (eclipse080424m)":
+                example_image = "eclipse080424m.jpg"
+                fase_eclipse = (
+                    "🌕 **Máximo del eclipse:** La Luna cubre la mayor parte del Sol observable desde el punto de captura. "
+                    "Es el momento más impresionante visualmente."
+                )
+            elif opcion == "Final del eclipse (eclipse080424f)":
+                example_image = "eclipse080424f.jpg"
+                fase_eclipse = (
+                    "🌘 **Final del eclipse:** El disco lunar se aleja lentamente del Sol. "
+                    "La silueta solar vuelve a verse completa poco a poco."
+                )
+
+        # Mostrar imagen cargada o ejemplo
         if uploaded_file is not None:
-            # Mostrar la imagen cargada
             image = Image.open(uploaded_file)
-        
-            # Convertir la imagen RGB a formato BGR
+            st.image(image, caption="Imagen cargada", use_column_width=True)
+        elif example_image is not None:
+            image = Image.open(example_image)
+            st.image(image, caption=f"Ejemplo: {example_image}", use_column_width=True)
+            st.info(f"Se está utilizando la imagen de ejemplo: {example_image}")
+            st.markdown(fase_eclipse)
+        else:
+            st.warning("Por favor, carga una imagen o selecciona una de ejemplo.")
+
+        # Si hay imagen válida, continuar con la app
+        if uploaded_file is not None or example_image is not None:
             image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
-            # Cajas de entrada para el autor, lugar y hora
-            autor = st.text_input("Autor", "")
-            lugar = st.text_input("Lugar", "")
-            hora = st.text_input("Hora", "")
-            fecha = st.text_input("Fecha","")
+            # Entradas para metadatos
+            st.text_input("Autor", key="autor")
+            st.text_input("Lugar", key="lugar")
+            st.text_input("Hora", key="hora")
+            st.text_input("Fecha", key="fecha")
+
+
+
+
+
+
+
+        
+        #st.title("Visualizador de Eclipse")
+        #st.write("Esta es la página del visualizador de eclipse. Aquí puedes agregar el código para visualizar eclipses.")
+
+        #st.write("Carga una imagen del sol y mírala aquí! (formatos posibles: .jpg, jpeg., .png)")
+
+        #uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+        #st.write("Escribe tus datos sobre la imagen (evita el uso de acento)")
+
+        #if uploaded_file is not None:
+        #    # Mostrar la imagen cargada
+        #    image = Image.open(uploaded_file)
+        
+        #    # Convertir la imagen RGB a formato BGR
+        #    image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+
+        #    # Cajas de entrada para el autor, lugar y hora
+        #    autor = st.text_input("Autor", "")
+        #    lugar = st.text_input("Lugar", "")
+        #    hora = st.text_input("Hora", "")
+        #    fecha = st.text_input("Fecha","")
 
             if st.button("Mostrar datos en imagen"):
                 # Convertir la imagen cargada a una matriz numpy
