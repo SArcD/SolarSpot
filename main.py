@@ -902,10 +902,10 @@ def main():
             image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
             # Entradas para metadatos
-            st.text_input("Autor", key="autor")
-            st.text_input("Lugar", key="lugar")
-            st.text_input("Hora", key="hora")
-            st.text_input("Fecha", key="fecha")
+            #st.text_input("Autor", key="autor")
+            #st.text_input("Lugar", key="lugar")
+            #st.text_input("Hora", key="hora")
+            #st.text_input("Fecha", key="fecha")
 
 
 
@@ -929,11 +929,11 @@ def main():
         #    # Convertir la imagen RGB a formato BGR
         #    image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
-        #    # Cajas de entrada para el autor, lugar y hora
-        #    autor = st.text_input("Autor", "")
-        #    lugar = st.text_input("Lugar", "")
-        #    hora = st.text_input("Hora", "")
-        #    fecha = st.text_input("Fecha","")
+            # Cajas de entrada para el autor, lugar y hora
+            autor = st.text_input("Autor", "")
+            lugar = st.text_input("Lugar", "")
+            hora = st.text_input("Hora", "")
+            fecha = st.text_input("Fecha","")
 
             if st.button("Mostrar datos en imagen"):
                 # Convertir la imagen cargada a una matriz numpy
