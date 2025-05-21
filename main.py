@@ -512,6 +512,30 @@ def main():
             """
             components.html(html_code, height=650)
 
+        import plotly.graph_objects as go
+
+        def mostrar_imagen_plotly(imagen_np, titulo="Imagen"):
+            # Convertir de BGR a RGB
+            imagen_rgb = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2RGB)
+
+            fig = go.Figure()
+
+            fig.add_trace(go.Image(z=imagen_rgb))
+
+            fig.update_layout(
+                title=titulo,
+                dragmode="pan",
+                margin=dict(l=0, r=0, t=30, b=0),
+                xaxis=dict(showgrid=False, zeroline=False),
+                yaxis=dict(showgrid=False, zeroline=False, scaleanchor="x", scaleratio=1),
+            )
+
+            fig.update_xaxes(showticklabels=False)
+            fig.update_yaxes(showticklabels=False)
+
+            st.plotly_chart(fig, use_container_width=True)
+
+        
 
 
 #        st.title("Visualizador de Imagen del Sol")
@@ -763,8 +787,9 @@ def main():
 
 
                 
-                #st.image(imagen_con_circulo, caption="Imagen con contornos", use_container_width=True)
-                show_image_with_zoom(imagen_con_circulo, caption="Imagen con contornos")
+                st.image(imagen_con_circulo, caption="Imagen con contornos", use_container_width=True)
+                #show_image_with_zoom(imagen_con_circulo, caption="Imagen con contornos")
+                mostrar_imagen_plotly(imagen_contornos, "Imagen con contornos etiquetados")
 
                 st.image(imagen_contornos, caption="Imagen con contornos etiquetados", use_container_width=True)
 
@@ -772,7 +797,7 @@ def main():
                 radio_sol_km = round(radio_sol * (696340 / radio_sol), 2)  # Equivale directamente a 696340 km
                 radio_sol_km = 696340  # siempre es el real
                 km_por_pixel = radio_sol_km / radio_sol
-                st.markdown(f"🌞 **Radio solar estimado en la imagen:** {radio_sol_km:,} km")
+                 st.markdown(f"🌞 **Radio solar estimado en la imagen:** {radio_sol_km:,} km")
                 st.markdown(f"🌞 **Radio solar real:** {radio_sol_km:,} km")
                 st.markdown(f"📏 **Escala de la imagen:** 1 pixel ≈ {km_por_pixel:.2f} km")
 
