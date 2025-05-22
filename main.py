@@ -1258,8 +1258,13 @@ def main():
                 
                 # Aplicar el ajuste de brillo a la imagen
                 #brightened_image = decrease_brightness(image_rgb, brightness_adjustment)
-                brightened_image = simulate_eclipse_lighting(image_rgb, brightness_adjustment)
-#simulate_eclipse_lighting
+                # Calcular fuerza del eclipse como fracción (1.0 = eclipse total, 0.0 = sin eclipse)
+                eclipse_strength = 1.0 - (percentage_area_not_in_intersection / 100.0)
+    
+                # Simular iluminación
+                brightened_image = simulate_eclipse_lighting(image_rgb, eclipse_strength)
+
+                #brightened_image = simulate_eclipse_lighting(image_rgb, brightness_adjustment)
                 # Crear una figura con dos subtramas
                 fig, axes = plt.subplots(1, 2, figsize=(12, 6))
         
