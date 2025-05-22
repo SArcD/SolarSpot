@@ -1207,6 +1207,28 @@ def main():
             adjusted_image_rgb = cv2.cvtColor(yuv_image, cv2.COLOR_YUV2RGB)
             return adjusted_image_rgb
 
+        def simulate_eclipse_lighting(image, eclipse_strength):
+            """
+            Ajusta la imagen simulando la iluminación durante un eclipse.
+            :param image: imagen RGB (uint8)
+            :param eclipse_strength: 0.0 (sin eclipse) a 1.0 (totalmente oscuro)
+            :return: imagen ajustada
+            """
+            # Convertir a float para operaciones suaves
+            img_float = image.astype(np.float32) / 255.0
+
+            # Oscurecer suavemente
+            darkened = img_float * (1.0 - 0.5 * eclipse_strength)  # solo hasta 50% menos brillo
+
+            # Aplicar tono azul-gris (sombra fría)
+            cool_filter = np.array([0.9, 0.95, 1.0])  # ligeramente azulada
+            tinted = darkened * (1 - 0.3 * eclipse_strength + 0.3 * eclipse_strength * cool_filter)
+
+            # Asegurar límites y convertir de nuevo
+            tinted = np.clip(tinted * 255, 0, 255).astype(np.uint8)
+            return tinted
+
+
         # URL de la imagen en tu repositorio de GitHub
         url = 'https://raw.githubusercontent.com/SArcD/SolarSpot/main/paisaje.jpg'
 
@@ -1235,8 +1257,9 @@ def main():
                 brightness_adjustment = int((50.0 - percentage_area_not_in_intersection) * 2.0)
                 
                 # Aplicar el ajuste de brillo a la imagen
-                brightened_image = decrease_brightness(image_rgb, brightness_adjustment)
-        
+                #brightened_image = decrease_brightness(image_rgb, brightness_adjustment)
+                brightened_image = simulate_eclipse_lighting(image_rgb, brightness_adjustment)
+#simulate_eclipse_lighting
                 # Crear una figura con dos subtramas
                 fig, axes = plt.subplots(1, 2, figsize=(12, 6))
         
