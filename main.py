@@ -1500,6 +1500,8 @@ def main():
             "Colima, México": (19.2433, -103.7249),
             "Mazatlán, México": (23.2494, -106.4111),
             "Ciudad de México": (19.4326, -99.1332),
+            "Monterrey": (25.6866, -100.3161)
+
         }
 
         # Crear el mapa centrado
@@ -1513,7 +1515,11 @@ def main():
         folium.PolyLine([coords["Colima, México"], coords["Mazatlán, México"]], color="yellow", weight=3).add_to(m)
         folium.PolyLine([coords["Colima, México"], coords["Ciudad de México"]], color="orange", weight=3).add_to(m)
         folium.PolyLine([coords["Mazatlán, México"], coords["Ciudad de México"]], color="lime", weight=3).add_to(m)
-
+        folium.PolyLine([coords["Colima, México"], coords["Monterrey, México"]], color="red", weight=3).add_to(m)
+        folium.PolyLine([coords["Mazatlán, México"], coords["Monterrey, México"]], color="purple", weight=3).add_to(m)
+        folium.PolyLine([coords["Ciudad de México"], coords["Monterrey, México"]], color="blue", weight=3).add_to(m)
+        
+        
         # Mostrar en Streamlit
         st.title("Trayectoria de ciudades: Colima, Mazatlán y CDMX")
         st_folium(m, width=700, height=500)
