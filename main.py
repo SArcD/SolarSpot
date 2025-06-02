@@ -1303,6 +1303,9 @@ def main():
             f"<img src='file://{gif_path}' alt='GIF' width='600'>",
             unsafe_allow_html=True
         )
+        st.image("eclipse_coloreado_natural.gif", caption="Eclipse coloreado", use_column_width=True)
+
+        
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
