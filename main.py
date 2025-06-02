@@ -1422,7 +1422,7 @@ def main():
             #imageio.mimsave(output_gif, images, duration=0.1)
 
             # Guardar GIF
-            output_gif = f"eclipse_{ciudad_seleccionada.replace(',', '').replace(' ', '_')}.gif"
+            output_gif = f"eclipse_{ciudad.replace(',', '').replace(' ', '_')}.gif"
             imageio.mimsave(output_gif, images, duration=0.1, loop=0)  # loop=0 = infinito
 
             
