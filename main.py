@@ -1295,16 +1295,21 @@ def main():
         import pytz
 
 
-        # Ruta local al GIF
+        # Ruta al archivo
         gif_path = "eclipse_coloreado_natural.gif"
 
-        # Insertar como HTML
+        # Leer el gif como base64
+        with open(gif_path, "rb") as f:
+            gif_bytes = f.read()
+            encoded = base64.b64encode(gif_bytes).decode("utf-8")
+
+        # Mostrar con HTML
         st.markdown(
-            f"<img src='file://{gif_path}' alt='GIF' width='600'>",
+            f"""
+            <img src="data:image/gif;base64,{encoded}" alt="eclipse gif" width="600">
+            """,
             unsafe_allow_html=True
         )
-        st.image("eclipse_coloreado_natural.gif", caption="Eclipse coloreado", use_column_width=True)
-
         
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
