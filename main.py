@@ -1325,9 +1325,126 @@ def main():
             )
         else:
             st.error("❌ No se encontró el archivo GIF.")
+# ---------------------------------------------------------------------------------
+
+        import streamlit as st
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from matplotlib.patches import Circle
+        from skyfield.api import load, wgs84
+        from PIL import Image, ImageDraw
+        import imageio.v2 as imageio
+        import os
+        import base64
+        from datetime import datetime
+        import pytz
+
+        # Diccionario de ciudades
+        ciudades = {
+            "Colima, México": (19.2433, -103.7249),
+            "Guadalajara, México": (20.6597, -103.3496),
+            "Ciudad de México": (19.4326, -99.1332),
+            "Monterrey, México": (25.6866, -100.3161),
+            "Houston, EUA": (29.7604, -95.3698),
+            "Austin, EUA": (30.2672, -97.7431),
+            "Dallas, EUA": (32.7767, -96.7970),
+            "Mazatlán, México": (23.2494, -106.4111)
+        }
+
+        # Cargar efemérides
+        eph = load('de421.bsp')
+        sun, moon, earth = eph['sun'], eph['moon'], eph['earth']
+        ts = load.timescale()
+
+        # Función principal para generar animación
+        def generar_animacion(ciudad, lat, lon):
+            location = wgs84.latlon(lat, lon)
+            start = ts.utc(2024, 4, 8, 16, 47, 17)
+            end = ts.utc(2024, 4, 8, 19, 28, 55)
+            times = ts.linspace(start, end, 60)
+
+            os.makedirs("frames", exist_ok=True)
+
+            np.random.seed(42)
+            star_x = np.random.uniform(-3, 3, 100)
+            star_y = np.random.uniform(-3, 3, 100)
+
+            images = []
+            max_overlap = 0
+            max_index = -1
+            max_time = None
+            fig, ax = plt.subplots(figsize=(6, 6))
+
+            for i, t in enumerate(times):
+                observer = earth + location
+                sun_app = observer.at(t).observe(sun).apparent()
+                moon_app = observer.at(t).observe(moon).apparent()
+
+                sun_alt, sun_az, _ = sun_app.altaz()
+                moon_alt, moon_az, _ = moon_app.altaz()
+
+                if sun_alt.degrees < 5:
+                    continue
+
+                dx = (moon_az.degrees - sun_az.degrees) * np.cos(np.radians(sun_alt.degrees))
+                dy = moon_alt.degrees - sun_alt.degrees
+                dist = np.sqrt(dx**2 + dy**2)
+                overlap = max(0, 1 - dist / 0.53)
+
+                if overlap > max_overlap:
+                    max_overlap = overlap
+                    max_index = len(images)
+                    max_time = t
+
+                sun_radius = 0.53
+                moon_radius = 0.50
+
+                fig.clf()
+                ax = fig.add_subplot(111)
+                ax.set_xlim(-3, 3)
+                ax.set_ylim(-3, 3)
+                ax.set_aspect('equal')
+                ax.axis('off')
+                ax.set_facecolor('black')
+
+                ax.scatter(star_x, star_y, color='white', s=2, zorder=1)
+                ax.add_patch(Circle((0, 0), sun_radius, color='gold', zorder=2))
+                ax.add_patch(Circle((dx, dy), moon_radius, color='#001833', zorder=3))
+
+                hora_local = t.utc_datetime().astimezone(pytz.timezone('America/Mexico_City')).strftime('%H:%M:%S')
+                ax.text(-2.8, -2.8, f"Hora local: {hora_local}", color='white', fontsize=8, ha='left', va='bottom')
+
+                fname = f"frames/frame_{i:03d}.png"
+                fig.savefig(fname, dpi=100, facecolor='black')
+                images.append(imageio.imread(fname))
+
+            output_gif = f"eclipse_{ciudad.replace(',', '').replace(' ', '_')}.gif"
+            imageio.mimsave(output_gif, images, duration=0.1)
+
+            with open(output_gif, "rb") as f:
+                encoded = base64.b64encode(f.read()).decode("utf-8")
+
+            st.markdown(
+                f"""
+                <div style="text-align: center;">
+                    <img src="data:image/gif;base64,{encoded}" width="500">
+                    <p style="color:gray">Simulación del eclipse solar en {ciudad}</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+        # Interfaz en Streamlit
+        st.title("🌞 Simulador de Eclipse Solar 2024")
+        ciudad_sel = st.selectbox("Selecciona una ciudad:", list(ciudades.keys()))
+
+        if st.button("Generar animación"):
+            lat, lon = ciudades[ciudad_sel]
+            generar_animacion(ciudad_sel, lat, lon)
 
         
-  
+        
+ # --------------------------------------------------------------------------------
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
