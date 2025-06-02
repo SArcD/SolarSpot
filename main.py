@@ -1446,6 +1446,50 @@ def main():
         if st.button("Generar animación"):
             lat, lon = ciudades[ciudad_sel]
             generar_animacion(ciudad_sel, lat, lon)
+#------------------------------------------------------------------------------
+
+
+        import streamlit as st
+        import base64
+        import os
+
+        # Ruta de los GIFs
+        gif1_path = "eclipse_Colima_México.gif"
+        gif2_path = "eclipse_Ciudad_de_México.gif"
+
+        def cargar_gif_base64(path):
+            if os.path.exists(path):
+                with open(path, "rb") as f:
+                    gif_bytes = f.read()
+                return base64.b64encode(gif_bytes).decode("utf-8")
+            else:
+                return None
+
+        # Cargar GIFs
+        gif1_base64 = cargar_gif_base64(gif1_path)
+        gif2_base64 = cargar_gif_base64(gif2_path)
+
+        # Mostrar en Streamlit si ambos GIFs existen
+        if gif1_base64 and gif2_base64:
+            st.markdown(
+                f"""
+                <div style="display: flex; justify-content: space-around; align-items: center;">
+                    <div style="text-align: center;">
+                        <img src="data:image/gif;base64,{gif1_base64}" width="400">
+                        <p style="color: white;">Colima, México</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="data:image/gif;base64,{gif2_base64}" width="400">
+                        <p style="color: white;">Ciudad de México</p>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.error("❌ No se encontraron uno o ambos archivos GIF.")
+
+
 
         
         
