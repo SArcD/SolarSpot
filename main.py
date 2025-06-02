@@ -1418,9 +1418,14 @@ def main():
                 fig.savefig(fname, dpi=100, facecolor='black')
                 images.append(imageio.imread(fname))
 
-            output_gif = f"eclipse_{ciudad.replace(',', '').replace(' ', '_')}.gif"
-            imageio.mimsave(output_gif, images, duration=0.1)
+            #output_gif = f"eclipse_{ciudad.replace(',', '').replace(' ', '_')}.gif"
+            #imageio.mimsave(output_gif, images, duration=0.1)
 
+            # Guardar GIF
+            output_gif = f"eclipse_{ciudad_seleccionada.replace(',', '').replace(' ', '_')}.gif"
+            imageio.mimsave(output_gif, images, duration=0.1, loop=0)  # loop=0 = infinito
+
+            
             with open(output_gif, "rb") as f:
                 encoded = base64.b64encode(f.read()).decode("utf-8")
 
