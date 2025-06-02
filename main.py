@@ -1293,9 +1293,11 @@ def main():
         import pandas as pd
         from datetime import datetime
         import pytz
-
-        st.image("eclipse_coloreado_natural.gif", use_column_width=True)
-        st.markdown("## Bienvenido a la simulación del eclipse")
+#eclipse_coloreado_natural.gif
+        image = Image.open("eclipse_coloreado_natural.gif")
+        st.image(image, use_column_width=True)
+#        st.image("eclipse_coloreado_natural.gif", use_column_width=True)
+#        st.markdown("## Bienvenido a la simulación del eclipse")
         
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
