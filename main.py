@@ -1298,12 +1298,11 @@ def main():
         # Ruta local al GIF
         gif_path = "eclipse_coloreado_natural.gif"
 
-        # Abrir y mostrar el GIF
-        with open(gif_path, "rb") as f:
-            gif_bytes = f.read()
-            st.image(gif_bytes)
-
- 
+        # Insertar como HTML
+        st.markdown(
+            f"<img src='file://{gif_path}' alt='GIF' width='600'>",
+            unsafe_allow_html=True
+        )
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
