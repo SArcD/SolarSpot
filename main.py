@@ -1294,6 +1294,9 @@ def main():
         from datetime import datetime
         import pytz
 
+        st.image("eclipse_coloreado_natural.gif", use_column_width=True)
+        st.markdown("## Bienvenido a la simulación del eclipse")
+        
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
