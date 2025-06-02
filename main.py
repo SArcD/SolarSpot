@@ -1293,11 +1293,18 @@ def main():
         import pandas as pd
         from datetime import datetime
         import pytz
-#eclipse_coloreado_natural.gif
-        image = Image.open("eclipse_coloreado_natural.gif")
-        st.image(image, use_column_width=True)
-#        st.image("eclipse_coloreado_natural.gif", use_column_width=True)
-#        st.markdown("## Bienvenido a la simulación del eclipse")
+
+
+        st.title("Simulación del Eclipse Solar")
+        st.markdown("Esta animación muestra la trayectoria aparente de la Luna sobre el Sol durante el eclipse observado desde Colima.")
+
+        # Mostrar el GIF animado
+        with open("eclipse_coloreado_natural.gif", "rb") as file:
+            gif_bytes = file.read()
+            st.image(gif_bytes, format="gif", use_column_width=True)
+
+        st.markdown("---")
+    #st.caption("Fue
         
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
