@@ -1527,10 +1527,10 @@ def main():
         import streamlit as st
 
         # Rutas locales en el entorno de Streamlit
-        ruta_colima = "/eclipse_Colima_México.gif"
-        ruta_cdmx = "/eclipse_Ciudad_de_México.gif"
-        ruta_mazatlan = "/eclipse_Mazatlán_México.gif"
-        ruta_monterrey = "/eclipse_Monterrey_México.gif"
+        ruta_colima = "eclipse_Colima_México.gif"
+        ruta_cdmx = "eclipse_Ciudad_de_México.gif"
+        ruta_mazatlan = "eclipse_Mazatlán_México.gif"
+        ruta_monterrey = "eclipse_Monterrey_México.gif"
 
         def detectar_centros_por_color(gif_path):
             frames = imageio.mimread(gif_path)
