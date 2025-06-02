@@ -1296,21 +1296,27 @@ def main():
         import base64
 
 
-        # Ruta al archivo
+        import streamlit as st
+        import base64
+
         gif_path = "eclipse_coloreado_natural.gif"
 
-        # Leer el gif como base64
-        with open(gif_path, "rb") as f:
-            gif_bytes = f.read()
-            encoded = base64.b64encode(gif_bytes).decode("utf-8")
+        if os.path.exists(gif_path):
+            with open(gif_path, "rb") as f:
+                gif_bytes = f.read()
+                encoded = base64.b64encode(gif_bytes).decode("utf-8")
 
-        # Mostrar con HTML
-        st.markdown(
-            f"""
-            <img src="data:image/gif;base64,{encoded}" alt="eclipse gif" width="600">
-            """,
-            unsafe_allow_html=True
-        )
+            st.markdown(
+                f"""
+                <div style="text-align: center;">
+                    <img src="data:image/gif;base64,{encoded}" width="600">
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.error("❌ No se encontró el archivo GIF.")
+
         
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
