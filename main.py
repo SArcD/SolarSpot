@@ -1624,6 +1624,59 @@ def main():
         plt.legend()
         plt.grid(True)
         st.pyplot(fig2)
+#----------------------------------------------------------------------------------
+
+        from math import radians
+        from geopy.distance import geodesic
+        from itertools import combinations
+        import pandas as pd
+
+        # Coordenadas de las ciudades
+        coords = {
+            "Colima": (19.2433, -103.7249),
+            "CDMX": (19.4326, -99.1332),
+            "Mazatlán": (23.2494, -106.4111),
+            "Monterrey": (25.6866, -100.3161)
+        }
+    
+# Supuestos ángulos de inclinación para cada ciudad (grados)
+# En un caso real, estos deberían ser calculados previamente
+        angulos = {'Colima': -151.2323506611562,
+        'CDMX': -147.84770485871766,
+        'Mazatlán': -157.69379494509235,
+        'Monterrey': -152.41797079220285}    
+        # Combinaciones de tres ciudades
+        combs = list(combinations(coords.keys(), 3))
+
+        resultados = []
+
+        for c1, c2, c3 in combs:
+            delta12 = radians(abs(angulos[c1] - angulos[c2]))
+            delta13 = radians(abs(angulos[c1] - angulos[c3]))
+            delta23 = radians(abs(angulos[c2] - angulos[c3]))
+
+            d12 = geodesic(coords[c1], coords[c2]).km
+            d13 = geodesic(coords[c1], coords[c3]).km
+            d23 = geodesic(coords[c2], coords[c3]).km
+
+            R1 = d12 / delta12 if delta12 != 0 else None
+            R2 = d13 / delta13 if delta13 != 0 else None
+            R3 = d23 / delta23 if delta23 != 0 else None
+
+            radios_validos = [r for r in [R1, R2, R3] if r is not None]
+            promedio = sum(radios_validos) / len(radios_validos) if radios_validos else None
+
+            resultados.append({
+                "Ciudades": f"{c1} - {c2} - {c3}",
+                "R1 (km)": R1,
+                "R2 (km)": R2,
+                "R3 (km)": R3,
+                "Promedio (km)": promedio
+            })
+
+        df_resultados = pd.DataFrame(resultados)
+
+        df_resultados
 
         
         
