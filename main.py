@@ -1299,6 +1299,12 @@ def main():
         import streamlit as st
         import base64
 
+
+
+        import os
+        import base64
+        import streamlit as st
+
         gif_path = "eclipse_coloreado_natural.gif"
 
         if os.path.exists(gif_path):
@@ -1308,9 +1314,12 @@ def main():
 
             st.markdown(
                 f"""
-                <div style="text-align: center;">
+                <figure style="text-align: center;">
                     <img src="data:image/gif;base64,{encoded}" width="600">
-                </div>
+                    <figcaption style="font-size: 0.9em; color: gray; margin-top: 5px;">
+                        Trayectoria del eclipse desde Colima (simulación natural)
+                    </figcaption>
+                </figure>
                 """,
                 unsafe_allow_html=True
             )
@@ -1318,6 +1327,7 @@ def main():
             st.error("❌ No se encontró el archivo GIF.")
 
         
+  
         # Lista de ciudades con su correspondiente zona horaria
         cities = {
             "New York": "America/New_York",
