@@ -1293,6 +1293,7 @@ def main():
         import pandas as pd
         from datetime import datetime
         import pytz
+        import base64
 
 
         # Ruta al archivo
