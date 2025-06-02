@@ -1518,6 +1518,106 @@ def main():
         st.title("Trayectoria de ciudades: Colima, Mazatlán y CDMX")
         st_folium(m, width=700, height=500)
 
+#-----------------------------------------------------------
+
+        import cv2
+        import imageio.v2 as imageio
+        import numpy as np
+        import matplotlib.pyplot as plt
+        import streamlit as st
+
+        # Rutas locales en el entorno de Streamlit
+        ruta_colima = "/mnt/data/eclipse_Colima_México.gif"
+        ruta_cdmx = "/mnt/data/eclipse_Ciudad_de_México.gif"
+        ruta_mazatlan = "/mnt/data/eclipse_Mazatlán_México.gif"
+        ruta_monterrey = "/mnt/data/eclipse_Monterrey_México.gif"
+
+        def detectar_centros_por_color(gif_path):
+            frames = imageio.mimread(gif_path)
+            trayectoria_sol = []
+            trayectoria_luna = []
+
+            for frame in frames:
+                img = np.array(frame)
+                hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+
+                lower_yellow = np.array([20, 100, 100])
+                upper_yellow = np.array([40, 255, 255])
+                mask_yellow = cv2.inRange(hsv, lower_yellow, upper_yellow)
+
+                lower_blue = np.array([100, 50, 20])
+                upper_blue = np.array([130, 255, 80])
+                mask_blue = cv2.inRange(hsv, lower_blue, upper_blue)
+
+                def centroide(mask):
+                    M = cv2.moments(mask)
+                    if M["m00"] != 0:
+                        cx = int(M["m10"] / M["m00"])
+                        cy = int(M["m01"] / M["m00"])
+                        return (cx, cy)
+                    else:
+                        return None
+
+                centro_sol = centroide(mask_yellow)
+                centro_luna = centroide(mask_blue)
+
+                trayectoria_sol.append(centro_sol)
+                trayectoria_luna.append(centro_luna)
+
+            return trayectoria_sol, trayectoria_luna
+
+        # Detectar trayectorias
+        tray_sol_colima, tray_luna_colima = detectar_centros_por_color(ruta_colima)
+        tray_sol_cdmx, tray_luna_cdmx = detectar_centros_por_color(ruta_cdmx)
+        tray_sol_mazatlan, tray_luna_mazatlan = detectar_centros_por_color(ruta_mazatlan)
+        tray_sol_monterrey, tray_luna_monterrey = detectar_centros_por_color(ruta_monterrey)
+
+        # Función para graficar trayectorias relativas
+        def graficar_trayectorias_relativas(sol_tray, luna_tray, label, color):
+            rel = []
+            for s, l in zip(sol_tray, luna_tray):
+                if s and l:
+                    dx = l[0] - s[0]
+                    dy = l[1] - s[1]
+                    rel.append((dx, dy))
+            rel = np.array(rel)
+            plt.plot(rel[:, 0], rel[:, 1], label=label, color=color)
+
+        # Función para graficar trayectorias absolutas
+        def graficar_trayectorias(sol_tray, luna_tray, label, color):
+            puntos = []
+            for s, l in zip(sol_tray, luna_tray):
+                if s and l:
+                    puntos.append(l)
+            puntos = np.array(puntos)
+            plt.plot(puntos[:, 0], puntos[:, 1], label=label, color=color)
+
+        # Mostrar gráficas en Streamlit
+        st.subheader("Trayectorias relativas de la Luna respecto al Sol")
+        fig1 = plt.figure(figsize=(8, 6))
+        graficar_trayectorias_relativas(tray_sol_colima, tray_luna_colima, "Colima", "orange")
+        graficar_trayectorias_relativas(tray_sol_cdmx, tray_luna_cdmx, "CDMX", "green")
+        graficar_trayectorias_relativas(tray_sol_mazatlan, tray_luna_mazatlan, "Mazatlán", "blue")
+        graficar_trayectorias_relativas(tray_sol_mazatlan, tray_luna_monterrey, "Monterrey", "red")
+        plt.gca().invert_yaxis()
+        plt.legend()
+        plt.xlabel("Desplazamiento X (px)")
+        plt.ylabel("Desplazamiento Y (px)")
+        plt.grid(True)
+        st.pyplot(fig1)
+
+        st.subheader("Trayectorias absolutas de la Luna")
+        fig2 = plt.figure(figsize=(8, 6))
+        graficar_trayectorias(tray_sol_colima, tray_luna_colima, "Colima", "orange")
+        graficar_trayectorias(tray_sol_cdmx, tray_luna_cdmx, "CDMX", "green")
+        graficar_trayectorias(tray_sol_mazatlan, tray_luna_mazatlan, "Mazatlán", "blue")
+        graficar_trayectorias(tray_sol_mazatlan, tray_luna_monterrey, "Monterrey", "red")
+        plt.gca().invert_yaxis()
+        plt.xlabel("X (px)")
+        plt.ylabel("Y (px)")
+        plt.legend()
+        plt.grid(True)
+        st.pyplot(fig2)
 
         
         
