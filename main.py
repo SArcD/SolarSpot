@@ -1317,7 +1317,7 @@ def main():
                 <figure style="text-align: center;">
                     <img src="data:image/gif;base64,{encoded}" width="600">
                     <figcaption style="font-size: 0.9em; color: gray; margin-top: 5px;">
-                        Secuencia fotográfica tomada durante el eclipse del 08 de abril de 2024 (desde Colima, México) 
+                        Secuencia fotográfica tomada durante el eclipse del 08 de abril de 2024 desde Colima, México 
                     </figcaption>
                 </figure>
                 """,
