@@ -1500,7 +1500,7 @@ def main():
             "Colima, México": (19.2433, -103.7249),
             "Mazatlán, México": (23.2494, -106.4111),
             "Ciudad de México": (19.4326, -99.1332),
-            "Monterrey": (25.6866, -100.3161)
+            "Monterrey, México": (25.6866, -100.3161)
 
         }
 
